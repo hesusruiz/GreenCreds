@@ -21,7 +21,7 @@ export class DemoPage extends JrmPage {
             <!-- =========================================== -->
             
             <div class="w3-panel w3-card-4">
-                <a onclick="r.goHome()">
+                <a onclick="r.gotoPage('#passenger')">
                     <h3>I am a Passenger</h3>
                     <p>Receive or show your test results</p>
                 </a>
