@@ -10,24 +10,21 @@ export class PassengerHome extends JrmPage {
         this.styles,
         css`
         .plus {
-            --t:4px;   /* Thickness */
-            --l:50px;  /* size of the symbol */
-            --s:12px;  /* space around the symbol */
+            --t:3px;   /* Thickness */
+            --l:60px;  /* size of the symbol */
             --c1:#fff; /* Plus color*/
             --c2: rgb(63, 81, 181); /* background color*/
 
             display:inline-block;
             width:var(--l);
             height:var(--l);
-            padding:var(--s);
-            box-sizing:border-box; /*Remove this if you don't want space to be included in the size*/
             
             background:
                 linear-gradient(var(--c1),var(--c1)) content-box,
                 linear-gradient(var(--c1),var(--c1)) content-box,
                 var(--c2);
             background-position:center;
-            background-size: 100% var(--t),var(--t) 100%;
+            background-size: 55% var(--t),var(--t) 55%;
             background-repeat:no-repeat;
         }
 
