@@ -10,7 +10,7 @@ const tagName = "header-bar"
 export class HeaderBar extends LitElement {
 
     constructor() {
-        console.log("Inside constructor of HEADER BAR")
+        console.log("Inside constructor of HEADERBAR")
         super();
     }
 
@@ -21,7 +21,7 @@ export class HeaderBar extends LitElement {
           <a href="#" class="w3-bar-item w3-button w3-hide-small">Link 1</a>
           <a href="#" class="w3-bar-item w3-button w3-hide-small">Link 2</a>
           <a href="#" class="w3-bar-item w3-button w3-hide-small">Link 3</a>
-          <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" @click=${this.toggleView}>&#9776;</a>
+          <a href="javascript:void(0)" class="w3-bar-item w3-button w3-hover-indigo w3-right w3-hide-large w3-hide-medium" @click=${this.toggleView}>&#9776;</a>
         </div>
         
         <div id="vertMenu" class="w3-bar-block w3-indigo w3-hide w3-hide-large w3-hide-medium">
