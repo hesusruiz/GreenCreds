@@ -13,7 +13,6 @@ export class JrmPage extends LitElement {
     constructor(pageName = "default") {
         console.log("Inside constructor of JRMPAGE")
         super();
-        console.log("THIS:", this)
         this.pageName = pageName
         // Add the page to the routing table
         pages.set('#' + pageName, this)

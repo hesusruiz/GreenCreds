@@ -1,6 +1,4 @@
-import { pages } from "../router";
-import { w3 } from '../w3'
-import '../css/w3.css'
+import { w3styles } from '../w3styles'
 
 import { LitElement, css, html, render } from 'lit';
 
@@ -9,6 +7,9 @@ const tagName = "header-bar"
 
 export class HeaderBar extends LitElement {
 
+    static styles = [
+        w3styles
+    ];
     constructor() {
         console.log("Inside constructor of HEADERBAR")
         super();
@@ -16,39 +17,28 @@ export class HeaderBar extends LitElement {
 
     render() {
         const sidebarMenu = html`
-        <div class="w3-bar w3-xlarge w3-indigo w3-hover-indigo">
-          <a href="#" class="w3-bar-item w3-btn">SafeIsland</a>
-          <a href="#" class="w3-bar-item w3-btn w3-hide-small">Link 1</a>
-          <a href="#" class="w3-bar-item w3-btn w3-hide-small">Link 2</a>
-          <a href="#" class="w3-bar-item w3-btn w3-hide-small">Link 3</a>
-          <a href="javascript:void(0)" class="w3-bar-item w3-btn w3-right w3-hide-large w3-hide-medium" @click=${this.toggleView}>&#9776;</a>
+        <div class="w3-bar w3-xlarge w3-indigo">
+          <a href="#" class="w3-bar-item w3-button w3-hover-indigo">SafeIsland</a>
+          <a href="#" class="w3-bar-item w3-button w3-hover-indigo w3-hide-small">Link 1</a>
+          <a href="#" class="w3-bar-item w3-button w3-hover-indigo w3-hide-small">Link 2</a>
+          <a href="#" class="w3-bar-item w3-button w3-hover-indigo w3-hide-small">Link 3</a>
+          <a href="javascript:void(0)" class="w3-bar-item w3-button w3-hover-indigo w3-right w3-hide-large w3-hide-medium" @click=${this.toggleView}>&#9776;</a>
         </div>
         
         <div id="vertMenu" class="w3-bar-block w3-indigo w3-hide w3-hide-large w3-hide-medium">
-          <a href="#" class="w3-bar-item w3-btn">Link 1</a>
-          <a href="#" class="w3-bar-item w3-btn">Link 2</a>
-          <a href="#" class="w3-bar-item w3-btn">Link 3</a>
+          <a href="#" class="w3-bar-item w3-button w3-hover-indigo">Link 1</a>
+          <a href="#" class="w3-bar-item w3-button w3-hover-indigo">Link 2</a>
+          <a href="#" class="w3-bar-item w3-button w3-hover-indigo">Link 3</a>
         </div>
         `
         return sidebarMenu;
     }
 
     toggleView() {
-        var x = document.getElementById("vertMenu");
-        if (x.className.indexOf("w3-show") == -1) {
-            x.className += " w3-show";
-        } else {
-            x.className = x.className.replace(" w3-show", "");
-        }
+        var x = this.getRootNode().querySelector("#vertMenu");
+        x.classList.toggle("w3-show")
     }
 
-    createRenderRoot() {
-        return this;
-    }
-    enter() {
-        console.log("Enter page")
-        this.requestUpdate();
-    }
 }
 
 customElements.define(tagName, HeaderBar);
