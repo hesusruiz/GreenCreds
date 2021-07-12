@@ -6,6 +6,7 @@ export default defineConfig({
             localsConvention: 'camelCase'
         }
     },
+    base: '/GreenCreds/',
     build: {
         outDir: 'docs'
     }
