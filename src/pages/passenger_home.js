@@ -12,6 +12,7 @@ export class PassengerHome extends JrmPage {
         .plus {
             --t:3px;   /* Thickness */
             --l:60px;  /* size of the symbol */
+            --s:55%;    /* Size of the plus inside */
             --c1:#fff; /* Plus color*/
             --c2: rgb(63, 81, 181); /* background color*/
 
@@ -24,7 +25,7 @@ export class PassengerHome extends JrmPage {
                 linear-gradient(var(--c1),var(--c1)) content-box,
                 var(--c2);
             background-position:center;
-            background-size: 55% var(--t),var(--t) 55%;
+            background-size: var(--s) var(--t),var(--t) var(--s);
             background-repeat:no-repeat;
         }
 
@@ -52,12 +53,10 @@ export class PassengerHome extends JrmPage {
             <!-- PASSENGER HOME                              -->
             <!-- =========================================== -->
             
-            <h2>You still do not have any credentials</h2>
+            <h2>You do not have any credentials yet</h2>
             <p>Click the button below to add credentials</p>
 
             <div class="plus radius w3-card-4 fab"></div>
-
-
             `
         )
     }

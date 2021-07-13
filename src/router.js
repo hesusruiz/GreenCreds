@@ -23,7 +23,7 @@ export var homePage = "#demo";
 // Check for query string specifying the initial page
 if (searchParams.get("home") !== null) {
     // ?verifier
-    homePage = "#credentialListPage";
+    homePage = "#passenger";
 } else if (searchParams.get("verifier") !== null) {
     // ?verifier
     homePage = "#verifierScanQR";
