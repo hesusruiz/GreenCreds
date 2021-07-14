@@ -341,7 +341,7 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
                 <pre><code id="result">${this.result}</code></pre>                
                 `}attributeChangedCallback(){console.log("AttributeChangedCallback has been called")}toggleView(e){this.renderRoot.querySelector("#selectList").classList.toggle("w3-show")}getSelectHtml(){let e=i``;return this.videoInputDevices.length>0&&(e=i`
             <ul id="selectList" class="w3-ul w3-border w3-white w3-hide w3-large" >
-                ${this.videoInputDevices.map((e=>i`<li class="w3-large" id="${e.deviceId}" @click=${this.selected}>${e.label}</li>`))}
+                ${this.videoInputDevices.map((e=>i`<li class=${e.deviceId===this.selectedDeviceId?"w3-large w3-pale-blue":"w3-large"} id="${e.deviceId}" @click=${this.selected}>${e.deviceId===this.selectedDeviceId?i`*`:i``} ${e.label}</li>`))}
             </ul>
             `),e}async enter(){if(console.log("SCANQR Enter",this.clientWidth),this.result=void 0,void 0===this.videoElem){let o={video:{facingMode:"environment"}};try{var e=await navigator.mediaDevices.getUserMedia(o)}catch(t){if(t instanceof NotAllowedError)throw t;if(t instanceof NotFoundError)throw t}let r=e.getVideoTracks()[0].getSettings().deviceId;this.selectedDeviceId=r,this.videoInputDevices=await this.codeReader.listVideoInputDevices(),this.videoInputDevices.length>0&&(this.selectHtml=i`
                 <label for="sourceSelect">Change video source:</label>

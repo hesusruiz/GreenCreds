@@ -97,7 +97,7 @@ export class ScanQrPage extends LitElement {
             theHtml = html`
             <ul id="selectList" class="w3-ul w3-border w3-white w3-hide w3-large" >
                 ${this.videoInputDevices.map((dev) =>
-                    html`<li class="w3-large" id="${dev.deviceId}" @click=${this.selected}>${dev.label}</li>`
+                    html`<li class=${(dev.deviceId === this.selectedDeviceId) ? "w3-large w3-pale-blue" : "w3-large"} id="${dev.deviceId}" @click=${this.selected}>${(dev.deviceId === this.selectedDeviceId) ? html`*` : html``} ${dev.label}</li>`
                 )}
             </ul>
             `
