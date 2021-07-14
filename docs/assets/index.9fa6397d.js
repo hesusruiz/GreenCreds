@@ -320,7 +320,6 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
             `)}});class q extends a{static get properties(){return{pepe:{attribute:!0}}}constructor(){console.log("Inside constructor of SCANQR"),super(),this.pageName="verifier",g.set("#"+this.pageName,this),this.codeReader=new n,this.videoInputDevices=[],this.selectedDeviceId=void 0,this.selectHtml=i``,this.resultObj=void 0,this.result=void 0,this.videoElem=void 0}render(){return void 0===this.result?i`
                 <!-- =========================================== -->
                 <!-- SCAN QR PAGE.                               -->
-                <!--                                             -->
                 <!-- =========================================== -->
                 <header-bar></header-bar>
                             
@@ -336,7 +335,6 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
                 `:i`
                 <!-- =========================================== -->
                 <!-- SCAN QR PAGE.                               -->
-                <!--                                             -->
                 <!-- =========================================== -->
                 
                 <label>Result:</label>

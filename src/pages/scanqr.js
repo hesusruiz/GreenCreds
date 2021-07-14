@@ -56,7 +56,6 @@ export class ScanQrPage extends LitElement {
             return html`
                 <!-- =========================================== -->
                 <!-- SCAN QR PAGE.                               -->
-                <!--                                             -->
                 <!-- =========================================== -->
                 <header-bar></header-bar>
                             
@@ -74,7 +73,6 @@ export class ScanQrPage extends LitElement {
             return html`
                 <!-- =========================================== -->
                 <!-- SCAN QR PAGE.                               -->
-                <!--                                             -->
                 <!-- =========================================== -->
                 
                 <label>Result:</label>
