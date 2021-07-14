@@ -66,8 +66,8 @@ export class ScanQrPage extends LitElement {
 
                 <div id="footer" class="w3-bar w3-xlarge">
                     ${this.getSelectHtml()}
-                    <button class="w3-button w3-indigo w3-xlarge" @click=${this.toggleView}>
-                        Camera
+                    <button class="w3-btn w3-indigo w3-xlarge w3-hover-indigo" @click=${this.toggleView}>
+                        Select Camera
                     </button>
                 </div>
                 `
@@ -98,7 +98,7 @@ export class ScanQrPage extends LitElement {
         let theHtml = html``
         if (this.videoInputDevices.length > 0) {
             theHtml = html`
-            <ul id="selectList" class="w3-ul w3-border w3-hide w3-large" >
+            <ul id="selectList" class="w3-ul w3-border w3-white w3-hide w3-large" >
                 ${this.videoInputDevices.map((dev) =>
                     html`<li class="w3-large" id="${dev.deviceId}" @click=${this.selected}>${dev.label}</li>`
                 )}

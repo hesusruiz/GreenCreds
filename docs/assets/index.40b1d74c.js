@@ -222,12 +222,12 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
           <a href="#" class="w3-bar-item w3-button w3-hover-indigo">Link 2</a>
           <a href="#" class="w3-bar-item w3-button w3-hover-indigo">Link 3</a>
         </div>
-        `}toggleView(e){this.renderRoot.querySelector("#vertMenu").classList.toggle("w3-show")}}t(C,"styles",[E]),customElements.define("header-bar",C);class T extends a{constructor(e="default"){console.log("Inside constructor of JRMPAGE"),super(),this.pageName=e,g.set("#"+e,this)}pageTemplate(e){return i`
+        `}toggleView(e){this.renderRoot.querySelector("#vertMenu").classList.toggle("w3-show")}}t(C,"styles",[E]),customElements.define("header-bar",C);class S extends a{constructor(e="default"){console.log("Inside constructor of JRMPAGE"),super(),this.pageName=e,g.set("#"+e,this)}pageTemplate(e){return i`
         <header-bar></header-bar>
         <div id="${this.pageName}" class="jrmpage w3-container">
             ${e}
         </div>
-        `}enter(){console.log("Enter page"),this.requestUpdate()}}t(T,"styles",[E]);const S=class extends T{constructor(){console.log("Inside constructor of DEMO PAGE"),super("passenger")}render(){return this.pageTemplate(i`
+        `}enter(){console.log("Enter page"),this.requestUpdate()}}t(S,"styles",[E]);const T=class extends S{constructor(){console.log("Inside constructor of DEMO PAGE"),super("passenger")}render(){return this.pageTemplate(i`
             <!-- =========================================== -->
             <!-- PASSENGER HOME                              -->
             <!-- =========================================== -->
@@ -236,7 +236,7 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
             <p>Click the button below to add credentials</p>
 
             <div class="plus radius w3-card-4 fab"></div>
-            `)}enter(){console.log("Enter page DEMO"),this.requestUpdate()}};let I=S;t(I,"styles",[S.styles,r`
+            `)}enter(){console.log("Enter page DEMO"),this.requestUpdate()}};let I=T;t(I,"styles",[T.styles,r`
         .plus {
             --t:3px;   /* Thickness */
             --l:60px;  /* size of the symbol */
@@ -265,7 +265,7 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
             bottom: 45px;
             right: 30px
         }
-        `]),customElements.define("passenger-home",I);customElements.define("demo-page",class extends T{constructor(){console.log("Inside constructor of DEMO PAGE"),super("demo")}render(){return this.pageTemplate(i`
+        `]),customElements.define("passenger-home",I);customElements.define("demo-page",class extends S{constructor(){console.log("Inside constructor of DEMO PAGE"),super("demo")}render(){return this.pageTemplate(i`
             <!-- =========================================== -->
             <!-- HOME PAGE for demos. It has several roles   -->
             <!-- and the user can choose                     -->
@@ -305,7 +305,7 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
                     <p>Only if you know what you are doing</p>
                 </div>
             </a>
-            `)}enter(){console.log("Enter page DEMO"),this.requestUpdate()}});customElements.define("verifier-page",class extends T{constructor(){console.log("Inside constructor of VERIFIER PAGE"),super("verifier")}render(){return this.pageTemplate(i`
+            `)}enter(){console.log("Enter page DEMO"),this.requestUpdate()}});customElements.define("verifier-page",class extends S{constructor(){console.log("Inside constructor of VERIFIER PAGE"),super("verifier")}render(){return this.pageTemplate(i`
             <!-- =========================================== -->
             <!-- HOME PAGE for demos. It has several roles   -->
             <!-- and the user can choose                     -->
@@ -330,8 +330,8 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 
                 <div id="footer" class="w3-bar w3-xlarge">
                     ${this.getSelectHtml()}
-                    <button class="w3-button w3-indigo w3-xlarge" @click=${this.toggleView}>
-                        Camera
+                    <button class="w3-btn w3-indigo w3-xlarge w3-hover-indigo" @click=${this.toggleView}>
+                        Select Camera
                     </button>
                 </div>
                 `:i`
@@ -343,7 +343,7 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
                 <label>Result:</label>
                 <pre><code id="result">${this.result}</code></pre>                
                 `}attributeChangedCallback(){console.log("AttributeChangedCallback has been called")}toggleView(e){this.renderRoot.querySelector("#selectList").classList.toggle("w3-show")}getSelectHtml(){let e=i``;return this.videoInputDevices.length>0&&(e=i`
-            <ul id="selectList" class="w3-ul w3-border w3-hide w3-large" >
+            <ul id="selectList" class="w3-ul w3-border w3-white w3-hide w3-large" >
                 ${this.videoInputDevices.map((e=>i`<li class="w3-large" id="${e.deviceId}" @click=${this.selected}>${e.label}</li>`))}
             </ul>
             `),e}async enter(){if(console.log("SCANQR Enter",this.clientWidth),this.result=void 0,void 0===this.videoElem){let o={video:{facingMode:"environment"}};try{var e=await navigator.mediaDevices.getUserMedia(o)}catch(t){if(t instanceof NotAllowedError)throw t;if(t instanceof NotFoundError)throw t}let r=e.getVideoTracks()[0].getSettings().deviceId;this.selectedDeviceId=r,this.videoInputDevices=await this.codeReader.listVideoInputDevices(),this.videoInputDevices.length>0&&(this.selectHtml=i`
