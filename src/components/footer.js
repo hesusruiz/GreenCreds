@@ -1,11 +1,12 @@
 import { w3styles } from '../w3styles'
 
 import { LitElement, css, html, render } from 'lit';
+import { goHome } from "../router";
 
 // Add ourselves to the document body
-const tagName = "header-bar"
+const tagName = "footer-scan"
 
-export class HeaderBar extends LitElement {
+export class FooterBar extends LitElement {
 
     static styles = [
         w3styles
@@ -18,7 +19,7 @@ export class HeaderBar extends LitElement {
     render() {
         const sidebarMenu = html`
         <div class="w3-bar w3-xlarge w3-indigo">
-          <a href="/" class="w3-bar-item w3-button w3-hover-indigo">SafeIsland</a>
+          <div class="w3-bar-item" @click=${goHome}>SafeIsland</div>
           <a href="#" class="w3-bar-item w3-button w3-hover-indigo w3-hide-small">Link 1</a>
           <a href="#" class="w3-bar-item w3-button w3-hover-indigo w3-hide-small">Link 2</a>
           <a href="#" class="w3-bar-item w3-button w3-hover-indigo w3-hide-small">Link 3</a>
@@ -34,7 +35,7 @@ export class HeaderBar extends LitElement {
         return sidebarMenu;
     }
 
-    toggleView() {
+    toggleView(e) {
         var x = this.renderRoot.querySelector("#vertMenu");
         x.classList.toggle("w3-show")
     }

@@ -9,7 +9,13 @@ const tagName = "scanqr-page"
 export class ScanQrPage extends LitElement {
 
     static styles = [
-        w3styles
+        w3styles,
+        css`
+        #footer {
+            position: fixed;
+            bottom: 0
+        }
+        `
     ];
 
     static get properties() {
@@ -39,9 +45,9 @@ export class ScanQrPage extends LitElement {
     }
 
     // Do not render to the Shadow DOM
-    createRenderRoot() {
-        return this;
-    }
+    // createRenderRoot() {
+    //     return this;
+    // }
 
     render() {
         // Render just the minimum. The real action takes place in the enter() function
@@ -52,13 +58,18 @@ export class ScanQrPage extends LitElement {
                 <!-- SCAN QR PAGE.                               -->
                 <!--                                             -->
                 <!-- =========================================== -->
+                <header-bar></header-bar>
                             
                 <div id="videoPlaceholder">
                 </div>
                 
-                <div id="sourceSelectPanel">
-                    ${this.selectHtml}
-                </div>               
+
+                <div id="footer" class="w3-bar w3-xlarge">
+                    ${this.getSelectHtml()}
+                    <button class="w3-button w3-indigo w3-xlarge" @click=${this.toggleView}>
+                        Camera
+                    </button>
+                </div>
                 `
         } else {
             return html`
@@ -76,6 +87,25 @@ export class ScanQrPage extends LitElement {
 
     attributeChangedCallback() {
         console.log("AttributeChangedCallback has been called")
+    }
+
+    toggleView(e) {
+        var x = this.renderRoot.querySelector("#selectList");
+        x.classList.toggle("w3-show")
+    }
+    getSelectHtml() {
+        // Generate the selection list (if there are video devices)
+        let theHtml = html``
+        if (this.videoInputDevices.length > 0) {
+            theHtml = html`
+            <ul id="selectList" class="w3-ul w3-border w3-hide w3-large" >
+                ${this.videoInputDevices.map((dev) =>
+                    html`<li class="w3-large" id="${dev.deviceId}" @click=${this.selected}>${dev.label}</li>`
+                )}
+            </ul>
+            `
+        }
+        return theHtml
     }
 
     async enter() {
@@ -161,6 +191,33 @@ export class ScanQrPage extends LitElement {
         this.requestUpdate()
 
     }
+
+    selected(e) {
+        console.log(e.target.id)
+        
+        this.selectedDeviceId = e.target.id;
+        this.toggleView()
+        this.codeReader.reset()
+        this.codeReader.decodeFromVideoDevice(this.selectedDeviceId, this.videoElem, (result, err) => {
+            if (result) {
+                console.log("RESULT", result)
+                this.resultObj = result
+                this.result = result.text
+                // Update visualisation
+                this.requestUpdate();
+
+            }
+            if (err && !(err instanceof NotFoundException)) {
+                console.error(err)
+                this.result = err
+                this.requestUpdate()
+            }
+        })
+        console.log(`Started continous decode from camera with id ${this.selectedDeviceId}`)
+        this.requestUpdate()
+    }
+
+
 
     changed(e) {
         console.log(e.target.options[e.target.selectedIndex].value)

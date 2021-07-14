@@ -2,6 +2,7 @@ import { pages } from "../router";
 import { w3styles } from '../w3styles'
 
 import { LitElement, css, html, render } from 'lit';
+import '../components/header'
 
 
 export class JrmPage extends LitElement {
@@ -21,6 +22,7 @@ export class JrmPage extends LitElement {
 
     pageTemplate(pageBody) {
         return html`
+        <header-bar></header-bar>
         <div id="${this.pageName}" class="jrmpage w3-container">
             ${pageBody}
         </div>

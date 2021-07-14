@@ -10,7 +10,6 @@ import { homePage, goHome, pages } from "./router";
 
 import { LitElement, css, html, render } from 'lit';
 
-import './pages/header'
 import './pages/passenger_home'
 import './pages/demo'
 import './pages/verifier'
@@ -21,7 +20,6 @@ let appElem = document.createElement("div")
 document.body.append(appElem)
 
 render(html`
-<header-bar></header-bar>
 <demo-page></demo-page>
 <passenger-home></passenger-home>
 <scanqr-page></scanqr-page>
