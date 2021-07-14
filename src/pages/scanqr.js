@@ -63,7 +63,6 @@ export class ScanQrPage extends LitElement {
                 <div id="videoPlaceholder">
                 </div>
                 
-
                 <div id="footer" class="w3-bar w3-xlarge">
                     ${this.getSelectHtml()}
                     <button class="w3-btn w3-indigo w3-xlarge w3-hover-indigo" @click=${this.toggleView}>

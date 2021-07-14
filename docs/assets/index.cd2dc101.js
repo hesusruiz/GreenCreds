@@ -327,7 +327,6 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
                 <div id="videoPlaceholder">
                 </div>
                 
-
                 <div id="footer" class="w3-bar w3-xlarge">
                     ${this.getSelectHtml()}
                     <button class="w3-btn w3-indigo w3-xlarge w3-hover-indigo" @click=${this.toggleView}>
