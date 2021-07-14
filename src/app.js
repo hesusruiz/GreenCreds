@@ -1,10 +1,10 @@
 //import {Workbox} from 'https://storage.googleapis.com/workbox-cdn/releases/6.1.5/workbox-window.prod.mjs'
 
 import {
-    myerror,
     settingsPut,
     settingsGet,
 } from "./db";
+import {log} from './log'
 
 import { homePage, goHome, pages } from "./router";
 
@@ -14,6 +14,7 @@ import './pages/header'
 import './pages/passenger_home'
 import './pages/demo'
 import './pages/verifier'
+import './pages/scanqr'
 
 // Pre-create the components inside the body
 let appElem = document.createElement("div")
@@ -23,7 +24,7 @@ render(html`
 <header-bar></header-bar>
 <demo-page></demo-page>
 <passenger-home></passenger-home>
-<verifier-page></verifier-page>
+<scanqr-page></scanqr-page>
 `, appElem)
 
 //document.body.append(document.createElement("demo-page"))
@@ -196,7 +197,7 @@ async function performOneTimeInitialization() {
             await settingsPut("apiHost", MY_SERVER);
         } catch (error) {
             // Log the error
-            myerror("Onetime initialization error");
+            log.myerror("Onetime initialization error");
         }
 
         // Signal that we already performed initialization

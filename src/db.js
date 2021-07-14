@@ -3,10 +3,7 @@
 // **************************************************
 
 import Dexie from 'dexie';
-
-// Logging level (if false, only log Errors)
-const LOG_ALL = true
-
+import { log } from './log'
 
 // We use a library on top of IndexedDB
 // There are two application stores and one logging store:
@@ -20,59 +17,6 @@ db.version(0.5).stores({
     settings: 'key',
     logs: '++id, timestamp'
 });
-
-// Basic persistent rotating log on top of IndexedDB
-const MAX_LOG_ENTRIES = 1000
-
-async function mylog_entry(_level, _desc, _item) {
-
-    // _item should be compatible with Dexie (most objects are)
-    
-    // Create the object to store
-    var logItem = {
-        timestamp: Date.now(),
-        level: _level,
-        desc: _desc,
-        item: _item
-    }
-
-    // Store the object
-    try {
-        await db.logs.add(logItem)
-    } catch (error) {
-        // If error, we can not do anything
-        console.error("Error in log add")
-    }
-
-    // Check if we should prune old records
-    var numEntries = await db.logs.count()
-    if (numEntries <= MAX_LOG_ENTRIES) {
-        return
-    }
-
-    // Perform pruning of the oldest entry
-    var oldestEntry = await db.logs.orderBy("id").first()
-    try {
-        await db.logs.delete(oldestEntry.id)
-    } catch (error) {
-        console.error("Error in log prune")
-    }
-
-}
-
-async function mylog(_desc) {
-    if (LOG_ALL) {
-        var args = Array.prototype.slice.call(arguments, 1);
-        console.log(_desc, args)
-        mylog_entry("N", _desc, args)
-    }
-}
-
-async function myerror(_desc) {
-    var args = Array.prototype.slice.call(arguments, 1);
-    console.error(_desc, args)
-    mylog_entry("E", _desc, args)
-}
 
 
 // The following are simple wrappers to insulate from future changes in the db
@@ -119,7 +63,7 @@ async function settingsDeleteAll() {
 
 
 async function showError(_text) {
-    myerror(_text)
+    log.myerror(_text)
     document.querySelector("#errorDisplayText").innerHTML = `${_text}`
     $('#errorDisplayModal').modal("show")
     return;
@@ -141,8 +85,6 @@ async function credentialsSave(_credential) {
     //     decoded: the credential in plain format as a Javascript object
     // }
 
-    mylog("CredentialSave", _credential)
-
     // Calculate the hash of the encoded credential to avoid duplicates
     var data = new TextEncoder().encode(_credential.encoded);
     var hash = await crypto.subtle.digest('SHA-256', data)
@@ -161,7 +103,7 @@ async function credentialsSave(_credential) {
     // Check if the credential is already in the database
     var oldCred = await credentialsGet(hashHex)
     if (oldCred != undefined) {
-        myerror("Credential already exists", oldCred, hashHex)
+        log.myerror("Credential already exists", oldCred, hashHex)
         showError("Can not save credential: already exists")
 
         // Return an error
@@ -172,7 +114,7 @@ async function credentialsSave(_credential) {
     try {
         await db.credentials.add(credential)
     } catch (error) {
-        myerror("Error saving credential", error)
+        log.myerror("Error saving credential", error)
         return undefined;
     }
 
@@ -190,8 +132,6 @@ async function credentialsDeleteCred(_credential) {
     //     decoded: the credential in plain format as a Javascript object
     // }
 
-    mylog("credentialsDeleteCred", _credential)
-
     // Calculate the hash of the encoded credential, which will be the key
     var data = new TextEncoder().encode(_credential.encoded);
     var hash = await crypto.subtle.digest('SHA-256', data)
@@ -202,7 +142,7 @@ async function credentialsDeleteCred(_credential) {
     try {
         await db.credentials.delete(hashHex)
     } catch (error) {
-        myerror(error);
+        log.myerror(error);
         alert("Error deleting credential")
     }
 }
@@ -270,20 +210,6 @@ async function credentialsGetAllKeys() {
 
 }
 
-
-async function recentLogs() {
-    var rlogs = await db.logs.reverse().limit(200).toArray()
-    return rlogs
-}
-
-// Clears the logs table, preserving the other tables
-async function clearLogs() {
-    await db.logs.clear()
-    alert("Logs cleared")
-    // Reload application in the same page
-    location.reload()
-}
-
 // Erases completely the database including credentials.
 async function resetDatabase() {
     // Delete database, erasing all tables and their contents
@@ -300,16 +226,13 @@ async function resetDatabase() {
 // **************************************************
 
 export {
-    mylog, myerror,
     settingsPut, settingsGet, settingsDelete, settingsDeleteAll, 
     credentialsSave, credentialsDeleteCred, credentialsDelete, credentialsDeleteAll,
     credentialsGet, credentialsGetAllRecent, credentialsGetAllKeys,
-    recentLogs, clearLogs, resetDatabase
+    resetDatabase
 };
 
 export var storage = {
-    mylog: mylog,
-    myerror: myerror,
     settingsPut: settingsPut,
     settingsGet: settingsGet,
     settingsDelete: settingsDelete,
@@ -321,8 +244,6 @@ export var storage = {
     credentialsGet: credentialsGet,
     credentialsGetAllRecent: credentialsGetAllRecent,
     credentialsGetAllKeys: credentialsGetAllKeys,
-    recentLogs: recentLogs,
-    clearLogs: clearLogs,
     resetDatabase: resetDatabase
 };
 

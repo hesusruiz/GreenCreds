@@ -1,6 +1,4 @@
-import {
-    myerror
-} from "./db";
+import { log } from "./log";
 
 import { w3 } from './w3'
 
@@ -36,28 +34,10 @@ if (searchParams.get("home") !== null) {
 } else if (searchParams.get("pubcred") !== null) {
     // ?pubcred
     homePage = "#pubcreds";
+} else {
+    log.mywarn("URL parameter not recognised", paramsString)
 }
 
-
-// The global variable holding the media stream for the video camera
-export var globalStream = undefined;
-
-// This is used to stop the media tracks in a global variable,
-// to ensure that the camera is never activated if the active page does not use it
-export function stopAllMediaTracks() {
-    // Check if the gloval variable has a stream
-    if (globalStream) {
-        // Stop the media stream
-
-        let tracks = globalStream.getTracks();
-        tracks[0].stop();
-        // for (let i = 0; i < tracks.length; i++) {
-        //     tracks[i].stop()
-        // }
-        globalStream = undefined;
-    }
-    return;
-}
 
 // Listen for PopStateEvent (Back or Forward buttons are clicked)
 window.addEventListener("popstate", async function (event) {
@@ -79,30 +59,41 @@ window.addEventListener("popstate", async function (event) {
 
 // Handle page transition
 export async function processPageEntered(pageName, pageData) {
-    // Hide all pages of the application. Later we unhide the one we are entering
-    for (let [name, pageElement] of pages) {
-        pageElement.style.display = "none"
+    
+    try {
+        // Hide all pages of the application. Later we unhide the one we are entering
+        for (let [name, pageElement] of pages) {
+            pageElement.style.display = "none"
+            // Call the exit function of page, if it exists and it is not the target
+            if (name !== pageName && pageElement.exit) {
+                await pageElement.exit()    
+            }
+        }
+        w3.hide("#loaderpage")
+
+        // If the hash is not a registered page, go to the home page
+        if (pages.get(pageName) === undefined) {
+            document.body.innerHTML = "<h1>The page does not exist!</h1>"
+            return;
+            pageName = homePage;
+        }
+
+        // Make sure the page is at the top
+        window.scrollTo(0, 0);
+
+        // Show the page before invoking the page enter event
+        // w3.show(pageName);
+        pages.get(pageName).style.display = "block"
+
+        // Invoke the registered function when page has entered
+        // This will allow the page to create dynamic content
+        await pages.get(pageName).enter(pageData);
+
+    } catch (error) {
+        log.myerror(error);
+        return;
     }
-    w3.hide("#loaderpage")
 
-    // Stop any active stream
-    stopAllMediaTracks();
-
-    // If the hash is not a registered page, go to the home page
-    if (pages.get(pageName) === undefined) {
-        pageName = homePage;
-    }
-
-    // Make sure the page is at the top
-    window.scrollTo(0, 0);
-
-    // Show the page before invoking the page enter event
-    // w3.show(pageName);
-    pages.get(pageName).style.display = "block"
-
-    // Invoke the registered function when page has entered
-    // This will allow the page to create dynamic content
-    await pages.get(pageName).enter(pageData);
 }
 
 export async function goHome() {
@@ -112,7 +103,8 @@ export async function goHome() {
 export async function gotoPage(pageName, pageData) {
     // If the hash is not a registered page, go to the home page
     if (pages.get(pageName) === undefined) {
-        myerror("Target page does not exist: ", pageName);
+        document.body.innerHTML = "<h1>The page does not exist!</h1>"
+        log.myerror("Target page does not exist: ", pageName);
         return;
     }
 

@@ -20,40 +20,40 @@ export class DemoPage extends JrmPage {
             <!-- and the user can choose                     -->
             <!-- =========================================== -->
             
-            <div class="w3-panel w3-card-4">
-                <a onclick="r.gotoPage('#passenger')">
+            <a onclick="r.gotoPage('#passenger')">
+                <div class="w3-panel w3-card-4">
                     <h3>I am a Passenger</h3>
                     <p>Receive or show your test results</p>
-                </a>
-            </div>
+                </div>
+            </a>
             
-            <div class="w3-panel w3-card-4">
-                <a onclick="r.gotoPage('#verifier')">
+            <a onclick="r.gotoPage('#verifier')">
+                <div class="w3-panel w3-card-4">
                     <h3>I am a Verifier</h3>
                     <p>Review the test results of a passenger</p>
-                </a>
-            </div>
+                </div>
+            </a>
             
-            <div class="w3-panel w3-card-4">
-                <a onclick="r.gotoPage('#issuerHome')">
+            <a onclick="r.gotoPage('#issuerHome')">
+                <div class="w3-panel w3-card-4">
                     <h3>I am an Issuer</h3>
                     <p>Check my lab test results</p>
-                </a>
-            </div>
+                </div>
+            </a>
             
-            <div class="w3-panel w3-card-4">
-                <a onclick="r.gotoPage('#pubcreds')">
+            <a onclick="r.gotoPage('#pubcreds')">
+                <div class="w3-panel w3-card-4">
                     <h3>Public Credentials</h3>
                     <p>Query the public credentials</p>
-                </a>
-            </div>
+                </div>
+            </a>
             
-            <div class="w3-panel w3-card-4">
-                <a onclick="r.gotoPage('#admin')">
+            <a onclick="r.gotoPage('#admin')">
+                <div class="w3-panel w3-card-4">
                     <h3 class="card-title">Admin</h3>
                     <p>Only if you know what you are doing</p>
-                </a>
-            </div>
+                </div>
+            </a>
             `
         )
     }

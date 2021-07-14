@@ -18,7 +18,7 @@ export class HeaderBar extends LitElement {
     render() {
         const sidebarMenu = html`
         <div class="w3-bar w3-xlarge w3-indigo">
-          <a href="#" class="w3-bar-item w3-button w3-hover-indigo">SafeIsland</a>
+          <a href="/" class="w3-bar-item w3-button w3-hover-indigo">SafeIsland</a>
           <a href="#" class="w3-bar-item w3-button w3-hover-indigo w3-hide-small">Link 1</a>
           <a href="#" class="w3-bar-item w3-button w3-hover-indigo w3-hide-small">Link 2</a>
           <a href="#" class="w3-bar-item w3-button w3-hover-indigo w3-hide-small">Link 3</a>
@@ -35,7 +35,7 @@ export class HeaderBar extends LitElement {
     }
 
     toggleView() {
-        var x = this.getRootNode().querySelector("#vertMenu");
+        var x = this.renderRoot.querySelector("#vertMenu");
         x.classList.toggle("w3-show")
     }
 
