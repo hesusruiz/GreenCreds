@@ -1,5 +1,8 @@
 import { settingsGet, settingsPut } from "../db";
 
+import jwk_all_keys_url from "../json/all_jwk_keys.json"
+console.log("URL to all keys:", jwk_all_keys_url)
+
 //********************************
 // CRYPTO KEY SUPPORT
 //********************************
@@ -539,15 +542,16 @@ export var trustedList = {
     publicKeys: undefined,
 
     init: async function() {
-        if (this.publicKeys === undefined) {
-            try {
-                let response = await fetch("src/json/all_jwk_keys.json")
-                this.publicKeys = await response.json()
-                await settingsPut("publicKeys", this.publicKeys);
-            } catch (error) {
-                throw "ERROR getting the Trusted List";
-            }    
-        }
+        this.publicKeys = jwk_all_keys_url
+        // if (this.publicKeys === undefined) {
+        //     try {
+        //         let response = await fetch(jwk_all_keys_url)
+        //         this.publicKeys = await response.json()
+        //         await settingsPut("publicKeys", this.publicKeys);
+        //     } catch (error) {
+        //         throw "ERROR getting the Trusted List";
+        //     }    
+        // }
     },
 
     get: async function (kid) {
@@ -1521,7 +1525,7 @@ export class HCERT {
     }
 
     static renderDetail(cred) {
-        
+
         // The credential
         let payload = cred[1];
 
