@@ -67,7 +67,7 @@ if (window.location.search.length > 0) {
         homePage = "passenger";
     } else if (searchParams.get("verifier") !== null) {
         // ?verifier
-        homePage = "verifierScanQR";
+        homePage = "verifier";
     } else if (searchParams.get("demo") !== null) {
         // ?demo
         homePage = "demo";
