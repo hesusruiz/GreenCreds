@@ -1521,6 +1521,7 @@ export class HCERT {
     }
 
     static renderDetail(cred) {
+        
         // The credential
         let payload = cred[1];
 
