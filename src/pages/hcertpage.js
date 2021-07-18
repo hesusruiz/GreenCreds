@@ -90,7 +90,7 @@ export class DisplayHcert extends LitElement {
                 
             <section class="section">
                 <div class="subsection">
-                    <img class="" width="60px" src="src/assets/eulogo.png" alt="EUlogo">
+                    <img class="" width="60px" src="src/img/eulogo.png" alt="EUlogo">
                     <h4 style="display: inline-block"><b>EU COVID CERTIFICATE</b></h4>
                 </div>
                 <div class="subsection">

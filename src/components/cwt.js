@@ -541,7 +541,7 @@ export var trustedList = {
     init: async function() {
         if (this.publicKeys === undefined) {
             try {
-                let response = await fetch("src/assets/all_jwk_keys.json")
+                let response = await fetch("src/json/all_jwk_keys.json")
                 this.publicKeys = await response.json()
                 await settingsPut("publicKeys", this.publicKeys);
             } catch (error) {
@@ -573,7 +573,7 @@ export var vs = {
 
     init: async function (force = false) {
         try {
-            let response = await fetch("src/assets/value-sets.json")
+            let response = await fetch("src/json/value-sets.json")
             this.valueSets = await response.json()
             await settingsPut("valueSets", this.valueSets);
         } catch (error) {
