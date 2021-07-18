@@ -42,26 +42,25 @@ export class PassengerHome extends JrmPage {
 
     constructor() {
         console.log("Inside constructor of DEMO PAGE")
-        super("passenger");
+        super();
     }
 
     render() {
         // Use the parent class to build the full page
-        return this.pageTemplate(
-            html`
-            <!-- =========================================== -->
-            <!-- PASSENGER HOME                              -->
-            <!-- =========================================== -->
-            
+        return html`
+        <!-- =========================================== -->
+        <!-- PASSENGER HOME                              -->
+        <!-- =========================================== -->
+        <div class="w3-container">
             <h2>You do not have any credentials yet</h2>
             <p>Click the button below to add credentials</p>
-
-            <div class="plus radius w3-card-4 fab"></div>
-            `
-        )
+        </div>
+        <div class="plus radius w3-card-4 fab"></div>
+        `
     }
     enter() {
         console.log("Enter page DEMO")
+        this.style.display = "block"
         this.requestUpdate();
     }
 

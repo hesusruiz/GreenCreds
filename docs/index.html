@@ -7,8 +7,6 @@
     <meta name="description" content="Verifiable Credentials for a Safe Island" />
     <title>Safe Island</title>
 
-    <!-- <script type="module" src="./components/navbar.js"></script> -->
-
     <!-- W3 CSS -->
     
 
@@ -21,11 +19,11 @@
     <meta name="apple-mobile-web-app-title" content="SafeIsland" />
     <link rel="apple-touch-icon" href="img/icon-152.png" />
 
-    
+    <script src="/src/components/pako.js"></script>
     
 
-<script type="module" crossorigin src="/GreenCreds/assets/index.8daf27af.js"></script>
-  <link rel="modulepreload" href="/GreenCreds/assets/vendor.197906d5.js">
+<script type="module" crossorigin src="/GreenCreds/assets/index.fb5a7c66.js"></script>
+  <link rel="modulepreload" href="/GreenCreds/assets/vendor.6f639057.js">
   <link rel="stylesheet" href="/GreenCreds/assets/index.058b4a5c.css">
 </head>
 
@@ -49,27 +47,17 @@
 
             /* Safari */
             @-webkit-keyframes spin {
-                0% {
-                    -webkit-transform: rotate(0deg);
-                }
-
-                100% {
-                    -webkit-transform: rotate(360deg);
-                }
+                0% {-webkit-transform: rotate(0deg);}
+                100% {-webkit-transform: rotate(360deg);}
             }
 
             @keyframes spin {
-                0% {
-                    transform: rotate(0deg);
-                }
-
-                100% {
-                    transform: rotate(360deg);
-                }
+                0% {transform: rotate(0deg);}
+                100% {transform: rotate(360deg);}
             }
         </style>
 
-        <h2>Loading new version</h2>
+        <h2>Loading application</h2>
         <p>Please wait...</p>
         <div id="loader"></div>
     </div>

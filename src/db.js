@@ -61,21 +61,6 @@ async function settingsDeleteAll() {
 
 }
 
-
-async function showError(_text) {
-    log.myerror(_text)
-    document.querySelector("#errorDisplayText").innerHTML = `${_text}`
-    $('#errorDisplayModal').modal("show")
-    return;
-}
-
-
-async function dismissError() {
-    $('#errorDisplayModal').modal("hide")
-
-    gotoPage(homePage)
-}
-
 async function credentialsSave(_credential) {
 
     // The _credential object has the following structure:
@@ -103,11 +88,9 @@ async function credentialsSave(_credential) {
     // Check if the credential is already in the database
     var oldCred = await credentialsGet(hashHex)
     if (oldCred != undefined) {
-        log.myerror("Credential already exists", oldCred, hashHex)
-        showError("Can not save credential: already exists")
+        log.mywarn("Credential already exists", oldCred, hashHex)
 
-        // Return an error
-        return undefined;
+        return credential;
     }
 
     // Store the object, catching the exception if duplicated
@@ -115,7 +98,7 @@ async function credentialsSave(_credential) {
         await db.credentials.add(credential)
     } catch (error) {
         log.myerror("Error saving credential", error)
-        return undefined;
+        throw error
     }
 
     return credential;

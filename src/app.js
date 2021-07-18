@@ -6,31 +6,85 @@ import {
 } from "./db";
 import {log} from './log'
 
-import { homePage, goHome, pages } from "./router";
+import { setHomePage, goHome, route } from "./router-elem";
 
-import { LitElement, css, html, render } from 'lit';
+import { trustedList, vs } from "./components/cwt";
 
 import './pages/passenger_home'
 import './pages/demo'
-import './pages/verifier'
 import './pages/scanqr'
+import './pages/hcertpage'
+import './pages/page404'
 
-// Pre-create the components inside the body
-let appElem = document.createElement("div")
-document.body.append(appElem)
+var pageDefs = [
+    {
+        name: "demo",
+        tagName: "demo-page"
+    },
+    {
+        name: "passenger",
+        tagName: "passenger-home"
+    },
+    {
+        name: "verifier",
+        tagName: "scanqr-page"
+    },
+    {
+        name: "scanresult",
+        tagName: "scanqr-result"
+    },
+    {
+        name: "displayhcert",
+        tagName: "display-hcert"
+    },
+    {
+        name: "page404",
+        tagName: "page-404"
+    },
+]
 
-render(html`
-<demo-page></demo-page>
-<passenger-home></passenger-home>
-<scanqr-page></scanqr-page>
-`, appElem)
+let routerElem = document.createElement("router-elem")
+document.body.replaceChildren(routerElem)
 
-//document.body.append(document.createElement("demo-page"))
-//document.body.append(document.createElement("verifier-page"))
+for (let i = 0; i < pageDefs.length; i++) {
+    let elem = document.createElement(pageDefs[i].tagName)
+    elem.style.display = "none"
+    document.body.append(elem)
+    route(pageDefs[i].name, elem)
+}
 
-// Import Value Sets for HCERT
-// TODO: import in the right place
-import valSets from './assets/value-sets.json'
+// Get the pathname used to invoke the app, eg.: /admin.html
+var mypathname = window.location.pathname;
+var homePage = "displayhcert"
+
+if (window.location.search.length > 0) {
+    // Get the search parameters, eg.: ?page=admin
+    let searchParams = new URLSearchParams(window.location.search);
+
+    // Check for query string specifying the initial page
+    if (searchParams.get("home") !== null) {
+        // ?verifier
+        homePage = "passenger";
+    } else if (searchParams.get("verifier") !== null) {
+        // ?verifier
+        homePage = "verifierScanQR";
+    } else if (searchParams.get("demo") !== null) {
+        // ?demo
+        homePage = "demo";
+    } else if (searchParams.get("admin") !== null) {
+        // ?admin
+        homePage = "admin";
+    } else if (searchParams.get("pubcred") !== null) {
+        // ?pubcred
+        homePage = "pubcreds";
+    } else {
+        log.mywarn("URL parameter not recognised", window.location.search)
+    }
+}
+
+console.log("Home_page:", homePage)
+
+setHomePage(homePage)
 
 
 const PRODUCTION = false;
@@ -58,7 +112,6 @@ const ST_VERIFIER_SCAN = "fromVerifierScan";
 const ST_NORMAL = "normal";
 
 const INSTALL_SERVICE_WORKER = false
-
 
 // This function is called on first load and when a refresh is triggered in any page
 // When called the DOM is fully loaded and safe to manipulate
@@ -118,7 +171,7 @@ window.addEventListener('load', async (event) => {
         // Request the credential
         await requestQRAndDisplay(
             targetURLRead,
-            "#displayCredentialPage",
+            "displayCredentialPage",
             ST_PASSENGER_SCAN
         );
 
@@ -135,7 +188,7 @@ window.addEventListener('load', async (event) => {
         // Request the credential
         await requestQRAndDisplay(
             targetURLRead,
-            "#displayCredentialPage",
+            "displayCredentialPage",
             ST_PASSENGER_SCAN
         );
 
@@ -180,10 +233,10 @@ async function performOneTimeInitialization() {
     console.log("Performing OneTime Initialization");
 
     // Get the current list of public keys
-//    await trustedList.init()
+    await trustedList.init()
+    // Import Value Sets for HCERT
+    await vs.init()
 
-    // Set the valueSet variable
-//    await vs.init()
 
     // Check if this is the first time that the user downloads the app
     // There is a persistent flag in the local storage

@@ -1,7 +1,7 @@
 import { w3styles } from '../w3styles'
 
 import { LitElement, css, html, render } from 'lit';
-import { goHome } from "../router";
+import { goHome } from "../router-elem";
 
 // Add ourselves to the document body
 const tagName = "header-bar"
