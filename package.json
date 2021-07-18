@@ -20,7 +20,8 @@
     "jsqr": "^1.4.0",
     "lit": "^2.0.0-rc.2",
     "lit-element": "^2.4.0",
-    "lit-html": "^1.4.1"
+    "lit-html": "^1.4.1",
+    "pako": "^2.0.3"
   },
   "devDependencies": {
     "vite": "^2.4.0"

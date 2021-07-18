@@ -1,4 +1,5 @@
 import { settingsGet, settingsPut } from "../db";
+import { inflate } from "pako";
 
 import jwk_all_keys from "../json/all_jwk_keys.json"
 import value_sets from "../json/value-sets.json"
@@ -1412,7 +1413,7 @@ export class CWT {
         cvdCompressed = new Uint8Array(cvdCompressed);
 
         // cvdCompressed is the ZLIB-compressed CVD in CWT(COSE/CBOR) format
-        let coseCVD = pako.inflate(cvdCompressed);
+        let coseCVD = inflate(cvdCompressed);
 
         // coseCVD is the CWT-encoded CVD
         let [headers, payload, signature, verified] = await CWT.decodeCWT(
