@@ -43,8 +43,9 @@ var pageDefs = [
     },
 ]
 
+document.body.innerHTML = ""
 let routerElem = document.createElement("router-elem")
-document.body.replaceChildren(routerElem)
+document.body.append(routerElem)
 
 for (let i = 0; i < pageDefs.length; i++) {
     let elem = document.createElement(pageDefs[i].tagName)
