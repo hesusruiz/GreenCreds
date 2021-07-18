@@ -1,7 +1,7 @@
 import { settingsGet, settingsPut } from "../db";
 
-import jwk_all_keys_url from "../json/all_jwk_keys.json"
-console.log("URL to all keys:", jwk_all_keys_url)
+import jwk_all_keys from "../json/all_jwk_keys.json"
+import value_sets from "../json/value-sets.json"
 
 //********************************
 // CRYPTO KEY SUPPORT
@@ -542,7 +542,7 @@ export var trustedList = {
     publicKeys: undefined,
 
     init: async function() {
-        this.publicKeys = jwk_all_keys_url
+        this.publicKeys = jwk_all_keys
         // if (this.publicKeys === undefined) {
         //     try {
         //         let response = await fetch(jwk_all_keys_url)
@@ -576,14 +576,15 @@ export var vs = {
     valueSets: undefined,
 
     init: async function (force = false) {
-        try {
-            let response = await fetch("src/json/value-sets.json")
-            this.valueSets = await response.json()
-            await settingsPut("valueSets", this.valueSets);
-        } catch (error) {
-            console.log("ERROR getting the value sets", error);
-            throw "ERROR getting the value sets";
-        }
+        this.valueSets = value_sets
+        // try {
+        //     let response = await fetch("src/json/value-sets.json")
+        //     this.valueSets = await response.json()
+        //     await settingsPut("valueSets", this.valueSets);
+        // } catch (error) {
+        //     console.log("ERROR getting the value sets", error);
+        //     throw "ERROR getting the value sets";
+        // }
     },
 
     get: function (key, valueSetName) {
