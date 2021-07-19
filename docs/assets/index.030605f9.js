@@ -561,10 +561,10 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
             <!-- =========================================== -->
             ${this.thehtml}
             `}async enter(e){console.log("PRESENT Enter",e),this.qrContent="HC1:NCFOXN%TSMAHN-HPO45JVLFDISVM85:D4*OV-36QHN-TM5*KQM3*GML0FXIKMWDWYPWHH:ZH6I1$4JN:IN1MPK9V L9L69UEG%6M415BEC4633F-96SW6SJE3ZMXDMUF6NZ6E6AH+932Q6G39ZILAPZXI$MI1VCSWC%PDMOL7AD.XIIXB0 J5QB06JOMI/LKW1JVTIM7JZIJI7JIZI.EJJ14B2MZ8DC8CWVD 8D*NI+PB/VSQOL9DLKWCZ3E7KDW0KZ J$XI4OIMEDTJCJKDLEDL9CZTAKBI/8D:8DKTDL+SQ05.$S6ZCJKBPKJDG3LWTXD3/9TL4T.B9GYP8T1+1V$LA*ZEBH1T+UZ%HQK9CZPME1.*UWKU/.1ZY9 UPG706ZRB KYZQBK9-RUUBCFRMLNKNM8JI0JPGO7HWPAG2B5VL3K9OTJ0UL4ZVBWSA81TXH4YVZ38+APZGJKDJB1PGB49WE*7CY2P3LM DOLQ9KKAX15BP3:GNSFKPOQU-0DCOTCPHXOP40SF355",this.style.display="block";try{this.hcert=await P.decodeHC1QR(this.qrContent,!0),this.verified=this.hcert[3]}catch(i){return void v.myerror("Error verifying credential",i)}try{this.thehtml=this.renderDetail(this.hcert)}catch(i){return void v.myerror("Error rendering credential",i)}this.requestUpdate()}async exit(){}toggleView(e){this.renderRoot.querySelector(e).classList.toggle("w3-show")}renderDetail(e){let i=e[1],t="Unrecognized";return"v"==i.certType&&(t=a`
-                
+
             <section class="section">
                 <div class="subsection">
-                    <img class="" width="60px" src=${"/GreenCreds/assets/eulogo.2b1f33e0.png"} alt="EUlogo">
+                    <img class="" width="60px" src=${"/GreenCreds/assets/eulogo.7d96a335.png"} alt="EUlogo">
                     <h4 style="display: inline-block"><b>EU COVID CERTIFICATE</b></h4>
                 </div>
                 <div class="subsection">

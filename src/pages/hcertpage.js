@@ -88,7 +88,7 @@ export class DisplayHcert extends LitElement {
     
         if (payload["certType"] == "v") {
             thehtml = html`
-                
+
             <section class="section">
                 <div class="subsection">
                     <img class="" width="60px" src=${eulogoUrl} alt="EUlogo">
