@@ -2,6 +2,7 @@ import { w3styles } from '../w3styles'
 import { LitElement, css, html, render as renderlit } from 'lit';
 import { log } from '../log'
 import { CWT } from "../components/cwt"
+import eulogoUrl from "../img/eulogo.png"
 
 
 let tagName = "display-hcert"
@@ -90,7 +91,7 @@ export class DisplayHcert extends LitElement {
                 
             <section class="section">
                 <div class="subsection">
-                    <img class="" width="60px" src="src/img/eulogo.png" alt="EUlogo">
+                    <img class="" width="60px" src=${eulogoUrl} alt="EUlogo">
                     <h4 style="display: inline-block"><b>EU COVID CERTIFICATE</b></h4>
                 </div>
                 <div class="subsection">
