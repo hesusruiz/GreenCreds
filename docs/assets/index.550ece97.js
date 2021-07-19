@@ -564,7 +564,7 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 
             <section class="section">
                 <div class="subsection">
-                    <img class="" width="60px" src=${"/GreenCreds/assets/eulogo.7d96a335.png"} alt="EUlogo">
+                    <img class="" width="60px" src=${"/GreenCreds/assets/eulogo.6a2509ed.png"} alt="EUlogo">
                     <h4 style="display: inline-block"><b>EU COVID CERTIFICATE</b></h4>
                 </div>
                 <div class="subsection">
