@@ -129,7 +129,7 @@ export class DisplayHcert extends LitElement {
                 
                 <button @click=${()=>this.toggleView("#expandableSection")} class="w3-btn w3-block w3-black w3-left-align">Details</button>
             
-                <section id="expandableSection" class="section w3-hide">
+                <section id="expandableSection" class="w3-hide">
 
                     <section class="section">
                         <div class="subsection">

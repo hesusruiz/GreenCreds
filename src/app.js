@@ -233,12 +233,6 @@ async function performAppUpgrade() {
 async function performOneTimeInitialization() {
     console.log("Performing OneTime Initialization");
 
-    // Get the current list of public keys
-    await trustedList.init()
-    // Import Value Sets for HCERT
-    await vs.init()
-
-
     // Check if this is the first time that the user downloads the app
     // There is a persistent flag in the local storage
     var alreadyInitialized = await settingsGet("initialized");

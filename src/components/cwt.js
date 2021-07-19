@@ -1,8 +1,43 @@
 import { settingsGet, settingsPut } from "../db";
 import { inflate } from "pako";
+import { log } from "../log";
 
-import jwk_all_keys from "../json/all_jwk_keys.json"
-import value_sets from "../json/value-sets.json"
+import trustedPublicKeys from "../json/all_jwk_keys.json"
+import prePublicKeys from "../json/pre_jwk_keys.json"
+import valueSets from "../json/value-sets.json"
+
+export var trustedList = {
+    get: async function (kid) {
+
+        if (!kid) { log.myerror("kid is undefined"); return undefined; }
+
+        let entry = trustedPublicKeys[kid]
+        if (entry === undefined) { log.myerror(`kid ${kid} not found`); return undefined; }
+
+        let jwk = entry["jwk"]
+        if (jwk === undefined) { log.myerror(`JWK for kid ${kid} not found`); return undefined; }
+
+        return jwk;
+    },
+}
+
+export var vs = {
+    get: function (key, valueSetName) {
+        if (!key) { return "N/A" }
+
+        let valueSet = valueSets[valueSetName];
+        if (!valueSet) { return key; }
+
+        let values = valueSet["valueSetValues"];
+        if (!values) { return key; }
+
+        let value = values[key];
+        if (!value) { return key; }
+
+        return value["display"];
+    },
+};
+
 
 //********************************
 // CRYPTO KEY SUPPORT
@@ -538,78 +573,6 @@ const MT_FLOAT = 7;
 
 const CWT_ALG = 1;
 const CWT_KID = 4;
-
-export var trustedList = {
-    publicKeys: undefined,
-
-    init: async function() {
-        this.publicKeys = jwk_all_keys
-        // if (this.publicKeys === undefined) {
-        //     try {
-        //         let response = await fetch(jwk_all_keys_url)
-        //         this.publicKeys = await response.json()
-        //         await settingsPut("publicKeys", this.publicKeys);
-        //     } catch (error) {
-        //         throw "ERROR getting the Trusted List";
-        //     }    
-        // }
-    },
-
-    get: async function (kid) {
-
-        await this.init()
-
-        if (!kid) { throw "kid is undefined" }
-
-        let entry = this.publicKeys[kid]
-        if (entry === undefined) { throw `Entry not found for kid: ${kid}` }
-
-        let jwk = entry["jwk"]
-        if (jwk === undefined) { throw `Entry for kid: ${kid} des not have jwk` }
-
-        return jwk;
-    },
-
-
-}
-
-export var vs = {
-    valueSets: undefined,
-
-    init: async function (force = false) {
-        this.valueSets = value_sets
-        // try {
-        //     let response = await fetch("src/json/value-sets.json")
-        //     this.valueSets = await response.json()
-        //     await settingsPut("valueSets", this.valueSets);
-        // } catch (error) {
-        //     console.log("ERROR getting the value sets", error);
-        //     throw "ERROR getting the value sets";
-        // }
-    },
-
-    get: function (key, valueSetName) {
-
-        if (!key) { return "N/A" }
-
-        let valueSet = this.valueSets[valueSetName];
-        if (!valueSet) {
-            return key;
-        }
-
-        let values = valueSet["valueSetValues"];
-        if (!values) {
-            return key;
-        }
-
-        let value = values[key];
-        if (!value) {
-            return key;
-        }
-
-        return value["display"];
-    },
-};
 
 // For converting from string to byte array (Uint8Array) in UTF-8 and viceversa
 const utf8Encoder = new TextEncoder();
@@ -1380,14 +1343,26 @@ export class CWT {
             // Get the kid from the header (can be in protected and in unprotected)
             let kid = headers["kid"];
 
-            // Search in the list of keys
+            // Search in the list of keys for PRO
             let keyJWK = await trustedList.get(kid)
 
-            // Create the native public key
-            let verificationKey = await DGCKey.fromJWK(keyJWK);
+            if (keyJWK) {
 
-            // Verify the CWT with the verification key
-            verified = await CWT.verifyCWT(data, verificationKey);
+                // Create the native public key
+                let verificationKey = await DGCKey.fromJWK(keyJWK);
+
+                // Verify the CWT with the verification key
+                verified = await CWT.verifyCWT(data, verificationKey);
+
+            } else {
+
+                log.myerror(`Key ${kid} is NOT in PRODUCTION LIST`)
+                if (PREKeys.includes(kid)) {
+                    verified = "PRE"
+                    log.mywarn(`KEY ${kid} found in PRE LIST`)
+                }
+            }
+
         }
 
         // Decode the payload
