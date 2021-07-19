@@ -16,7 +16,8 @@ export class DisplayHcert extends LitElement {
         css`
         .container{padding:0.01em 16px}
         .section{padding:0.01em 16px;margin-top:0px;margin-bottom:16px;border:1px solid #ccc}
-        .valor{font-weight:600}
+        .etiqueta{font-size:15px}
+        .valor{font-size:15px;font-weight:600}
         `
     ];
 

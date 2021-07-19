@@ -146,7 +146,7 @@ export class ScanQrPage extends LitElement {
             if (result) {
                 console.log("RESULT", result)
                 this.codeReader.reset()
-                gotoPage("scanresult", result)
+                gotoPage("displayhcert", result)
 
             }
             if (err && !(err instanceof NotFoundException)) {
