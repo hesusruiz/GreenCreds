@@ -1356,7 +1356,6 @@ export class CWT {
 
             } else {
 
-                log.myerror(`Key ${kid} is NOT in PRODUCTION LIST`)
                 if (prePublicKeys.includes(kid)) {
                     verified = "PRE"
                     log.mywarn(`KEY ${kid} found in PRE LIST`)
