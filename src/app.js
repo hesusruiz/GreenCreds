@@ -56,7 +56,7 @@ for (let i = 0; i < pageDefs.length; i++) {
 
 // Get the pathname used to invoke the app, eg.: /admin.html
 var mypathname = window.location.pathname;
-var homePage = "displayhcert"
+var homePage = "verifier"
 
 if (window.location.search.length > 0) {
     // Get the search parameters, eg.: ?page=admin
