@@ -1,5 +1,7 @@
 //import {Workbox} from 'https://storage.googleapis.com/workbox-cdn/releases/6.1.5/workbox-window.prod.mjs'
 
+import './css/w3full.css'
+
 import {
     settingsPut,
     settingsGet,
@@ -18,6 +20,10 @@ import './pages/page404'
 
 var pageDefs = [
     {
+        name: "displayhcert",
+        tagName: "div",
+    },
+    {
         name: "demo",
         tagName: "demo-page"
     },
@@ -32,10 +38,6 @@ var pageDefs = [
     {
         name: "scanresult",
         tagName: "scanqr-result"
-    },
-    {
-        name: "displayhcert",
-        tagName: "display-hcert"
     },
     {
         name: "page404",

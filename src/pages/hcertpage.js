@@ -1,35 +1,15 @@
-import { w3styles } from '../w3styles'
-import { LitElement, css, html, render as renderlit } from 'lit';
+import { html, render as renderlit } from 'lit';
 import { log } from '../log'
 import { CWT } from "../components/cwt"
 import eulogoUrl from "../img/eulogo.png"
 
 
-let tagName = "display-hcert"
-
 var testQR = "HC1:NCFOXN%TSMAHN-HPO45JVLFDISVM85:D4*OV-36QHN-TM5*KQM3*GML0FXIKMWDWYPWHH:ZH6I1$4JN:IN1MPK9V L9L69UEG%6M415BEC4633F-96SW6SJE3ZMXDMUF6NZ6E6AH+932Q6G39ZILAPZXI$MI1VCSWC%PDMOL7AD.XIIXB0 J5QB06JOMI/LKW1JVTIM7JZIJI7JIZI.EJJ14B2MZ8DC8CWVD 8D*NI+PB/VSQOL9DLKWCZ3E7KDW0KZ J$XI4OIMEDTJCJKDLEDL9CZTAKBI/8D:8DKTDL+SQ05.$S6ZCJKBPKJDG3LWTXD3/9TL4T.B9GYP8T1+1V$LA*ZEBH1T+UZ%HQK9CZPME1.*UWKU/.1ZY9 UPG706ZRB KYZQBK9-RUUBCFRMLNKNM8JI0JPGO7HWPAG2B5VL3K9OTJ0UL4ZVBWSA81TXH4YVZ38+APZGJKDJB1PGB49WE*7CY2P3LM DOLQ9KKAX15BP3:GNSFKPOQU-0DCOTCPHXOP40SF355"
 
-export class DisplayHcert extends LitElement {
-
-    static styles = [
-        w3styles,
-        css`
-        .container{padding:0.01em 16px}
-        .section{padding:0.01em 16px;margin-top:0px;margin-bottom:16px;border:1px solid #ccc}
-        .etiqueta{font-size:15px}
-        .valor{font-size:15px;font-weight:600}
-        `
-    ];
-
-    static get properties() {
-        return {
-            pepe: { attribute: true }
-        };
-    }
+export class DisplayHcert {
 
     constructor() {
         console.log("Inside constructor of SCANRESULT")
-        super();
 
         this.thehtml = ""
         this.qrContent = ""
@@ -47,10 +27,11 @@ export class DisplayHcert extends LitElement {
             `
     }
 
-    async enter(pageData) {
+    async enter(pageData, pageElement) {
         console.log("PRESENT Enter", pageData)
-        this.qrContent = pageData.text
-        this.style.display = "block"
+        // this.qrContent = pageData.text
+        this.qrContent = testQR
+        pageElement.style.display = "block"
 
         // Decode credential verifying it at the same time
         try {
@@ -69,7 +50,8 @@ export class DisplayHcert extends LitElement {
             return;
         }
 
-        this.requestUpdate()
+        // this.requestUpdate()
+        renderlit(this.thehtml, pageElement)
 
     }
 
@@ -77,7 +59,7 @@ export class DisplayHcert extends LitElement {
     }
 
     toggleView(elemSelector) {
-        var x = this.renderRoot.querySelector(elemSelector);
+        var x = document.querySelector(elemSelector);
         x.classList.toggle("w3-show")
     }
 
@@ -128,7 +110,7 @@ export class DisplayHcert extends LitElement {
                     </div>
                 </div>
                 
-                <button @click=${()=>this.toggleView("#expandableSection")} class="w3-btn w3-block w3-black w3-left-align">Details</button>
+                <button @click=${()=> this.toggleView('#expandableSection')} class="w3-btn w3-block w3-black w3-left-align">Details</button>
             
                 <section id="expandableSection" class="w3-hide">
 
@@ -328,6 +310,5 @@ export class DisplayHcert extends LitElement {
     }
 
 }
-customElements.define(tagName, DisplayHcert);
 
 

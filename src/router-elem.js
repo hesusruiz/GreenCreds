@@ -3,6 +3,7 @@ import { w3styles } from './w3styles'
 
 import { LitElement, css, html, render } from 'lit';
 import './components/header'
+import {DisplayHcert} from './pages/hcertpage'
 
 
 // This is the array of pages in the application
@@ -38,9 +39,11 @@ window.addEventListener("popstate", async function (event) {
     await processPageEntered(pageName, pageData);
 });
 
+var dhcert = new DisplayHcert()
+
 // Handle page transition
 export async function processPageEntered(pageName, pageData) {
-    
+    console.log(pages)
     try {
         // Hide all pages of the application. Later we unhide the one we are entering
         // We also tell all other pages to exit, so they can perform any cleanup
@@ -51,7 +54,11 @@ export async function processPageEntered(pageName, pageData) {
                 await pageElement.exit(pageElement)
             }
         }
-
+    } catch (error) {
+        log.myerror("Trying to call exit", error);
+        return;
+    }
+    
         let targetPage = pages.get(pageName)
         // If the target page is not a registered page, go to the page404 page
         if (targetPage === undefined) {
@@ -61,17 +68,22 @@ export async function processPageEntered(pageName, pageData) {
         // Reset scroll position to make sure the page is at the top
         window.scrollTo(0, 0);
 
+    try {
         // Invoke the registered function when page has entered
         // This will allow the page to create dynamic content
         if (targetPage.enter) {
-            await targetPage.enter(pageData);
+            await targetPage.enter(pageData, targetPage);
         } else {
-            // Make sure the target page is visible even if no enter() defined
-            targetPage.style.display = "block"
+            if (pageName === "displayhcert") {
+                await dhcert.enter(pageData, targetPage);
+            } else {
+                // Make sure the target page is visible even if no enter() defined
+                targetPage.style.display = "block"
+            }
         }
 
     } catch (error) {
-        log.myerror(error);
+        log.myerror("Calling enter()", error);
         return;
     }
 
