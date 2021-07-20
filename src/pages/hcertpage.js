@@ -81,9 +81,9 @@ export class DisplayHcert {
                 </div>
                 <div class="subsection">
                     <h4 class="w3-center"><b>Vaccination</b></h4>
-                    <p>Prueba</p>
-                    <p>Prueba</p>
-                    <div>Prueba</div>
+                    <h1>Roboto</h1>
+                    <h2>Prueba</h2>
+                    <h3>Prueba</h3>
                     <p>Prueba</p>
                     <p>Prueba</p>
                 </div>
