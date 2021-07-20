@@ -70,25 +70,44 @@ export class DisplayHcert {
         let payload = cred[1];
     
         let thehtml = "Unrecognized";
-    
+
+        let msg = html`
+            <div id="hcertFailed" class="w3-panel w3-red">
+                <h3>Failed!</h3>
+                <p>Signature validation failed. The certificate is not valid.</p>
+            </div>
+            `
+        if (this.verified === "PRE") {
+            msg = html`
+            <div id="hcertWarning" class="w3-panel w3-yellow">
+                <h3>Warning!</h3>
+                <p>The certificate is correctly signed with a PRE key so it is not valid for travel.</p>
+            </div>
+            `
+        } else if (this.verified === true) {
+            msg = html`
+            <div id="hcertValidated" class="w3-panel w3-green w3-border">
+                <h3>Validated!</h3>
+                <p>The certificate is valid.</p>
+            </div>
+            `
+        }
+
         if (payload["certType"] == "v") {
             thehtml = html`
 
             <section class="section">
                 <div class="subsection">
                     <img width="60px" src=${eulogo} alt="EUlogo">
-                    <h3 style="display: inline-block"><b>EU COVID CERTIFICATE</b></h3>
+                    <h3 style="display: inline-block">EU COVID CERTIFICATE</h3>
                 </div>
                 <div class="subsection">
                     <h4 class="w3-center"><b>Vaccination</b></h4>
-                    <h1>Roboto</h1>
-                    <h2>Prueba</h2>
-                    <h3>Prueba</h3>
-                    <p>Prueba</p>
-                    <p>Prueba</p>
                 </div>
             </section>
-            
+
+            ${msg}
+
             <div class="container">
                 <section class="section">
                     <div class="subsection">
