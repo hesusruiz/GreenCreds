@@ -1,7 +1,5 @@
 //import {Workbox} from 'https://storage.googleapis.com/workbox-cdn/releases/6.1.5/workbox-window.prod.mjs'
 
-import './css/w3full.css'
-
 import {
     settingsPut,
     settingsGet,

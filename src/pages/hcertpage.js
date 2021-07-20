@@ -74,7 +74,7 @@ export class DisplayHcert {
 
             <section class="section">
                 <div class="subsection">
-                    <img class="" width="60px" src=${eulogoUrl} alt="EUlogo">
+                    <img width="60px" src=${eulogoUrl} alt="EUlogo">
                     <h4 style="display: inline-block"><b>EU COVID CERTIFICATE</b></h4>
                 </div>
                 <div class="subsection">
