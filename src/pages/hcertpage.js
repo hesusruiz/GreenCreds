@@ -31,8 +31,8 @@ export class DisplayHcert {
 
     async enter(pageData, pageElement) {
         console.log("PRESENT Enter", pageData)
-        // this.qrContent = pageData.text
-        this.qrContent = testQR
+        this.qrContent = pageData.text
+        // this.qrContent = testQR
         pageElement.style.display = "block"
 
         // Decode credential verifying it at the same time
