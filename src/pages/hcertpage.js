@@ -68,7 +68,7 @@ export class DisplayHcert {
     renderDetail(cred) {
         // The credential
         let payload = cred[1];
-    
+
         let thehtml = "Unrecognized";
 
         let msg = html`
