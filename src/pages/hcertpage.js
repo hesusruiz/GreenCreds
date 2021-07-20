@@ -94,7 +94,7 @@ export class DisplayHcert {
                     </div>
                 </section>
                 
-                <div class="section">
+                <section class="section">
                     <div class="subsection">
                         <div class="etiqueta">Dose number/Total doses</div>
                         <div class="valor">${payload.doseNumber}/${payload.doseTotal}</div>
@@ -108,11 +108,11 @@ export class DisplayHcert {
                         <div class="etiqueta">Member State of vaccination</div>
                         <div class="valor">${payload.country}</div>
                     </div>
-                </div>
+                </section>
                 
-                <button @click=${()=> this.toggleView('#expandableSection')} class="w3-btn w3-block w3-black w3-left-align">Details</button>
+                <!-- <button @click=${()=> this.toggleView('#expandableSection')} class="w3-btn w3-block w3-black w3-left-align">Details</button> -->
             
-                <section id="expandableSection" class="w3-hide">
+                <!-- <div id="expandableSection" class="w3-hide"> -->
 
                     <section class="section">
                         <div class="subsection">
@@ -121,7 +121,7 @@ export class DisplayHcert {
                         </div>
                     </section>
 
-                    <div class="section">
+                    <section class="section">
                 
                         <div class="subsection">
                             <div class="etiqueta mt-3">Vaccine/profilaxis targeted</div>
@@ -138,7 +138,7 @@ export class DisplayHcert {
                             <div class="valor">${payload.manufacturer}</div>            
                         </div>
                 
-                    </div>
+                    </section>
                     <section class="section">
                         <div class="subsection">
                             <div class="etiqueta">Certificate identifier</div>
@@ -150,7 +150,7 @@ export class DisplayHcert {
                         </div>
                     </section>
                                 
-                </section>
+                <!-- </div> -->
             </div>
             `;
         }

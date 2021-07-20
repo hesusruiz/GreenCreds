@@ -251,7 +251,7 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
                     </div>
                 </section>
                 
-                <div class="section">
+                <section class="section">
                     <div class="subsection">
                         <div class="etiqueta">Dose number/Total doses</div>
                         <div class="valor">${i.doseNumber}/${i.doseTotal}</div>
@@ -265,11 +265,11 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
                         <div class="etiqueta">Member State of vaccination</div>
                         <div class="valor">${i.country}</div>
                     </div>
-                </div>
+                </section>
                 
-                <button @click=${()=>this.toggleView("#expandableSection")} class="w3-btn w3-block w3-black w3-left-align">Details</button>
+                <!-- <button @click=${()=>this.toggleView("#expandableSection")} class="w3-btn w3-block w3-black w3-left-align">Details</button> -->
             
-                <section id="expandableSection" class="w3-hide">
+                <!-- <div id="expandableSection" class="w3-hide"> -->
 
                     <section class="section">
                         <div class="subsection">
@@ -278,7 +278,7 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
                         </div>
                     </section>
 
-                    <div class="section">
+                    <section class="section">
                 
                         <div class="subsection">
                             <div class="etiqueta mt-3">Vaccine/profilaxis targeted</div>
@@ -295,7 +295,7 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
                             <div class="valor">${i.manufacturer}</div>            
                         </div>
                 
-                    </div>
+                    </section>
                     <section class="section">
                         <div class="subsection">
                             <div class="etiqueta">Certificate identifier</div>
@@ -307,7 +307,7 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
                         </div>
                     </section>
                                 
-                </section>
+                <!-- </div> -->
             </div>
             `),"t"==i.certType&&(t=a`
             <div class="container mb-2 border bg-light">
