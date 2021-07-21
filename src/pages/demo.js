@@ -27,56 +27,56 @@ export class DemoPage extends AbstractPage {
         
         <div class=${this.styles.w3Container}>
             <a @click=${() => gotoPage("passenger")}>
-                <div class="w3-panel w3-card-4">
+                <div class="panel">
                     <h3>I am a Passenger</h3>
                     <p>Receive or show your test results</p>
                 </div>
             </a>
             
             <a @click=${() => gotoPage("verifier")}>
-                <div class="w3-panel w3-card-4">
+                <div class="panel">
                     <h3>I am a Verifier</h3>
                     <p>Review the test results of a passenger</p>
                 </div>
             </a>
 
             <a @click=${() => gotoPage("displayhcert", vaccinationQR)}>
-                <div class="w3-panel w3-card-4">
+                <div class="panel">
                     <h3>Vaccination QR</h3>
                     <p>Only for testing</p>
                 </div>
             </a>
 
             <a @click=${() => gotoPage("displayhcert", testQR)}>
-                <div class="w3-panel w3-card-4">
+                <div class="panel">
                     <h3>Test QR</h3>
                     <p>Only for testing</p>
                 </div>
             </a>
             
             <a @click=${() => gotoPage("displayhcert", recoveryQR)}>
-                <div class="w3-panel w3-card-4">
+                <div class="panel">
                     <h3>Recovery QR</h3>
                     <p>Only for testing</p>
                 </div>
             </a>
             
             <a @click=${() => gotoPage("issuerHome")}>
-                <div class="w3-panel w3-card-4">
+                <div class="panel">
                     <h3>I am an Issuer</h3>
                     <p>Check my lab test results</p>
                 </div>
             </a>
             
             <a @click=${() => gotoPage("pubcreds")}>
-                <div class="w3-panel w3-card-4">
+                <div class="panel">
                     <h3>Public Credentials</h3>
                     <p>Query the public credentials</p>
                 </div>
             </a>
             
             <a @click=${() => gotoPage("admin")}>
-                <div class="w3-panel w3-card-4">
+                <div class="panel">
                     <h3 class="card-title">Admin</h3>
                     <p>Only if you know what you are doing</p>
                 </div>
