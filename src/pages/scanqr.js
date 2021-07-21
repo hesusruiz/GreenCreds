@@ -136,7 +136,7 @@ export class ScanQrPage extends AbstractPage {
             if (result) {
                 console.log("RESULT", result)
                 this.codeReader.reset()
-                gotoPage("displayhcert", result)
+                gotoPage("displayhcert", result.text)
 
             }
             if (err && !(err instanceof NotFoundException)) {
@@ -161,7 +161,7 @@ export class ScanQrPage extends AbstractPage {
             if (result) {
                 console.log("RESULT", result)
                 this.codeReader.reset()
-                gotoPage("displayhcert", result)
+                gotoPage("displayhcert", result.text)
 
             }
             if (err && !(err instanceof NotFoundException)) {
