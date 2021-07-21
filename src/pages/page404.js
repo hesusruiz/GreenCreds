@@ -1,36 +1,23 @@
-import { route } from "../router-elem";
-import { w3styles } from '../w3styles'
+import { AbstractPage } from './abstractpage'
+import { html } from 'lit';
 
-import { LitElement, css, html, render } from 'lit';
-import '../components/header'
+export class Page404 extends AbstractPage {
 
-var tagName = "page-404"
-
-export class Page404 extends LitElement {
-
-    static styles = [
-        w3styles
-    ];
-
-    constructor() {
-        console.log("Inside constructor of PAGE404")
-        super();
-
-    }
-
-    render() {
-        return html`
-        <div class="jrmpage w3-container">
-            <h1>The page does not exist!</h1>
-        </div>
-        `
+    constructor(domElem) {
+        console.log("PAGE404: inside constructor")
+        super(domElem)
     }
 
     enter() {
-        console.log("Enter page")
-        this.style.display = "block"
-        this.requestUpdate();
+        console.log("PAGE404: enter page")
+
+        let theHtml = html`
+        <div class="w3-container">
+            <h1>The page does not exist!</h1>
+        </div>
+        `
+
+        this.render(theHtml)
     }
 }
 
-customElements.define(tagName, Page404);

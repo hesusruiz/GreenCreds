@@ -1,17 +1,12 @@
-import { route, gotoPage } from "../router-elem";
+import { gotoPage } from "../router-elem";
 import { w3styles } from '../w3styles'
-import { LitElement, css, html, render as renderlit } from 'lit';
+import { css, html } from 'lit';
 import {log} from '../log'
 import { BrowserMultiFormatReader, BarcodeFormat, NotFoundException } from '@zxing/library';
 
-import { CWT, HCERT, trustedList, vs, } from "../components/cwt"
+import { AbstractPage } from './abstractpage'
 
-
-var tagName = "scanqr-page"
-
-var chapuza = ""
-
-export class ScanQrPage extends LitElement {
+export class ScanQrPage extends AbstractPage {
 
     static styles = [
         w3styles,
@@ -23,15 +18,10 @@ export class ScanQrPage extends LitElement {
         `
     ];
 
-    static get properties() {
-        return {
-            pepe: {attribute: true}
-        };
-    }
 
-      constructor() {
-        console.log("Inside constructor of SCANQR")
-        super();
+    constructor(domElem) {
+        console.log("SCANQR: Inside constructor")
+        super(domElem);
 
         // Initialize the QR library
         this.codeReader = new BrowserMultiFormatReader()
@@ -46,10 +36,9 @@ export class ScanQrPage extends LitElement {
         this.videoElem = undefined
     }
 
-    render() {
+    _render() {
         // Render just the minimum. The real action takes place in the enter() function
         // This is so because it has to be asynchronous
-        // Use the parent class to build the full page
         return html`
         <!-- =========================================== -->
         <!-- SCAN QR PAGE.                               -->
@@ -72,7 +61,7 @@ export class ScanQrPage extends LitElement {
     }
 
     toggleView(e) {
-        var x = this.renderRoot.querySelector("#selectList");
+        var x = document.querySelector("#selectList");
         x.classList.toggle("w3-show")
     }
 
@@ -93,9 +82,10 @@ export class ScanQrPage extends LitElement {
 
     async enter() {
         console.log("SCANQR Enter", this.clientWidth)
-        this.style.display = "block"
 
         this.result = undefined
+
+        this.render(this._render())
 
         if (this.videoElem === undefined) {
 
@@ -130,7 +120,7 @@ export class ScanQrPage extends LitElement {
             this.videoInputDevices = await this.codeReader.listVideoInputDevices()
 
             // Get the placeholder element where video element will be created
-            let placeHolder = this.renderRoot.querySelector("#videoPlaceholder")
+            let placeHolder = document.querySelector("#videoPlaceholder")
 
             // Create the 'video' element to show the video from the camera
             this.videoElem = document.createElement("video");
@@ -157,7 +147,7 @@ export class ScanQrPage extends LitElement {
         })
         console.log(`Started continous decode from camera with id ${this.selectedDeviceId}`)
 
-        this.requestUpdate()
+        this.render(this._render())
 
     }
 
@@ -177,333 +167,15 @@ export class ScanQrPage extends LitElement {
             if (err && !(err instanceof NotFoundException)) {
                 console.error(err)
                 this.result = err
-                this.requestUpdate()
+                this.render(this._render)
             }
         })
         console.log(`Started continous decode from camera with id ${this.selectedDeviceId}`)
-        this.requestUpdate()
+        this.render(this._render)
     }
 
     async exit() {
         this.codeReader.reset()
     }
 
-}
-customElements.define(tagName, ScanQrPage);
-
-//*********************************************************************** */
-//*********************************************************************** */
-//*********************************************************************** */
-//*********************************************************************** */
-//*********************************************************************** */
-
-tagName = "scanqr-result"
-
-export class ScanQrResultPage extends LitElement {
-
-    static styles = [
-        w3styles,
-        css`
-        #footer {
-            position: fixed;
-            bottom: 0
-        }
-        `
-    ];
-
-    static get properties() {
-        return {
-            pepe: {attribute: true}
-        };
-    }
-
-      constructor() {
-        console.log("Inside constructor of SCANRESULT")
-        super();
-
-        this.thehtml = ""
-        this.qrContent = ""
-        this.hcert = undefined
-        this.verified = false
-
-    }
-
-    render() {
-        return html`
-            <!-- =========================================== -->
-            <!-- SCAN RESULT PAGE.                           -->
-            <!-- =========================================== -->
-            ${this.thehtml}
-            `
-    }
-
-    async enter(pageData) {
-        console.log("PRESENT Enter", pageData)
-        this.qrContent = pageData.text
-        this.style.display = "block"
-
-        // Decode credential verifying it at the same time
-        try {
-            this.hcert = await CWT.decodeHC1QR(this.qrContent, true);            
-            this.verified = this.hcert[3]
-        } catch (error) {
-            log.myerror("Error verifying credential", error)
-            return;
-        }
-    
-        try {
-            // Render the credential
-            this.thehtml = renderDetail(this.hcert);            
-        } catch (error) {
-            log.myerror("Error rendering credential", error)
-            return;            
-        }
-
-        this.requestUpdate()
-
-    }
-
-    async exit() {
-    }
-
-}
-customElements.define(tagName, ScanQrResultPage);
-
-
-function renderDetail(cred) {
-    // The credential
-    let payload = cred[1];
-
-    let thehtml = "Unrecognized";
-
-    if (payload["certType"] == "v") {
-        thehtml = html`
-        <div class="container mb-2 border bg-light">
-            <div class="hcert title">EU DIGITAL COVID CERTIFICATE</div>
-            <div class="hcert subtitle">Vaccination</div>
-        </div>
-
-        <div class="container mb-2 border">
-            <div class="mb-2">
-                <div class="etiqueta mt-3">Name</div>
-                <div class="valor mb-3">${payload.fullName}</div>
-            </div>
-            <div>
-                <div class="etiqueta">Date of birth</div>
-                <div class="valor">${payload.dateOfBirth}</div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="hcert subtitle">Vaccination details</div>
-        </div>
-
-        <div class="container mb-2 border">
-            <div class="row">
-                <div class="col">
-                    <div class="etiqueta mt-3">Certificate identifier</div>
-                    <div class="etiqueta mb-3 text-break"><strong>${payload.uniqueIdentifier}</strong></div>
-
-                    <div class="etiqueta">Certificate issuer</div>
-                    <div class="valor">${payload.certificateIssuer}</div>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="container mb-2 border">
-            <div class="row">
-                <div class="col">
-                    <div class="etiqueta mt-3">Disease targeted</div>
-                </div>
-                <div class="col">
-                    <div class="valor mt-3">${payload.diseaseTargeted}</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container border">
-
-            <div class="row mb-3">
-
-                <div class="col-sm">
-                    <div class="etiqueta mt-3">Vaccine/profilaxis targeted</div>
-                    <div class="valor mb-3">${payload.vaccineProphylaxis}</div>
-
-                    <div class="etiqueta">Vaccine medicinal product</div>
-                    <div class="valor mb-3">${payload.medicinalProduct}</div>
-
-                    <div class="etiqueta">Manufacturer</div>
-                    <div class="valor">${payload.manufacturer}</div>
-
-                </div>
-
-                <div class="col-sm">
-                    <div class="etiqueta mt-3">Dose number/Total doses</div>
-                    <div class="valor mb-3">${payload.doseNumber}/${payload.doseTotal}</div>
-
-                    <div class="etiqueta">Date of vaccination</div>
-                    <div class="valor mb-3">${payload.dateVaccination}</div>
-
-                    <div class="etiqueta">Member State of vaccination</div>
-                    <div class="valor">${payload.country}</div>
-                </div>
-            </div>
-
-        </div>
-        `;
-    }
-
-    if (payload["certType"] == "t") {
-        thehtml = html`
-        <div class="container mb-2 border bg-light">
-            <div class="hcert title">EU DIGITAL COVID CERTIFICATE</div>
-            <div class="hcert subtitle">Test</div>
-        </div>
-
-        <div class="container mb-2 border">
-            <div class="mb-2">
-                <div class="etiqueta mt-3">Name</div>
-                <div class="valor mb-3">${payload.fullName}</div>
-            </div>
-            <div>
-                <div class="etiqueta">Date of birth</div>
-                <div class="valor">${payload.dateOfBirth}</div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="hcert subtitle">Test details</div>
-        </div>
-
-        <div class="container mb-2 border">
-            <div class="row">
-                <div class="col">
-                    <div class="etiqueta mt-3">Certificate identifier</div>
-                    <div class="etiqueta mb-3 text-break"><strong>${payload.uniqueIdentifier}</strong></div>
-
-                    <div class="etiqueta">Certificate issuer</div>
-                    <div class="valor">${payload.certificateIssuer}</div>        
-                </div>
-
-            </div>
-        </div>
-
-        <div class="container mb-2 border">
-            <div class="row">
-                <div class="col">
-                    <div class="etiqueta mt-3">Disease targeted</div>
-                </div>
-                <div class="col">
-                    <div class="valor mt-3">${payload.diseaseTargeted}</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container border">
-
-            <div class="row mb-3">
-
-                <div class="col-sm">
-                    <div class="etiqueta mt-3">Test Name</div>
-                    <div class="valor mb-3">${payload.typeTest}</div>
-
-                    <div class="etiqueta">Manufacturer</div>
-                    <div class="valor">${payload.manufacturer}</div>
-
-                </div>
-
-                <div class="col-sm">
-                    <div class="etiqueta mt-3">Test Result</div>
-                    <div class="valor mb-3">${payload.testResult}</div>
-
-                    <div class="etiqueta">Date/Time of Sample Collection</div>
-                    <div class="valor mb-3">${payload.timeSample}</div>
-
-                    <div class="etiqueta">Testing Centre</div>
-                    <div class="valor">${payload.testingCentre}</div>
-                </div>
-            </div>
-
-        </div>
-        `;
-    }
-
-    if (payload["certType"] == "r") {
-        thehtml = html`
-        <div class="container mb-2 border bg-light">
-            <div class="hcert title">EU DIGITAL COVID CERTIFICATE</div>
-            <div class="hcert subtitle">Recovery</div>
-        </div>
-        
-        <div class="container mb-2 border">
-            <div class="mb-2">
-                <div class="etiqueta mt-3">Name</div>
-                <div class="valor mb-3">${payload.fullName}</div>
-            </div>
-            <div>
-                <div class="etiqueta">Date of birth</div>
-                <div class="valor">${payload.dateOfBirth}</div>
-            </div>
-        </div>
-        
-        <div class="container">
-            <div class="hcert subtitle">Recovery details</div>
-        </div>
-        
-        <div class="container mb-2 border">
-            <div class="row">
-              <div class="col">
-                <div class="etiqueta mt-3">Disease targeted</div>
-              </div>
-              <div class="col">
-                <div class="valor mt-3">${payload.diseaseTargeted}</div>
-              </div>
-            </div>
-        </div>
-        
-        
-        <div class="container border">
-        
-            <div class="row mb-3">
-        
-                <div class="col-sm">
-                    <div class="etiqueta mt-3">Date of positive</div>
-                    <div class="valor mb-3">${payload.datePositive}</div>
-                </div>            
-        
-                <div class="col-sm">
-                    <div class="etiqueta mt-3">Valid from</div>
-                    <div class="valor mb-3">${payload.dateFrom}</div>
-                </div>
-        
-                <div class="col-sm">
-                    <div class="etiqueta mt-3">Valid to</div>
-                    <div class="valor">${payload.dateUntil}</div>
-                </div>
-        
-            </div>
-        
-        </div>
-        
-        <div class="container mb-2 border">
-            <div class="row">
-                <div class="col">
-                    <div class="etiqueta mt-3">Certificate identifier</div>
-                    <div class="etiqueta mb-3 text-break"><strong>${payload.uniqueIdentifier}</strong></div>
-        
-                    <div class="etiqueta">Certificate issuer</div>
-                    <div class="valor">${payload.certificateIssuer}</div>        
-        
-                    <div class="etiqueta">Country of Test</div>
-                    <div class="valor">${payload.country}</div>        
-        
-                </div>
-        
-            </div>
-        </div>
-        `;
-    }
-
-    return thehtml;
 }

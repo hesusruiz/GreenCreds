@@ -1,62 +1,67 @@
 //import {Workbox} from 'https://storage.googleapis.com/workbox-cdn/releases/6.1.5/workbox-window.prod.mjs'
 
-import {
-    settingsPut,
-    settingsGet,
-} from "./db";
+import { settingsPut, settingsGet } from "./db";
 import {log} from './log'
 
 import { setHomePage, goHome, route } from "./router-elem";
+import { HeaderBar } from './components/header'
 
-import { trustedList, vs } from "./components/cwt";
+// import './pages/passenger_home'
+import {DisplayHcert} from './pages/hcertpage'
+import {DemoPage} from './pages/demo'
+import {Page404} from './pages/page404'
+import {ScanQrPage} from './pages/scanqr'
 
-import './pages/passenger_home'
-import './pages/demo'
-import './pages/scanqr'
-import './pages/hcertpage'
-import './pages/page404'
+var homePage = "demo"
 
 var pageDefs = [
     {
         name: "displayhcert",
-        tagName: "div",
+        className: DisplayHcert
     },
     {
         name: "demo",
-        tagName: "demo-page"
-    },
-    {
-        name: "passenger",
-        tagName: "passenger-home"
+        className: DemoPage
     },
     {
         name: "verifier",
-        tagName: "scanqr-page"
+        className: ScanQrPage
     },
-    {
-        name: "scanresult",
-        tagName: "scanqr-result"
-    },
+    // {
+    //     name: "passenger",
+    //     tagName: "passenger-home"
+    // },
+    // {
+    //     name: "scanresult",
+    //     tagName: "scanqr-result"
+    // },
     {
         name: "page404",
-        tagName: "page-404"
+        className: Page404
     },
 ]
 
+// Erase the body, including the loader message
 document.body.innerHTML = ""
-let routerElem = document.createElement("router-elem")
-document.body.append(routerElem)
+HeaderBar()
 
+// Add the pages as child elements of the router
 for (let i = 0; i < pageDefs.length; i++) {
-    let elem = document.createElement(pageDefs[i].tagName)
-    elem.style.display = "none"
-    document.body.append(elem)
-    route(pageDefs[i].name, elem)
+
+    // Create the instance of the associated class, passing the element to its constructor
+    let name = pageDefs[i].name
+    let className = pageDefs[i].className
+    let classInstance = new className(name)
+
+    // Append to body
+    document.body.append(classInstance.domElem)
+
+    // Add the page to the routing table
+    route(name, classInstance)
 }
 
 // Get the pathname used to invoke the app, eg.: /admin.html
 var mypathname = window.location.pathname;
-var homePage = "verifier"
 
 if (window.location.search.length > 0) {
     // Get the search parameters, eg.: ?page=admin
@@ -216,9 +221,6 @@ async function performAppUpgrade() {
     } catch (error) {
         console.log("ERROR updating version", error)
     }
-
-    // Get the value sets
-    await vs.init()
 
     // Refresh the screen so the user sees the new pages
     // TODO: ask the user to refresh the application

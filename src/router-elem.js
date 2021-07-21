@@ -1,19 +1,13 @@
 import { log } from "./log";
-import { w3styles } from './w3styles'
-
-import { LitElement, css, html, render } from 'lit';
-import './components/header'
-import {DisplayHcert} from './pages/hcertpage'
-
 
 // This is the array of pages in the application
 // Each page should register a handler to execute pageEnter transitions
 // registration is done at each page definition
 var pages = new Map();
 
-export function route(pageName, domElem) {
+export function route(pageName, classInstance) {
     console.log("ROUTER: register page:", pageName)
-    pages.set(pageName, domElem)
+    pages.set(pageName, classInstance)
 }
 
 var homePage
@@ -39,47 +33,41 @@ window.addEventListener("popstate", async function (event) {
     await processPageEntered(pageName, pageData);
 });
 
-var dhcert = new DisplayHcert()
-
 // Handle page transition
 export async function processPageEntered(pageName, pageData) {
-    console.log(pages)
     try {
         // Hide all pages of the application. Later we unhide the one we are entering
         // We also tell all other pages to exit, so they can perform any cleanup
-        for (let [name, pageElement] of pages) {
-            pageElement.style.display = "none"
+        for (let [name, classInstance] of pages) {
+            classInstance.domElem.style.display = "none"
             // Call the page exit(), so it can perform any cleanup 
-            if ((name !== pageName) && pageElement.exit) {
-                await pageElement.exit(pageElement)
+            if ((name !== pageName) && classInstance.exit) {
+                await classInstance.exit()
             }
         }
     } catch (error) {
         log.myerror("Trying to call exit", error);
         return;
     }
-    
-        let targetPage = pages.get(pageName)
-        // If the target page is not a registered page, go to the page404 page
-        if (targetPage === undefined) {
-            pageName = "page404"
-        }
 
-        // Reset scroll position to make sure the page is at the top
-        window.scrollTo(0, 0);
+    let targetPage = pages.get(pageName)  
+
+    // If the target page is not a registered page, go to the page404 page
+    if (targetPage === undefined) {
+        pageName = "page404"
+    }
+
+    // Reset scroll position to make sure the page is at the top
+    window.scrollTo(0, 0);
 
     try {
         // Invoke the registered function when page has entered
         // This will allow the page to create dynamic content
         if (targetPage.enter) {
-            await targetPage.enter(pageData, targetPage);
+            await targetPage.enter(pageData);
         } else {
-            if (pageName === "displayhcert") {
-                await dhcert.enter(pageData, targetPage);
-            } else {
-                // Make sure the target page is visible even if no enter() defined
-                targetPage.style.display = "block"
-            }
+            // Make sure the target page is visible even if no enter() defined
+            targetPage.style.display = "block"
         }
 
     } catch (error) {
@@ -113,27 +101,3 @@ export async function gotoPage(pageName, pageData) {
     // Process the page transition
     await processPageEntered(pageName, pageData);
 }
-
-
-export class RouterElem extends LitElement {
-
-    static styles = [
-        w3styles
-    ];
-
-    constructor() {
-        console.log("Inside constructor of ROUTER")
-        super();
-    }
-
-    render() {
-        console.log("Rendering ROUTER")
-        return html`
-        <header-bar></header-bar>
-        `
-    }
-
-}
-
-const tagName = "router-elem"
-customElements.define(tagName, RouterElem);

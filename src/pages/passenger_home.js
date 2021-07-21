@@ -1,10 +1,7 @@
 
-import { LitElement, css, html, render } from 'lit';
-import { JrmPage } from "./jrmpage";
+import { html, render } from 'lit';
 
-const tagName = "passenger-home"
-
-export class PassengerHome extends JrmPage {
+export class PassengerHome {
 
     static styles = [
         this.styles,
@@ -45,7 +42,7 @@ export class PassengerHome extends JrmPage {
         super();
     }
 
-    render() {
+    _render() {
         // Use the parent class to build the full page
         return html`
         <!-- =========================================== -->
@@ -65,5 +62,4 @@ export class PassengerHome extends JrmPage {
     }
 
 }
-customElements.define(tagName, PassengerHome);
 
