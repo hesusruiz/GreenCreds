@@ -29,14 +29,14 @@ export class DemoPage extends AbstractPage {
             <a @click=${() => gotoPage("passenger")}>
                 <div class="panel">
                     <h3>I am a Passenger</h3>
-                    <p>Receive or show your test results</p>
+                    <p>Manage your certificates</p>
                 </div>
             </a>
             
             <a @click=${() => gotoPage("verifier")}>
                 <div class="panel">
                     <h3>I am a Verifier</h3>
-                    <p>Review the test results of a passenger</p>
+                    <p>Check validity of a certificate</p>
                 </div>
             </a>
 
@@ -64,7 +64,7 @@ export class DemoPage extends AbstractPage {
             <a @click=${() => gotoPage("issuerHome")}>
                 <div class="panel">
                     <h3>I am an Issuer</h3>
-                    <p>Check my lab test results</p>
+                    <p>Display available certificates</p>
                 </div>
             </a>
             

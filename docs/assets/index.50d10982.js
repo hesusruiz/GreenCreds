@@ -506,14 +506,14 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
             <a @click=${()=>m("passenger")}>
                 <div class="panel">
                     <h3>I am a Passenger</h3>
-                    <p>Receive or show your test results</p>
+                    <p>Manage your certificates</p>
                 </div>
             </a>
             
             <a @click=${()=>m("verifier")}>
                 <div class="panel">
                     <h3>I am a Verifier</h3>
-                    <p>Review the test results of a passenger</p>
+                    <p>Check validity of a certificate</p>
                 </div>
             </a>
 
@@ -541,7 +541,7 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
             <a @click=${()=>m("issuerHome")}>
                 <div class="panel">
                     <h3>I am an Issuer</h3>
-                    <p>Check my lab test results</p>
+                    <p>Display available certificates</p>
                 </div>
             </a>
             
