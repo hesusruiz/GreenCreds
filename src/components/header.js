@@ -23,13 +23,11 @@ export function HeaderBar() {
         document.body.append(domElem)
     }
 
-    console.log("HEADERBAR: rendering the content")
-
     if (x) { x.classList.remove("w3-show") }
 
     let theHtml = html`
     <div class="w3-bar w3-xlarge color-primary">
-        <div class="w3-bar-item" @click=${goHome}>SafeIsland</div>
+        <div class="w3-bar-item" @click=${goHome}>EU COVID Credentials</div>
         <a href="#" class="w3-bar-item w3-button w3-hide-small">Link 1</a>
         <a href="#" class="w3-bar-item w3-button  w3-hide-small">Link 2</a>
         <a href="#" class="w3-bar-item w3-button w3-hide-small">Link 3</a>
