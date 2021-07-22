@@ -1,11 +1,12 @@
 import {settingsPut, settingsGet} from "./db.js";
 import {log} from "./log.js";
-import {setHomePage, goHome, route} from "./router.js";
+import {setHomePage, goHome, route, gotoPage} from "./router.js";
 import {HeaderBar} from "./components/header.js";
 import {DisplayHcert} from "./pages/hcertpage.js";
 import {DemoPage} from "./pages/demo.js";
 import {Page404} from "./pages/page404.js";
 import {ScanQrPage} from "./pages/scanqr.js";
+import {SWNotify} from "./pages/swnotify.js";
 var homePage = "demo";
 var pageDefs = [
   {
@@ -19,6 +20,10 @@ var pageDefs = [
   {
     name: "verifier",
     className: ScanQrPage
+  },
+  {
+    name: "swnotify",
+    className: SWNotify
   },
   {
     name: "page404",
@@ -124,8 +129,7 @@ async function performAppUpgrade() {
   } catch (error) {
     console.log("ERROR updating version", error);
   }
-  alert("Application has been updated.");
-  window.location.reload();
+  gotoPage("swnotify");
 }
 async function performOneTimeInitialization() {
   console.log("Performing OneTime Initialization");

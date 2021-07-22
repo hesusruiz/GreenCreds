@@ -1,13 +1,14 @@
 import { settingsPut, settingsGet } from "./db";
 import {log} from './log'
 
-import { setHomePage, goHome, route } from "./router";
+import { setHomePage, goHome, route, gotoPage } from "./router";
 import { HeaderBar } from './components/header'
 
 import {DisplayHcert} from './pages/hcertpage'
 import {DemoPage} from './pages/demo'
 import {Page404} from './pages/page404'
 import {ScanQrPage} from './pages/scanqr'
+import { SWNotify } from "./pages/swnotify";
 
 var homePage = "demo"
 
@@ -24,14 +25,10 @@ var pageDefs = [
         name: "verifier",
         className: ScanQrPage
     },
-    // {
-    //     name: "passenger",
-    //     tagName: "passenger-home"
-    // },
-    // {
-    //     name: "scanresult",
-    //     tagName: "scanqr-result"
-    // },
+    {
+        name: "swnotify",
+        className: SWNotify
+    },
     {
         name: "page404",
         className: Page404
@@ -230,8 +227,7 @@ async function performAppUpgrade() {
 
     // Refresh the screen so the user sees the new pages
     // TODO: ask the user to refresh the application
-    alert("Application has been updated.")
-    window.location.reload();
+    gotoPage("swnotify")
 
 }
 
