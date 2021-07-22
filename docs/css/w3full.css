@@ -1535,6 +1535,10 @@ a {
 body {
   max-width: 980px;
 }
+.loaderpage {
+  text-align: center;
+  margin-top: 100px;
+}
 .loader {
   margin: auto;
   z-index: 1;
