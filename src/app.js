@@ -1,12 +1,9 @@
-//import {Workbox} from 'https://storage.googleapis.com/workbox-cdn/releases/6.1.5/workbox-window.prod.mjs'
-
 import { settingsPut, settingsGet } from "./db";
 import {log} from './log'
 
 import { setHomePage, goHome, route } from "./router";
 import { HeaderBar } from './components/header'
 
-// import './pages/passenger_home'
 import {DisplayHcert} from './pages/hcertpage'
 import {DemoPage} from './pages/demo'
 import {Page404} from './pages/page404'
@@ -117,7 +114,7 @@ const ST_PASSENGER_SCAN = "fromPassengerScan";
 const ST_VERIFIER_SCAN = "fromVerifierScan";
 const ST_NORMAL = "normal";
 
-const INSTALL_SERVICE_WORKER = false
+const INSTALL_SERVICE_WORKER = true
 
 // This function is called on first load and when a refresh is triggered in any page
 // When called the DOM is fully loaded and safe to manipulate
@@ -128,7 +125,9 @@ window.addEventListener('load', async (event) => {
 
     // Install service worker for off-line support
     if (INSTALL_SERVICE_WORKER && ("serviceWorker" in navigator)) {
-        const wb = new Workbox("/sw.js");
+        const {Workbox} = await import('workbox-window');
+        
+        const wb = new Workbox("./sw.js");
 
         wb.addEventListener("message", (event) => {
             if (event.data.type === "CACHE_UPDATED") {
@@ -224,6 +223,7 @@ async function performAppUpgrade() {
 
     // Refresh the screen so the user sees the new pages
     // TODO: ask the user to refresh the application
+    alert("Application has been updated.")
     window.location.reload();
 
 }

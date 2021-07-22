@@ -65,11 +65,12 @@ const ISSUER_GET_PUBLIC_CREDENTIAL = MY_SERVER + "/api/verifiable-credential/v1/
 const ST_PASSENGER_SCAN = "fromPassengerScan";
 const ST_VERIFIER_SCAN = "fromVerifierScan";
 const ST_NORMAL = "normal";
-const INSTALL_SERVICE_WORKER = false;
+const INSTALL_SERVICE_WORKER = true;
 window.addEventListener("load", async (event) => {
   await performOneTimeInitialization();
   if (INSTALL_SERVICE_WORKER && "serviceWorker" in navigator) {
-    const wb = new Workbox("/sw.js");
+    const {Workbox} = await import("./_snowpack/pkg/workbox-window.js");
+    const wb = new Workbox("./sw.js");
     wb.addEventListener("message", (event2) => {
       if (event2.data.type === "CACHE_UPDATED") {
         const {updatedURL} = event2.data.payload;
@@ -117,6 +118,7 @@ async function performAppUpgrade() {
   } catch (error) {
     console.log("ERROR updating version", error);
   }
+  alert("Application has been updated.");
   window.location.reload();
 }
 async function performOneTimeInitialization() {
