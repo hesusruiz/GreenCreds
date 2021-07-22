@@ -21,8 +21,8 @@ export class SWNotify extends AbstractPage {
                 </header>
         
                 <div class="w3-container w3-padding-16">
-                    <p>There is a new version of the application and it has been updated.</p>
-                    <p>Please click <b>Accept</b> to refresh the page.</p>
+                    <p>There is a new version of the application and it has already been updated.</p>
+                    <p>Please click Accept to refresh the page.</p>
                 </div>
         
                 <div class="w3-padding-16">
