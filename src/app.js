@@ -10,6 +10,7 @@ import {Page404} from './pages/page404'
 import {ScanQrPage} from './pages/scanqr'
 import { SWNotify } from "./pages/swnotify";
 
+// The home page to start and when refreshing
 var homePage = "demo"
 
 var pageDefs = [
