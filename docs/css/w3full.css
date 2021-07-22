@@ -1587,7 +1587,3 @@ section,
 .valor {
   font-weight: 600;
 }
-#footer {
-  position: fixed;
-  bottom: 0;
-}

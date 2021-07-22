@@ -352,7 +352,4 @@ body{max-width:980px}
 section,.section{padding:0.01em 10px;margin-top:0px;margin-bottom:10px;border:1px solid #ccc}
 .subsection{padding: 0rem;}
 .valor{font-weight:600}
-#footer {
-    position: fixed;
-    bottom: 0
-}
+

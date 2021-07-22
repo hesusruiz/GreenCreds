@@ -37,7 +37,7 @@ export class ScanQrPage extends AbstractPage {
         <div id="videoPlaceholder">
         </div>
         
-        <div id="footer" class="w3-bar w3-xlarge">
+        <div id="footer" class="w3-bar w3-xlarge w3-center" style="position: fixed;bottom: 20px">
             ${(this.videoInputDevices.length > 0)
                 ? html`
                     ${this.getCamerasList()}
