@@ -10,6 +10,7 @@ import {Page404} from './pages/page404'
 import {ScanQrPage} from './pages/scanqr'
 import { SWNotify } from "./pages/swnotify";
 import { Intro } from "./pages/intro";
+import { Spinner } from "./pages/spinner";
 
 // The home page to start and when refreshing
 var homePage = "intro"
@@ -34,6 +35,10 @@ var pageDefs = [
     {
         name: "swnotify",
         className: SWNotify
+    },
+    {
+        name: "spinner",
+        className: Spinner
     },
     {
         name: "page404",

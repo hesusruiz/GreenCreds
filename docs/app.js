@@ -8,6 +8,7 @@ import {Page404} from "./pages/page404.js";
 import {ScanQrPage} from "./pages/scanqr.js";
 import {SWNotify} from "./pages/swnotify.js";
 import {Intro} from "./pages/intro.js";
+import {Spinner} from "./pages/spinner.js";
 var homePage = "intro";
 var pageDefs = [
   {
@@ -29,6 +30,10 @@ var pageDefs = [
   {
     name: "swnotify",
     className: SWNotify
+  },
+  {
+    name: "spinner",
+    className: Spinner
   },
   {
     name: "page404",

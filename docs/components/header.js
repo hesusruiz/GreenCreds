@@ -1,5 +1,5 @@
 import {html, render} from "../_snowpack/pkg/lit-html.js";
-import {goHome as routerGoHome} from "../router.js";
+import {goHome as routerGoHome, gotoPage} from "../router.js";
 var domElem = void 0;
 var x = void 0;
 export function HeaderBar() {
@@ -31,7 +31,7 @@ export function HeaderBar() {
     </div>
     
     <div class="w3-bar-block color-primary w3-hide w3-hide-large w3-hide-medium">
-        <a @click=${() => window.location.reload()} href="javascript:void(0)" class="w3-bar-item w3-button hover-color-primary">Update public keys</a>
+        <a @click=${() => gotoPage("spinner")} href="javascript:void(0)" class="w3-bar-item w3-button hover-color-primary">Update public keys</a>
         <a href="#" class="w3-bar-item w3-button hover-color-primary">Privacy policy</a>
         <a href="#" class="w3-bar-item w3-button hover-color-primary">Help</a>
     </div>
