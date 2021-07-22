@@ -1,5 +1,5 @@
 import { AbstractPage } from './abstractpage'
-import { html } from 'lit';
+import { html } from 'lit-html';
 
 export class Page404 extends AbstractPage {
 

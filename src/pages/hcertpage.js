@@ -1,4 +1,4 @@
-import { html, render } from 'lit';
+import { html, render } from 'lit-html';
 import { log } from '../log'
 import { CWT } from "../components/cwt"
 import { AbstractPage } from './abstractpage'

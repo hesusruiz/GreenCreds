@@ -1,0 +1,9 @@
+{
+  "imports": {
+    "@zxing/library": "./@zxing/library.js",
+    "dexie": "./dexie.js",
+    "lit-html": "./lit-html.js",
+    "pako": "./pako.js",
+    "ts-custom-error": "./ts-custom-error.js"
+  }
+}

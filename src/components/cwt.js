@@ -6,6 +6,10 @@ import trustedPublicKeys from "../json/all_jwk_keys.json"
 import prePublicKeys from "../json/pre_jwk_keys.json"
 import valueSets from "../json/value-sets.json"
 
+// https://covid-status.service.nhsx.nhs.uk/pubkeys/keys.json
+import ukRawKeys from "../json/uk_jwk_keys.json"
+
+
 export var trustedList = {
     get: async function (kid) {
 
@@ -19,6 +23,66 @@ export var trustedList = {
 
         return jwk;
     },
+}
+
+function inUKList(kid) {
+    for (let i = 0; i < ukRawKeys.length; i++) {
+        if (ukRawKeys[i].kid == kid) {
+            return ukRawKeys[i].publicKey
+        }
+    }
+    return undefined
+}
+
+
+async function getTrustedKey(kid) {
+    if (!kid) { log.myerror("kid is undefined"); return undefined; }
+
+    // First try to get it from the PRODUCTION EU list
+    let entry = trustedPublicKeys[kid]
+    if (entry) {
+        console.log(`kid "${kid}" found in EU_PRO trusted list`)
+        return {
+            kid: kid,
+            publicKey: entry.jwk,
+            list: "EU_PRO",
+            format: "jwk"
+        }
+    }
+    log.mywarn(`kid "${kid}" not found in EU_PRO trusted list`)
+
+    // Now check in the PRODUCTION listfrom the UK
+    for (let i = 0; i < ukRawKeys.length; i++) {
+        if (ukRawKeys[i].kid == kid) {
+            console.log(`kid "${kid}" found in UK_PRO trusted list`)
+            return {
+                kid: kid,
+                publicKey: ukRawKeys[i].publicKey,
+                list: "UK_PRO",
+                format: "spki"
+            }
+        }
+    }
+    log.mywarn(`kid "${kid}" not found in UK_PRO trusted list`)
+
+    // And finally in the PREPRODUCTION EU list
+    if (prePublicKeys.includes(kid)) {
+        log.mywarn(`kid "${kid}" found in EU PREPRODUCTION trusted list`)
+        return {
+            kid: kid,
+            publicKey: undefined,
+            list: "EU_PREPRODUCTION",
+            format: undefined
+        }
+    }
+    log.myerror(`KEY ${kid} not found in any Trusted List`)
+    return {
+        kid: kid,
+        publicKey: undefined,
+        list: undefined,
+        format: undefined
+    }
+
 }
 
 export var vs = {
@@ -69,6 +133,31 @@ function str2ab(str) {
 
 class DGCKey {
     constructor() { }
+
+    static async fromSPKI(SPKI) {
+        const binaryDerString = window.atob(SPKI);
+        // convert from a binary string to an ArrayBuffer
+        const binaryDer = str2ab(binaryDerString);
+
+        const extractable = true;
+        const format = "spki";
+
+        let algorithm = {
+            name: "ECDSA",
+            namedCurve: "P-256",
+        };
+
+        let key = await crypto.subtle.importKey(
+            format,
+            binaryDer,
+            algorithm,
+            extractable,
+            ["verify"]
+        );
+
+        return key;
+    }
+
 
     static async fromJWK(jwk) {
         // Create a CryptoKey from JWK format
@@ -270,9 +359,11 @@ class DGCKey {
     }
 }
 
+
 //********************************
 // AUXILIARY FUNCTIONS
 //********************************
+
 
 function uint(bytes) {
     // Convert a byte array of 2 or 4 bytes to an unsigned integer
@@ -1343,23 +1434,29 @@ export class CWT {
             // Get the kid from the header (can be in protected and in unprotected)
             let kid = headers["kid"];
 
-            // Search in the list of keys for PRO
-            let keyJWK = await trustedList.get(kid)
+            let k = await getTrustedKey(kid)
 
-            if (keyJWK) {
+            if (k.list === "EU_PRO") {
 
                 // Create the native public key
-                let verificationKey = await DGCKey.fromJWK(keyJWK);
+                console.log(k)
+                let verificationKey = await DGCKey.fromJWK(k.publicKey);
 
                 // Verify the CWT with the verification key
                 verified = await CWT.verifyCWT(data, verificationKey);
 
-            } else {
+            } else if (k.list === "UK_PRO") {
 
-                if (prePublicKeys.includes(kid)) {
-                    verified = "PRE"
-                    log.mywarn(`KEY ${kid} found in PRE LIST`)
-                }
+                // Create the native public key
+                let verificationKey = await DGCKey.fromSPKI(k.publicKey)
+
+                // Verify the CWT with the verification key
+                verified = await CWT.verifyCWT(data, verificationKey);
+
+            } else if (k.list === "EU_PREPRODUCTION") {
+
+                // Signal that the list is in PRE
+                verified = "PRE"
             }
 
         }
@@ -1371,12 +1468,13 @@ export class CWT {
         return [headers, payload, signature, verified];
     }
 
+
     static async decodeHC1QR(data, verify = false) {
         // data: string obtained from a QR scan
 
         // Check if the string is a HC1 certificate
         if (!data.startsWith("HC1:")) {
-            throw "Certificate does not start with 'HC1:'";
+            throw new Error("Certificate does not start with 'HC1:'");
         }
 
         // Remove the leading 4 chars: "HC1:"

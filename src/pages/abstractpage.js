@@ -1,10 +1,7 @@
-import allstyles from '../css/w3full.module.css'
-import { html, render } from 'lit';
+import { html, render } from 'lit-html';
 import { HeaderBar } from '../components/header'
 
 export class AbstractPage {
-
-    styles = allstyles;
 
     constructor(id) {
         if (this.tagName === undefined) {

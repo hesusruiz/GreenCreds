@@ -1,23 +1,11 @@
-import { gotoPage } from "../router-elem";
-import { w3styles } from '../w3styles'
-import { css, html } from 'lit';
+import { gotoPage } from "../router";
+import { html } from 'lit-html';
 import {log} from '../log'
 import { BrowserMultiFormatReader, BarcodeFormat, NotFoundException } from '@zxing/library';
 
 import { AbstractPage } from './abstractpage'
 
 export class ScanQrPage extends AbstractPage {
-
-    static styles = [
-        w3styles,
-        css`
-        #footer {
-            position: fixed;
-            bottom: 0
-        }
-        `
-    ];
-
 
     constructor(domElem) {
         console.log("SCANQR: Inside constructor")

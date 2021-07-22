@@ -3,7 +3,7 @@
 import { settingsPut, settingsGet } from "./db";
 import {log} from './log'
 
-import { setHomePage, goHome, route } from "./router-elem";
+import { setHomePage, goHome, route } from "./router";
 import { HeaderBar } from './components/header'
 
 // import './pages/passenger_home'
