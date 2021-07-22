@@ -6,7 +6,7 @@
     ],
     "scripts": {
         "dev": "snowpack dev",
-        "build": "node bump && snowpack build && npm run workbox",
+        "build": "node bump && snowpack build && ./cleanup.sh && npm run workbox",
         "upload": "./deploy.sh",
         "workbox": "workbox generateSW workbox-config.js",
         "deploy": "npm run build && npm run upload"
