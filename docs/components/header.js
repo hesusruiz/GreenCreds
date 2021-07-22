@@ -31,9 +31,9 @@ export function HeaderBar() {
     </div>
     
     <div class="w3-bar-block color-primary w3-hide w3-hide-large w3-hide-medium">
-        <a href="#" class="w3-bar-item w3-button hover-color-primary">Link 1</a>
-        <a href="#" class="w3-bar-item w3-button hover-color-primary">Link 2</a>
-        <a href="#" class="w3-bar-item w3-button hover-color-primary">Link 3</a>
+        <a @click=${() => window.location.reload()} href="javascript:void(0)" class="w3-bar-item w3-button hover-color-primary">Update public keys</a>
+        <a href="#" class="w3-bar-item w3-button hover-color-primary">Help</a>
+        <a href="#" class="w3-bar-item w3-button hover-color-primary">Privacy policy</a>
     </div>
     `;
   render(theHtml, domElem);
