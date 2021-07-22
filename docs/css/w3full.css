@@ -1173,6 +1173,11 @@ a {
   color: #fff !important;
   background-color: #3f51b5 !important;
 }
+.color-primary,
+.hover-color-primary:hover {
+  color: #fff !important;
+  background-color: #333 !important;
+}
 .w3-khaki,
 .w3-hover-khaki:hover {
   color: #000 !important;
@@ -1321,6 +1326,10 @@ a {
 .w3-hover-text-indigo:hover {
   color: #3f51b5 !important;
 }
+.text-primary,
+.hover-text-primary:hover {
+  color: #333 !important;
+}
 .w3-text-khaki,
 .w3-hover-text-khaki:hover {
   color: #b4aa50 !important;
@@ -1432,6 +1441,10 @@ a {
 .w3-border-indigo,
 .w3-hover-border-indigo:hover {
   border-color: #3f51b5 !important;
+}
+.border-primary,
+.hover-border-primary:hover {
+  border-color: #333 !important;
 }
 .w3-border-khaki,
 .w3-hover-border-khaki:hover {

@@ -41,7 +41,7 @@ export class ScanQrPage extends AbstractPage {
             ${(this.videoInputDevices.length > 0)
                 ? html`
                     ${this.getCamerasList()}
-                    <button class="w3-btn w3-indigo w3-xlarge w3-hover-indigo" @click=${this.toggleView}>
+                    <button class="w3-btn color-primary w3-xlarge hover-color-primary" @click=${this.toggleView}>
                         Select Camera
                     </button>`
                 : html``
