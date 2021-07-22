@@ -9,11 +9,16 @@ import {DemoPage} from './pages/demo'
 import {Page404} from './pages/page404'
 import {ScanQrPage} from './pages/scanqr'
 import { SWNotify } from "./pages/swnotify";
+import { Intro } from "./pages/intro";
 
 // The home page to start and when refreshing
-var homePage = "demo"
+var homePage = "intro"
 
 var pageDefs = [
+    {
+        name: "intro",
+        className: Intro
+    },
     {
         name: "displayhcert",
         className: DisplayHcert

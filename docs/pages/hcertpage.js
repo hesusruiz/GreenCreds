@@ -199,6 +199,13 @@ export class DisplayHcert extends AbstractPage {
                     </div>
                 
                 </div>
+                
+                <section class="section">
+                        <div class="subsection">
+                            <div class="etiqueta mt-3">Disease targeted</div>
+                            <div class="valor mt-3">${payload.diseaseTargeted}</div>
+                        </div>
+                    </section>
 
                 <div class="section">
                 

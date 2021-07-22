@@ -7,8 +7,13 @@ import {DemoPage} from "./pages/demo.js";
 import {Page404} from "./pages/page404.js";
 import {ScanQrPage} from "./pages/scanqr.js";
 import {SWNotify} from "./pages/swnotify.js";
-var homePage = "demo";
+import {Intro} from "./pages/intro.js";
+var homePage = "intro";
 var pageDefs = [
+  {
+    name: "intro",
+    className: Intro
+  },
   {
     name: "displayhcert",
     className: DisplayHcert
