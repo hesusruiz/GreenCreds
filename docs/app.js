@@ -65,8 +65,14 @@ const ISSUER_GET_PUBLIC_CREDENTIAL = MY_SERVER + "/api/verifiable-credential/v1/
 const ST_PASSENGER_SCAN = "fromPassengerScan";
 const ST_VERIFIER_SCAN = "fromVerifierScan";
 const ST_NORMAL = "normal";
-const INSTALL_SERVICE_WORKER = true;
+var INSTALL_SERVICE_WORKER = true;
 window.addEventListener("load", async (event) => {
+  if (runmode === "development") {
+    console.log("In development");
+    INSTALL_SERVICE_WORKER = false;
+  } else {
+    console.log("In production");
+  }
   await performOneTimeInitialization();
   if (INSTALL_SERVICE_WORKER && "serviceWorker" in navigator) {
     const {Workbox} = await import("./_snowpack/pkg/workbox-window.js");

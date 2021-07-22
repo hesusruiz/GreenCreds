@@ -5,6 +5,7 @@ import { BrowserMultiFormatReader, BarcodeFormat, NotFoundException } from '@zxi
 
 import { AbstractPage } from './abstractpage'
 
+
 export class ScanQrPage extends AbstractPage {
 
     constructor(domElem) {
@@ -22,6 +23,7 @@ export class ScanQrPage extends AbstractPage {
         this.result = undefined
 
         this.videoElem = undefined
+        this.self = this
     }
 
     _render() {
@@ -50,7 +52,7 @@ export class ScanQrPage extends AbstractPage {
 
     toggleView(e) {
         var x = document.querySelector("#selectList");
-        x.classList.toggle("w3-show")
+        x.classList.toggle("w3-show")    
     }
 
     getCamerasList() {
@@ -60,7 +62,7 @@ export class ScanQrPage extends AbstractPage {
             theHtml = html`
             <ul id="selectList" class="w3-ul w3-border w3-white w3-hide w3-large" >
                 ${this.videoInputDevices.map((dev) =>
-                    html`<li class=${(dev.deviceId === this.selectedDeviceId) ? "w3-large w3-pale-blue" : "w3-large"} id="${dev.deviceId}" @click=${this.selected}>${(dev.deviceId === this.selectedDeviceId) ? html`*` : html``} ${dev.label}</li>`
+                    html`<li class=${(dev.deviceId === this.selectedDeviceId) ? "w3-large w3-pale-blue" : "w3-large"} id="${dev.deviceId}" @click=${()=>this.selected(dev.deviceId)}>${(dev.deviceId === this.selectedDeviceId) ? html`*` : html``} ${dev.label}</li>`
                 )}
             </ul>
             `
@@ -139,11 +141,12 @@ export class ScanQrPage extends AbstractPage {
 
     }
 
-    selected(e) {
-        console.log(e.target.id)
+    selected(deviceId) {
         
-        this.selectedDeviceId = e.target.id;
-        this.toggleView()
+        this.selectedDeviceId = deviceId;
+        var x = document.querySelector("#selectList");
+        x.classList.toggle("w3-show")
+    
         this.codeReader.reset()
         this.codeReader.decodeFromVideoDevice(this.selectedDeviceId, this.videoElem, (result, err) => {
             if (result) {
@@ -155,11 +158,11 @@ export class ScanQrPage extends AbstractPage {
             if (err && !(err instanceof NotFoundException)) {
                 console.error(err)
                 this.result = err
-                this.render(this._render)
+                this.render(this._render())
             }
         })
         console.log(`Started continous decode from camera with id ${this.selectedDeviceId}`)
-        this.render(this._render)
+        this.render(this._render())
     }
 
     async exit() {

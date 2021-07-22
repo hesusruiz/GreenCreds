@@ -114,11 +114,18 @@ const ST_PASSENGER_SCAN = "fromPassengerScan";
 const ST_VERIFIER_SCAN = "fromVerifierScan";
 const ST_NORMAL = "normal";
 
-const INSTALL_SERVICE_WORKER = true
+var INSTALL_SERVICE_WORKER = true
 
 // This function is called on first load and when a refresh is triggered in any page
 // When called the DOM is fully loaded and safe to manipulate
 window.addEventListener('load', async (event) => {
+
+    if (runmode === 'development') {
+        console.log("In development")
+        INSTALL_SERVICE_WORKER = false
+    } else {
+        console.log("In production")
+    }
 
     // Handle one-time initialization when the user executes for the first time the app
     await performOneTimeInitialization();

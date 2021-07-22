@@ -14,6 +14,7 @@ export class ScanQrPage extends AbstractPage {
     this.resultObj = void 0;
     this.result = void 0;
     this.videoElem = void 0;
+    this.self = this;
   }
   _render() {
     return html`
@@ -42,7 +43,7 @@ export class ScanQrPage extends AbstractPage {
     if (this.videoInputDevices.length > 0) {
       theHtml = html`
             <ul id="selectList" class="w3-ul w3-border w3-white w3-hide w3-large" >
-                ${this.videoInputDevices.map((dev) => html`<li class=${dev.deviceId === this.selectedDeviceId ? "w3-large w3-pale-blue" : "w3-large"} id="${dev.deviceId}" @click=${this.selected}>${dev.deviceId === this.selectedDeviceId ? html`*` : html``} ${dev.label}</li>`)}
+                ${this.videoInputDevices.map((dev) => html`<li class=${dev.deviceId === this.selectedDeviceId ? "w3-large w3-pale-blue" : "w3-large"} id="${dev.deviceId}" @click=${() => this.selected(dev.deviceId)}>${dev.deviceId === this.selectedDeviceId ? html`*` : html``} ${dev.label}</li>`)}
             </ul>
             `;
     }
@@ -91,10 +92,10 @@ export class ScanQrPage extends AbstractPage {
     console.log(`Started continous decode from camera with id ${this.selectedDeviceId}`);
     this.render(this._render());
   }
-  selected(e) {
-    console.log(e.target.id);
-    this.selectedDeviceId = e.target.id;
-    this.toggleView();
+  selected(deviceId) {
+    this.selectedDeviceId = deviceId;
+    var x = document.querySelector("#selectList");
+    x.classList.toggle("w3-show");
     this.codeReader.reset();
     this.codeReader.decodeFromVideoDevice(this.selectedDeviceId, this.videoElem, (result, err) => {
       if (result) {
@@ -105,11 +106,11 @@ export class ScanQrPage extends AbstractPage {
       if (err && !(err instanceof NotFoundException)) {
         console.error(err);
         this.result = err;
-        this.render(this._render);
+        this.render(this._render());
       }
     });
     console.log(`Started continous decode from camera with id ${this.selectedDeviceId}`);
-    this.render(this._render);
+    this.render(this._render());
   }
   async exit() {
     this.codeReader.reset();
