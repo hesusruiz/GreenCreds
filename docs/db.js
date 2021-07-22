@@ -1,4 +1,4 @@
-import Dexie from "../_snowpack/pkg/dexie.js";
+import Dexie from "./_snowpack/pkg/dexie.js";
 import {log} from "./log.js";
 export const db = new Dexie("SafeIslandNew");
 db.version(0.5).stores({

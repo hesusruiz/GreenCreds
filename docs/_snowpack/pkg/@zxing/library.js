@@ -1,12 +1,26 @@
-import {CustomError} from "../ts-custom-error.js";
+function fixProto(target, prototype) {
+  var setPrototypeOf = Object.setPrototypeOf;
+  setPrototypeOf ? setPrototypeOf(target, prototype) : target.__proto__ = prototype;
+}
+function fixStack(target, fn) {
+  if (fn === void 0) {
+    fn = target.constructor;
+  }
+  var captureStackTrace = Error.captureStackTrace;
+  captureStackTrace && captureStackTrace(target, fn);
+}
 var __extends = function() {
   var extendStatics = function(d, b) {
-    extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
+    extendStatics = Object.setPrototypeOf || {
+      __proto__: []
+    } instanceof Array && function(d2, b2) {
       d2.__proto__ = b2;
     } || function(d2, b2) {
-      for (var p in b2)
-        if (b2.hasOwnProperty(p))
+      for (var p in b2) {
+        if (b2.hasOwnProperty(p)) {
           d2[p] = b2[p];
+        }
+      }
     };
     return extendStatics(d, b);
   };
@@ -18,23 +32,22 @@ var __extends = function() {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
   };
 }();
-var Exception = function(_super) {
-  __extends(Exception2, _super);
-  function Exception2(message) {
-    if (message === void 0) {
-      message = void 0;
-    }
+var CustomError = function(_super) {
+  __extends(CustomError2, _super);
+  function CustomError2(message) {
+    var _newTarget = this.constructor;
     var _this = _super.call(this, message) || this;
-    _this.message = message;
+    Object.defineProperty(_this, "name", {
+      value: _newTarget.name,
+      enumerable: false,
+      configurable: true
+    });
+    fixProto(_this, _newTarget.prototype);
+    fixStack(_this);
     return _this;
   }
-  Exception2.prototype.getKind = function() {
-    var ex = this.constructor;
-    return ex.kind;
-  };
-  Exception2.kind = "Exception";
-  return Exception2;
-}(CustomError);
+  return CustomError2;
+}(Error);
 var __extends$1 = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
@@ -54,14 +67,23 @@ var __extends$1 = function() {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
   };
 }();
-var ArgumentException = function(_super) {
-  __extends$1(ArgumentException2, _super);
-  function ArgumentException2() {
-    return _super !== null && _super.apply(this, arguments) || this;
+var Exception = function(_super) {
+  __extends$1(Exception2, _super);
+  function Exception2(message) {
+    if (message === void 0) {
+      message = void 0;
+    }
+    var _this = _super.call(this, message) || this;
+    _this.message = message;
+    return _this;
   }
-  ArgumentException2.kind = "ArgumentException";
-  return ArgumentException2;
-}(Exception);
+  Exception2.prototype.getKind = function() {
+    var ex = this.constructor;
+    return ex.kind;
+  };
+  Exception2.kind = "Exception";
+  return Exception2;
+}(CustomError);
 var __extends$2 = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
@@ -81,8 +103,35 @@ var __extends$2 = function() {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
   };
 }();
+var ArgumentException = function(_super) {
+  __extends$2(ArgumentException2, _super);
+  function ArgumentException2() {
+    return _super !== null && _super.apply(this, arguments) || this;
+  }
+  ArgumentException2.kind = "ArgumentException";
+  return ArgumentException2;
+}(Exception);
+var __extends$3 = function() {
+  var extendStatics = function(d, b) {
+    extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
+      d2.__proto__ = b2;
+    } || function(d2, b2) {
+      for (var p in b2)
+        if (b2.hasOwnProperty(p))
+          d2[p] = b2[p];
+    };
+    return extendStatics(d, b);
+  };
+  return function(d, b) {
+    extendStatics(d, b);
+    function __() {
+      this.constructor = d;
+    }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+  };
+}();
 var IllegalArgumentException = function(_super) {
-  __extends$2(IllegalArgumentException2, _super);
+  __extends$3(IllegalArgumentException2, _super);
   function IllegalArgumentException2() {
     return _super !== null && _super.apply(this, arguments) || this;
   }
@@ -138,7 +187,7 @@ var BinaryBitmap = function() {
   };
   return BinaryBitmap2;
 }();
-var __extends$3 = function() {
+var __extends$4 = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
       d2.__proto__ = b2;
@@ -158,7 +207,7 @@ var __extends$3 = function() {
   };
 }();
 var ChecksumException = function(_super) {
-  __extends$3(ChecksumException2, _super);
+  __extends$4(ChecksumException2, _super);
   function ChecksumException2() {
     return _super !== null && _super.apply(this, arguments) || this;
   }
@@ -196,33 +245,6 @@ var System = function() {
   };
   return System2;
 }();
-var __extends$4 = function() {
-  var extendStatics = function(d, b) {
-    extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
-      d2.__proto__ = b2;
-    } || function(d2, b2) {
-      for (var p in b2)
-        if (b2.hasOwnProperty(p))
-          d2[p] = b2[p];
-    };
-    return extendStatics(d, b);
-  };
-  return function(d, b) {
-    extendStatics(d, b);
-    function __() {
-      this.constructor = d;
-    }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-  };
-}();
-var IndexOutOfBoundsException = function(_super) {
-  __extends$4(IndexOutOfBoundsException2, _super);
-  function IndexOutOfBoundsException2() {
-    return _super !== null && _super.apply(this, arguments) || this;
-  }
-  IndexOutOfBoundsException2.kind = "IndexOutOfBoundsException";
-  return IndexOutOfBoundsException2;
-}(Exception);
 var __extends$5 = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
@@ -242,8 +264,35 @@ var __extends$5 = function() {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
   };
 }();
+var IndexOutOfBoundsException = function(_super) {
+  __extends$5(IndexOutOfBoundsException2, _super);
+  function IndexOutOfBoundsException2() {
+    return _super !== null && _super.apply(this, arguments) || this;
+  }
+  IndexOutOfBoundsException2.kind = "IndexOutOfBoundsException";
+  return IndexOutOfBoundsException2;
+}(Exception);
+var __extends$6 = function() {
+  var extendStatics = function(d, b) {
+    extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
+      d2.__proto__ = b2;
+    } || function(d2, b2) {
+      for (var p in b2)
+        if (b2.hasOwnProperty(p))
+          d2[p] = b2[p];
+    };
+    return extendStatics(d, b);
+  };
+  return function(d, b) {
+    extendStatics(d, b);
+    function __() {
+      this.constructor = d;
+    }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+  };
+}();
 var ArrayIndexOutOfBoundsException = function(_super) {
-  __extends$5(ArrayIndexOutOfBoundsException2, _super);
+  __extends$6(ArrayIndexOutOfBoundsException2, _super);
   function ArrayIndexOutOfBoundsException2(index, message) {
     if (index === void 0) {
       index = void 0;
@@ -729,7 +778,7 @@ var DecodeHintType;
   DecodeHintType2[DecodeHintType2["ALLOWED_EAN_EXTENSIONS"] = 10] = "ALLOWED_EAN_EXTENSIONS";
 })(DecodeHintType || (DecodeHintType = {}));
 var DecodeHintType$1 = DecodeHintType;
-var __extends$6 = function() {
+var __extends$7 = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
       d2.__proto__ = b2;
@@ -749,7 +798,7 @@ var __extends$6 = function() {
   };
 }();
 var FormatException = function(_super) {
-  __extends$6(FormatException2, _super);
+  __extends$7(FormatException2, _super);
   function FormatException2() {
     return _super !== null && _super.apply(this, arguments) || this;
   }
@@ -907,7 +956,7 @@ var CharacterSetECI = function() {
   CharacterSetECI2.EUC_KR = new CharacterSetECI2(CharacterSetValueIdentifiers.EUC_KR, 30, "EUC_KR", "EUC-KR");
   return CharacterSetECI2;
 }();
-var __extends$7 = function() {
+var __extends$8 = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
       d2.__proto__ = b2;
@@ -927,7 +976,7 @@ var __extends$7 = function() {
   };
 }();
 var UnsupportedOperationException = function(_super) {
-  __extends$7(UnsupportedOperationException2, _super);
+  __extends$8(UnsupportedOperationException2, _super);
   function UnsupportedOperationException2() {
     return _super !== null && _super.apply(this, arguments) || this;
   }
@@ -1562,36 +1611,6 @@ var BitMatrix = function() {
   };
   return BitMatrix2;
 }();
-var __extends$8 = function() {
-  var extendStatics = function(d, b) {
-    extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
-      d2.__proto__ = b2;
-    } || function(d2, b2) {
-      for (var p in b2)
-        if (b2.hasOwnProperty(p))
-          d2[p] = b2[p];
-    };
-    return extendStatics(d, b);
-  };
-  return function(d, b) {
-    extendStatics(d, b);
-    function __() {
-      this.constructor = d;
-    }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-  };
-}();
-var NotFoundException = function(_super) {
-  __extends$8(NotFoundException2, _super);
-  function NotFoundException2() {
-    return _super !== null && _super.apply(this, arguments) || this;
-  }
-  NotFoundException2.getNotFoundInstance = function() {
-    return new NotFoundException2();
-  };
-  NotFoundException2.kind = "NotFoundException";
-  return NotFoundException2;
-}(Exception);
 var __extends$9 = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
@@ -1611,8 +1630,38 @@ var __extends$9 = function() {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
   };
 }();
+var NotFoundException = function(_super) {
+  __extends$9(NotFoundException2, _super);
+  function NotFoundException2() {
+    return _super !== null && _super.apply(this, arguments) || this;
+  }
+  NotFoundException2.getNotFoundInstance = function() {
+    return new NotFoundException2();
+  };
+  NotFoundException2.kind = "NotFoundException";
+  return NotFoundException2;
+}(Exception);
+var __extends$a = function() {
+  var extendStatics = function(d, b) {
+    extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
+      d2.__proto__ = b2;
+    } || function(d2, b2) {
+      for (var p in b2)
+        if (b2.hasOwnProperty(p))
+          d2[p] = b2[p];
+    };
+    return extendStatics(d, b);
+  };
+  return function(d, b) {
+    extendStatics(d, b);
+    function __() {
+      this.constructor = d;
+    }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+  };
+}();
 var GlobalHistogramBinarizer = function(_super) {
-  __extends$9(GlobalHistogramBinarizer2, _super);
+  __extends$a(GlobalHistogramBinarizer2, _super);
   function GlobalHistogramBinarizer2(source) {
     var _this = _super.call(this, source) || this;
     _this.luminances = GlobalHistogramBinarizer2.EMPTY;
@@ -1745,7 +1794,7 @@ var GlobalHistogramBinarizer = function(_super) {
   GlobalHistogramBinarizer2.EMPTY = Uint8ClampedArray.from([0]);
   return GlobalHistogramBinarizer2;
 }(Binarizer);
-var __extends$a = function() {
+var __extends$b = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
       d2.__proto__ = b2;
@@ -1765,7 +1814,7 @@ var __extends$a = function() {
   };
 }();
 var HybridBinarizer = function(_super) {
-  __extends$a(HybridBinarizer2, _super);
+  __extends$b(HybridBinarizer2, _super);
   function HybridBinarizer2(source) {
     var _this = _super.call(this, source) || this;
     _this.matrix = null;
@@ -1947,7 +1996,7 @@ var LuminanceSource = function() {
   };
   return LuminanceSource2;
 }();
-var __extends$b = function() {
+var __extends$c = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
       d2.__proto__ = b2;
@@ -1967,7 +2016,7 @@ var __extends$b = function() {
   };
 }();
 var InvertedLuminanceSource = function(_super) {
-  __extends$b(InvertedLuminanceSource2, _super);
+  __extends$c(InvertedLuminanceSource2, _super);
   function InvertedLuminanceSource2(delegate) {
     var _this = _super.call(this, delegate.getWidth(), delegate.getHeight()) || this;
     _this.delegate = delegate;
@@ -2010,7 +2059,7 @@ var InvertedLuminanceSource = function(_super) {
   };
   return InvertedLuminanceSource2;
 }(LuminanceSource);
-var __extends$c = function() {
+var __extends$d = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
       d2.__proto__ = b2;
@@ -2030,7 +2079,7 @@ var __extends$c = function() {
   };
 }();
 var HTMLCanvasElementLuminanceSource = function(_super) {
-  __extends$c(HTMLCanvasElementLuminanceSource2, _super);
+  __extends$d(HTMLCanvasElementLuminanceSource2, _super);
   function HTMLCanvasElementLuminanceSource2(canvas) {
     var _this = _super.call(this, canvas.width, canvas.height) || this;
     _this.canvas = canvas;
@@ -3350,33 +3399,6 @@ var GenericGFPoly = function() {
   };
   return GenericGFPoly2;
 }();
-var __extends$d = function() {
-  var extendStatics = function(d, b) {
-    extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
-      d2.__proto__ = b2;
-    } || function(d2, b2) {
-      for (var p in b2)
-        if (b2.hasOwnProperty(p))
-          d2[p] = b2[p];
-    };
-    return extendStatics(d, b);
-  };
-  return function(d, b) {
-    extendStatics(d, b);
-    function __() {
-      this.constructor = d;
-    }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-  };
-}();
-var ArithmeticException = function(_super) {
-  __extends$d(ArithmeticException2, _super);
-  function ArithmeticException2() {
-    return _super !== null && _super.apply(this, arguments) || this;
-  }
-  ArithmeticException2.kind = "ArithmeticException";
-  return ArithmeticException2;
-}(Exception);
 var __extends$e = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
@@ -3396,8 +3418,35 @@ var __extends$e = function() {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
   };
 }();
+var ArithmeticException = function(_super) {
+  __extends$e(ArithmeticException2, _super);
+  function ArithmeticException2() {
+    return _super !== null && _super.apply(this, arguments) || this;
+  }
+  ArithmeticException2.kind = "ArithmeticException";
+  return ArithmeticException2;
+}(Exception);
+var __extends$f = function() {
+  var extendStatics = function(d, b) {
+    extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
+      d2.__proto__ = b2;
+    } || function(d2, b2) {
+      for (var p in b2)
+        if (b2.hasOwnProperty(p))
+          d2[p] = b2[p];
+    };
+    return extendStatics(d, b);
+  };
+  return function(d, b) {
+    extendStatics(d, b);
+    function __() {
+      this.constructor = d;
+    }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+  };
+}();
 var GenericGF = function(_super) {
-  __extends$e(GenericGF2, _super);
+  __extends$f(GenericGF2, _super);
   function GenericGF2(primitive, size, generatorBase) {
     var _this = _super.call(this) || this;
     _this.primitive = primitive;
@@ -3474,33 +3523,6 @@ var GenericGF = function(_super) {
   GenericGF2.MAXICODE_FIELD_64 = GenericGF2.AZTEC_DATA_6;
   return GenericGF2;
 }(AbstractGenericGF);
-var __extends$f = function() {
-  var extendStatics = function(d, b) {
-    extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
-      d2.__proto__ = b2;
-    } || function(d2, b2) {
-      for (var p in b2)
-        if (b2.hasOwnProperty(p))
-          d2[p] = b2[p];
-    };
-    return extendStatics(d, b);
-  };
-  return function(d, b) {
-    extendStatics(d, b);
-    function __() {
-      this.constructor = d;
-    }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-  };
-}();
-var ReedSolomonException = function(_super) {
-  __extends$f(ReedSolomonException2, _super);
-  function ReedSolomonException2() {
-    return _super !== null && _super.apply(this, arguments) || this;
-  }
-  ReedSolomonException2.kind = "ReedSolomonException";
-  return ReedSolomonException2;
-}(Exception);
 var __extends$g = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
@@ -3520,8 +3542,35 @@ var __extends$g = function() {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
   };
 }();
+var ReedSolomonException = function(_super) {
+  __extends$g(ReedSolomonException2, _super);
+  function ReedSolomonException2() {
+    return _super !== null && _super.apply(this, arguments) || this;
+  }
+  ReedSolomonException2.kind = "ReedSolomonException";
+  return ReedSolomonException2;
+}(Exception);
+var __extends$h = function() {
+  var extendStatics = function(d, b) {
+    extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
+      d2.__proto__ = b2;
+    } || function(d2, b2) {
+      for (var p in b2)
+        if (b2.hasOwnProperty(p))
+          d2[p] = b2[p];
+    };
+    return extendStatics(d, b);
+  };
+  return function(d, b) {
+    extendStatics(d, b);
+    function __() {
+      this.constructor = d;
+    }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+  };
+}();
 var IllegalStateException = function(_super) {
-  __extends$g(IllegalStateException2, _super);
+  __extends$h(IllegalStateException2, _super);
   function IllegalStateException2() {
     return _super !== null && _super.apply(this, arguments) || this;
   }
@@ -4146,7 +4195,7 @@ var DetectorResult = function() {
   };
   return DetectorResult2;
 }();
-var __extends$h = function() {
+var __extends$i = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
       d2.__proto__ = b2;
@@ -4166,7 +4215,7 @@ var __extends$h = function() {
   };
 }();
 var AztecDetectorResult = function(_super) {
-  __extends$h(AztecDetectorResult2, _super);
+  __extends$i(AztecDetectorResult2, _super);
   function AztecDetectorResult2(bits, points, compact, nbDatablocks, nbLayers) {
     var _this = _super.call(this, bits, points) || this;
     _this.compact = compact;
@@ -4521,7 +4570,7 @@ var PerspectiveTransform = function() {
   };
   return PerspectiveTransform2;
 }();
-var __extends$i = function() {
+var __extends$j = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
       d2.__proto__ = b2;
@@ -4541,7 +4590,7 @@ var __extends$i = function() {
   };
 }();
 var DefaultGridSampler = function(_super) {
-  __extends$i(DefaultGridSampler2, _super);
+  __extends$j(DefaultGridSampler2, _super);
   function DefaultGridSampler2() {
     return _super !== null && _super.apply(this, arguments) || this;
   }
@@ -4962,7 +5011,7 @@ var AztecReader = function() {
   };
   return AztecReader2;
 }();
-var __extends$j = function() {
+var __extends$k = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
       d2.__proto__ = b2;
@@ -4982,7 +5031,7 @@ var __extends$j = function() {
   };
 }();
 var BrowserAztecCodeReader = function(_super) {
-  __extends$j(BrowserAztecCodeReader2, _super);
+  __extends$k(BrowserAztecCodeReader2, _super);
   function BrowserAztecCodeReader2(timeBetweenScansMillis) {
     if (timeBetweenScansMillis === void 0) {
       timeBetweenScansMillis = 500;
@@ -5152,7 +5201,7 @@ var OneDReader = function() {
   };
   return OneDReader2;
 }();
-var __extends$k = function() {
+var __extends$l = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
       d2.__proto__ = b2;
@@ -5172,7 +5221,7 @@ var __extends$k = function() {
   };
 }();
 var Code128Reader = function(_super) {
-  __extends$k(Code128Reader2, _super);
+  __extends$l(Code128Reader2, _super);
   function Code128Reader2() {
     return _super !== null && _super.apply(this, arguments) || this;
   }
@@ -5595,7 +5644,7 @@ var Code128Reader = function(_super) {
   Code128Reader2.CODE_STOP = 106;
   return Code128Reader2;
 }(OneDReader);
-var __extends$l = function() {
+var __extends$m = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
       d2.__proto__ = b2;
@@ -5629,7 +5678,7 @@ var __values$3 = function(o) {
   throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
 };
 var Code39Reader = function(_super) {
-  __extends$l(Code39Reader2, _super);
+  __extends$m(Code39Reader2, _super);
   function Code39Reader2(usingCheckDigit, extendedMode) {
     if (usingCheckDigit === void 0) {
       usingCheckDigit = false;
@@ -5930,7 +5979,7 @@ var Code39Reader = function(_super) {
   Code39Reader2.ASTERISK_ENCODING = 148;
   return Code39Reader2;
 }(OneDReader);
-var __extends$m = function() {
+var __extends$n = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
       d2.__proto__ = b2;
@@ -5964,7 +6013,7 @@ var __values$4 = function(o) {
   throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
 };
 var ITFReader = function(_super) {
-  __extends$m(ITFReader2, _super);
+  __extends$n(ITFReader2, _super);
   function ITFReader2() {
     var _this = _super !== null && _super.apply(this, arguments) || this;
     _this.narrowLineWidth = -1;
@@ -6173,7 +6222,7 @@ var ITFReader = function(_super) {
   ];
   return ITFReader2;
 }(OneDReader);
-var __extends$n = function() {
+var __extends$o = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
       d2.__proto__ = b2;
@@ -6193,7 +6242,7 @@ var __extends$n = function() {
   };
 }();
 var AbstractUPCEANReader = function(_super) {
-  __extends$n(AbstractUPCEANReader2, _super);
+  __extends$o(AbstractUPCEANReader2, _super);
   function AbstractUPCEANReader2() {
     var _this = _super !== null && _super.apply(this, arguments) || this;
     _this.decodeRowStringBuffer = "";
@@ -6569,7 +6618,7 @@ var UPCEANExtensionSupport = function() {
   UPCEANExtensionSupport2.EXTENSION_START_PATTERN = Int32Array.from([1, 1, 2]);
   return UPCEANExtensionSupport2;
 }();
-var __extends$o = function() {
+var __extends$p = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
       d2.__proto__ = b2;
@@ -6589,7 +6638,7 @@ var __extends$o = function() {
   };
 }();
 var UPCEANReader = function(_super) {
-  __extends$o(UPCEANReader2, _super);
+  __extends$p(UPCEANReader2, _super);
   function UPCEANReader2() {
     var _this = _super.call(this) || this;
     _this.decodeRowStringBuffer = "";
@@ -6703,7 +6752,7 @@ var UPCEANReader = function(_super) {
   };
   return UPCEANReader2;
 }(AbstractUPCEANReader);
-var __extends$p = function() {
+var __extends$q = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
       d2.__proto__ = b2;
@@ -6737,7 +6786,7 @@ var __values$7 = function(o) {
   throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
 };
 var EAN13Reader = function(_super) {
-  __extends$p(EAN13Reader2, _super);
+  __extends$q(EAN13Reader2, _super);
   function EAN13Reader2() {
     var _this = _super.call(this) || this;
     _this.decodeMiddleCounters = Int32Array.from([0, 0, 0, 0]);
@@ -6816,7 +6865,7 @@ var EAN13Reader = function(_super) {
   EAN13Reader2.FIRST_DIGIT_ENCODINGS = [0, 11, 13, 14, 19, 25, 28, 21, 22, 26];
   return EAN13Reader2;
 }(UPCEANReader);
-var __extends$q = function() {
+var __extends$r = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
       d2.__proto__ = b2;
@@ -6850,7 +6899,7 @@ var __values$8 = function(o) {
   throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
 };
 var EAN8Reader = function(_super) {
-  __extends$q(EAN8Reader2, _super);
+  __extends$r(EAN8Reader2, _super);
   function EAN8Reader2() {
     var _this = _super.call(this) || this;
     _this.decodeMiddleCounters = Int32Array.from([0, 0, 0, 0]);
@@ -6914,7 +6963,7 @@ var EAN8Reader = function(_super) {
   };
   return EAN8Reader2;
 }(UPCEANReader);
-var __extends$r = function() {
+var __extends$s = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
       d2.__proto__ = b2;
@@ -6934,7 +6983,7 @@ var __extends$r = function() {
   };
 }();
 var UPCAReader = function(_super) {
-  __extends$r(UPCAReader2, _super);
+  __extends$s(UPCAReader2, _super);
   function UPCAReader2() {
     var _this = _super !== null && _super.apply(this, arguments) || this;
     _this.ean13Reader = new EAN13Reader();
@@ -6969,7 +7018,7 @@ var UPCAReader = function(_super) {
   };
   return UPCAReader2;
 }(UPCEANReader);
-var __extends$s = function() {
+var __extends$t = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
       d2.__proto__ = b2;
@@ -7003,7 +7052,7 @@ var __values$9 = function(o) {
   throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
 };
 var UPCEReader = function(_super) {
-  __extends$s(UPCEReader2, _super);
+  __extends$t(UPCEReader2, _super);
   function UPCEReader2() {
     var _this = _super.call(this) || this;
     _this.decodeMiddleCounters = new Int32Array(4);
@@ -7112,7 +7161,7 @@ var UPCEReader = function(_super) {
   ];
   return UPCEReader2;
 }(UPCEANReader);
-var __extends$t = function() {
+var __extends$u = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
       d2.__proto__ = b2;
@@ -7146,7 +7195,7 @@ var __values$a = function(o) {
   throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
 };
 var MultiFormatUPCEANReader = function(_super) {
-  __extends$t(MultiFormatUPCEANReader2, _super);
+  __extends$u(MultiFormatUPCEANReader2, _super);
   function MultiFormatUPCEANReader2(hints) {
     var _this = _super.call(this) || this;
     var possibleFormats = hints == null ? null : hints.get(DecodeHintType$1.POSSIBLE_FORMATS);
@@ -7226,7 +7275,7 @@ var MultiFormatUPCEANReader = function(_super) {
   };
   return MultiFormatUPCEANReader2;
 }(OneDReader);
-var __extends$u = function() {
+var __extends$v = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
       d2.__proto__ = b2;
@@ -7260,7 +7309,7 @@ var __values$b = function(o) {
   throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
 };
 var AbstractRSSReader = function(_super) {
-  __extends$u(AbstractRSSReader2, _super);
+  __extends$v(AbstractRSSReader2, _super);
   function AbstractRSSReader2() {
     var _this = _super.call(this) || this;
     _this.decodeFinderCounters = new Int32Array(4);
@@ -7574,41 +7623,6 @@ var DecodedObject = function() {
   };
   return DecodedObject2;
 }();
-var __extends$v = function() {
-  var extendStatics = function(d, b) {
-    extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
-      d2.__proto__ = b2;
-    } || function(d2, b2) {
-      for (var p in b2)
-        if (b2.hasOwnProperty(p))
-          d2[p] = b2[p];
-    };
-    return extendStatics(d, b);
-  };
-  return function(d, b) {
-    extendStatics(d, b);
-    function __() {
-      this.constructor = d;
-    }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-  };
-}();
-var DecodedChar = function(_super) {
-  __extends$v(DecodedChar2, _super);
-  function DecodedChar2(newPosition, value) {
-    var _this = _super.call(this, newPosition) || this;
-    _this.value = value;
-    return _this;
-  }
-  DecodedChar2.prototype.getValue = function() {
-    return this.value;
-  };
-  DecodedChar2.prototype.isFNC1 = function() {
-    return this.value === DecodedChar2.FNC1;
-  };
-  DecodedChar2.FNC1 = "$";
-  return DecodedChar2;
-}(DecodedObject);
 var __extends$w = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
@@ -7628,8 +7642,43 @@ var __extends$w = function() {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
   };
 }();
+var DecodedChar = function(_super) {
+  __extends$w(DecodedChar2, _super);
+  function DecodedChar2(newPosition, value) {
+    var _this = _super.call(this, newPosition) || this;
+    _this.value = value;
+    return _this;
+  }
+  DecodedChar2.prototype.getValue = function() {
+    return this.value;
+  };
+  DecodedChar2.prototype.isFNC1 = function() {
+    return this.value === DecodedChar2.FNC1;
+  };
+  DecodedChar2.FNC1 = "$";
+  return DecodedChar2;
+}(DecodedObject);
+var __extends$x = function() {
+  var extendStatics = function(d, b) {
+    extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
+      d2.__proto__ = b2;
+    } || function(d2, b2) {
+      for (var p in b2)
+        if (b2.hasOwnProperty(p))
+          d2[p] = b2[p];
+    };
+    return extendStatics(d, b);
+  };
+  return function(d, b) {
+    extendStatics(d, b);
+    function __() {
+      this.constructor = d;
+    }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+  };
+}();
 var DecodedInformation = function(_super) {
-  __extends$w(DecodedInformation2, _super);
+  __extends$x(DecodedInformation2, _super);
   function DecodedInformation2(newPosition, newString, remainingValue) {
     var _this = _super.call(this, newPosition) || this;
     if (remainingValue) {
@@ -7653,7 +7702,7 @@ var DecodedInformation = function(_super) {
   };
   return DecodedInformation2;
 }(DecodedObject);
-var __extends$x = function() {
+var __extends$y = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
       d2.__proto__ = b2;
@@ -7673,7 +7722,7 @@ var __extends$x = function() {
   };
 }();
 var DecodedNumeric = function(_super) {
-  __extends$x(DecodedNumeric2, _super);
+  __extends$y(DecodedNumeric2, _super);
   function DecodedNumeric2(newPosition, firstDigit, secondDigit) {
     var _this = _super.call(this, newPosition) || this;
     if (firstDigit < 0 || firstDigit > 10 || secondDigit < 0 || secondDigit > 10) {
@@ -8360,7 +8409,7 @@ var AbstractExpandedDecoder = function() {
   };
   return AbstractExpandedDecoder2;
 }();
-var __extends$y = function() {
+var __extends$z = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
       d2.__proto__ = b2;
@@ -8380,7 +8429,7 @@ var __extends$y = function() {
   };
 }();
 var AI01decoder = function(_super) {
-  __extends$y(AI01decoder2, _super);
+  __extends$z(AI01decoder2, _super);
   function AI01decoder2(information) {
     return _super.call(this, information) || this;
   }
@@ -8418,42 +8467,6 @@ var AI01decoder = function(_super) {
   AI01decoder2.GTIN_SIZE = 40;
   return AI01decoder2;
 }(AbstractExpandedDecoder);
-var __extends$z = function() {
-  var extendStatics = function(d, b) {
-    extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
-      d2.__proto__ = b2;
-    } || function(d2, b2) {
-      for (var p in b2)
-        if (b2.hasOwnProperty(p))
-          d2[p] = b2[p];
-    };
-    return extendStatics(d, b);
-  };
-  return function(d, b) {
-    extendStatics(d, b);
-    function __() {
-      this.constructor = d;
-    }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-  };
-}();
-var AI01AndOtherAIs = function(_super) {
-  __extends$z(AI01AndOtherAIs2, _super);
-  function AI01AndOtherAIs2(information) {
-    return _super.call(this, information) || this;
-  }
-  AI01AndOtherAIs2.prototype.parseInformation = function() {
-    var buff = new StringBuilder();
-    buff.append("(01)");
-    var initialGtinPosition = buff.length();
-    var firstGtinDigit = this.getGeneralDecoder().extractNumericValueFromBitArray(AI01AndOtherAIs2.HEADER_SIZE, 4);
-    buff.append(firstGtinDigit);
-    this.encodeCompressedGtinWithoutAI(buff, AI01AndOtherAIs2.HEADER_SIZE + 4, initialGtinPosition);
-    return this.getGeneralDecoder().decodeAllCodes(buff, AI01AndOtherAIs2.HEADER_SIZE + 44);
-  };
-  AI01AndOtherAIs2.HEADER_SIZE = 1 + 1 + 2;
-  return AI01AndOtherAIs2;
-}(AI01decoder);
 var __extends$A = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
@@ -8473,18 +8486,23 @@ var __extends$A = function() {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
   };
 }();
-var AnyAIDecoder = function(_super) {
-  __extends$A(AnyAIDecoder2, _super);
-  function AnyAIDecoder2(information) {
+var AI01AndOtherAIs = function(_super) {
+  __extends$A(AI01AndOtherAIs2, _super);
+  function AI01AndOtherAIs2(information) {
     return _super.call(this, information) || this;
   }
-  AnyAIDecoder2.prototype.parseInformation = function() {
-    var buf = new StringBuilder();
-    return this.getGeneralDecoder().decodeAllCodes(buf, AnyAIDecoder2.HEADER_SIZE);
+  AI01AndOtherAIs2.prototype.parseInformation = function() {
+    var buff = new StringBuilder();
+    buff.append("(01)");
+    var initialGtinPosition = buff.length();
+    var firstGtinDigit = this.getGeneralDecoder().extractNumericValueFromBitArray(AI01AndOtherAIs2.HEADER_SIZE, 4);
+    buff.append(firstGtinDigit);
+    this.encodeCompressedGtinWithoutAI(buff, AI01AndOtherAIs2.HEADER_SIZE + 4, initialGtinPosition);
+    return this.getGeneralDecoder().decodeAllCodes(buff, AI01AndOtherAIs2.HEADER_SIZE + 44);
   };
-  AnyAIDecoder2.HEADER_SIZE = 2 + 1 + 2;
-  return AnyAIDecoder2;
-}(AbstractExpandedDecoder);
+  AI01AndOtherAIs2.HEADER_SIZE = 1 + 1 + 2;
+  return AI01AndOtherAIs2;
+}(AI01decoder);
 var __extends$B = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
@@ -8504,26 +8522,18 @@ var __extends$B = function() {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
   };
 }();
-var AI01weightDecoder = function(_super) {
-  __extends$B(AI01weightDecoder2, _super);
-  function AI01weightDecoder2(information) {
+var AnyAIDecoder = function(_super) {
+  __extends$B(AnyAIDecoder2, _super);
+  function AnyAIDecoder2(information) {
     return _super.call(this, information) || this;
   }
-  AI01weightDecoder2.prototype.encodeCompressedWeight = function(buf, currentPos, weightSize) {
-    var originalWeightNumeric = this.getGeneralDecoder().extractNumericValueFromBitArray(currentPos, weightSize);
-    this.addWeightCode(buf, originalWeightNumeric);
-    var weightNumeric = this.checkWeight(originalWeightNumeric);
-    var currentDivisor = 1e5;
-    for (var i = 0; i < 5; ++i) {
-      if (weightNumeric / currentDivisor === 0) {
-        buf.append("0");
-      }
-      currentDivisor /= 10;
-    }
-    buf.append(weightNumeric);
+  AnyAIDecoder2.prototype.parseInformation = function() {
+    var buf = new StringBuilder();
+    return this.getGeneralDecoder().decodeAllCodes(buf, AnyAIDecoder2.HEADER_SIZE);
   };
-  return AI01weightDecoder2;
-}(AI01decoder);
+  AnyAIDecoder2.HEADER_SIZE = 2 + 1 + 2;
+  return AnyAIDecoder2;
+}(AbstractExpandedDecoder);
 var __extends$C = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
@@ -8543,24 +8553,26 @@ var __extends$C = function() {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
   };
 }();
-var AI013x0xDecoder = function(_super) {
-  __extends$C(AI013x0xDecoder2, _super);
-  function AI013x0xDecoder2(information) {
+var AI01weightDecoder = function(_super) {
+  __extends$C(AI01weightDecoder2, _super);
+  function AI01weightDecoder2(information) {
     return _super.call(this, information) || this;
   }
-  AI013x0xDecoder2.prototype.parseInformation = function() {
-    if (this.getInformation().getSize() != AI013x0xDecoder2.HEADER_SIZE + AI01weightDecoder.GTIN_SIZE + AI013x0xDecoder2.WEIGHT_SIZE) {
-      throw new NotFoundException();
+  AI01weightDecoder2.prototype.encodeCompressedWeight = function(buf, currentPos, weightSize) {
+    var originalWeightNumeric = this.getGeneralDecoder().extractNumericValueFromBitArray(currentPos, weightSize);
+    this.addWeightCode(buf, originalWeightNumeric);
+    var weightNumeric = this.checkWeight(originalWeightNumeric);
+    var currentDivisor = 1e5;
+    for (var i = 0; i < 5; ++i) {
+      if (weightNumeric / currentDivisor === 0) {
+        buf.append("0");
+      }
+      currentDivisor /= 10;
     }
-    var buf = new StringBuilder();
-    this.encodeCompressedGtin(buf, AI013x0xDecoder2.HEADER_SIZE);
-    this.encodeCompressedWeight(buf, AI013x0xDecoder2.HEADER_SIZE + AI01weightDecoder.GTIN_SIZE, AI013x0xDecoder2.WEIGHT_SIZE);
-    return buf.toString();
+    buf.append(weightNumeric);
   };
-  AI013x0xDecoder2.HEADER_SIZE = 4 + 1;
-  AI013x0xDecoder2.WEIGHT_SIZE = 15;
-  return AI013x0xDecoder2;
-}(AI01weightDecoder);
+  return AI01weightDecoder2;
+}(AI01decoder);
 var __extends$D = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
@@ -8580,19 +8592,24 @@ var __extends$D = function() {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
   };
 }();
-var AI013103decoder = function(_super) {
-  __extends$D(AI013103decoder2, _super);
-  function AI013103decoder2(information) {
+var AI013x0xDecoder = function(_super) {
+  __extends$D(AI013x0xDecoder2, _super);
+  function AI013x0xDecoder2(information) {
     return _super.call(this, information) || this;
   }
-  AI013103decoder2.prototype.addWeightCode = function(buf, weight) {
-    buf.append("(3103)");
+  AI013x0xDecoder2.prototype.parseInformation = function() {
+    if (this.getInformation().getSize() != AI013x0xDecoder2.HEADER_SIZE + AI01weightDecoder.GTIN_SIZE + AI013x0xDecoder2.WEIGHT_SIZE) {
+      throw new NotFoundException();
+    }
+    var buf = new StringBuilder();
+    this.encodeCompressedGtin(buf, AI013x0xDecoder2.HEADER_SIZE);
+    this.encodeCompressedWeight(buf, AI013x0xDecoder2.HEADER_SIZE + AI01weightDecoder.GTIN_SIZE, AI013x0xDecoder2.WEIGHT_SIZE);
+    return buf.toString();
   };
-  AI013103decoder2.prototype.checkWeight = function(weight) {
-    return weight;
-  };
-  return AI013103decoder2;
-}(AI013x0xDecoder);
+  AI013x0xDecoder2.HEADER_SIZE = 4 + 1;
+  AI013x0xDecoder2.WEIGHT_SIZE = 15;
+  return AI013x0xDecoder2;
+}(AI01weightDecoder);
 var __extends$E = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
@@ -8612,25 +8629,18 @@ var __extends$E = function() {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
   };
 }();
-var AI01320xDecoder = function(_super) {
-  __extends$E(AI01320xDecoder2, _super);
-  function AI01320xDecoder2(information) {
+var AI013103decoder = function(_super) {
+  __extends$E(AI013103decoder2, _super);
+  function AI013103decoder2(information) {
     return _super.call(this, information) || this;
   }
-  AI01320xDecoder2.prototype.addWeightCode = function(buf, weight) {
-    if (weight < 1e4) {
-      buf.append("(3202)");
-    } else {
-      buf.append("(3203)");
-    }
+  AI013103decoder2.prototype.addWeightCode = function(buf, weight) {
+    buf.append("(3103)");
   };
-  AI01320xDecoder2.prototype.checkWeight = function(weight) {
-    if (weight < 1e4) {
-      return weight;
-    }
-    return weight - 1e4;
+  AI013103decoder2.prototype.checkWeight = function(weight) {
+    return weight;
   };
-  return AI01320xDecoder2;
+  return AI013103decoder2;
 }(AI013x0xDecoder);
 var __extends$F = function() {
   var extendStatics = function(d, b) {
@@ -8651,8 +8661,47 @@ var __extends$F = function() {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
   };
 }();
+var AI01320xDecoder = function(_super) {
+  __extends$F(AI01320xDecoder2, _super);
+  function AI01320xDecoder2(information) {
+    return _super.call(this, information) || this;
+  }
+  AI01320xDecoder2.prototype.addWeightCode = function(buf, weight) {
+    if (weight < 1e4) {
+      buf.append("(3202)");
+    } else {
+      buf.append("(3203)");
+    }
+  };
+  AI01320xDecoder2.prototype.checkWeight = function(weight) {
+    if (weight < 1e4) {
+      return weight;
+    }
+    return weight - 1e4;
+  };
+  return AI01320xDecoder2;
+}(AI013x0xDecoder);
+var __extends$G = function() {
+  var extendStatics = function(d, b) {
+    extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
+      d2.__proto__ = b2;
+    } || function(d2, b2) {
+      for (var p in b2)
+        if (b2.hasOwnProperty(p))
+          d2[p] = b2[p];
+    };
+    return extendStatics(d, b);
+  };
+  return function(d, b) {
+    extendStatics(d, b);
+    function __() {
+      this.constructor = d;
+    }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+  };
+}();
 var AI01392xDecoder = function(_super) {
-  __extends$F(AI01392xDecoder2, _super);
+  __extends$G(AI01392xDecoder2, _super);
   function AI01392xDecoder2(information) {
     return _super.call(this, information) || this;
   }
@@ -8674,7 +8723,7 @@ var AI01392xDecoder = function(_super) {
   AI01392xDecoder2.LAST_DIGIT_SIZE = 2;
   return AI01392xDecoder2;
 }(AI01decoder);
-var __extends$G = function() {
+var __extends$H = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
       d2.__proto__ = b2;
@@ -8694,7 +8743,7 @@ var __extends$G = function() {
   };
 }();
 var AI01393xDecoder = function(_super) {
-  __extends$G(AI01393xDecoder2, _super);
+  __extends$H(AI01393xDecoder2, _super);
   function AI01393xDecoder2(information) {
     return _super.call(this, information) || this;
   }
@@ -8725,7 +8774,7 @@ var AI01393xDecoder = function(_super) {
   AI01393xDecoder2.FIRST_THREE_DIGITS_SIZE = 10;
   return AI01393xDecoder2;
 }(AI01decoder);
-var __extends$H = function() {
+var __extends$I = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
       d2.__proto__ = b2;
@@ -8745,7 +8794,7 @@ var __extends$H = function() {
   };
 }();
 var AI013x0x1xDecoder = function(_super) {
-  __extends$H(AI013x0x1xDecoder2, _super);
+  __extends$I(AI013x0x1xDecoder2, _super);
   function AI013x0x1xDecoder2(information, firstAIdigits, dateCode) {
     var _this = _super.call(this, information) || this;
     _this.dateCode = dateCode;
@@ -8930,7 +8979,7 @@ var ExpandedRow = function() {
   };
   return ExpandedRow2;
 }();
-var __extends$I = function() {
+var __extends$J = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
       d2.__proto__ = b2;
@@ -8964,7 +9013,7 @@ var __values$e = function(o) {
   throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
 };
 var RSSExpandedReader = function(_super) {
-  __extends$I(RSSExpandedReader2, _super);
+  __extends$J(RSSExpandedReader2, _super);
   function RSSExpandedReader2() {
     var _this = _super !== null && _super.apply(this, arguments) || this;
     _this.pairs = new Array(RSSExpandedReader2.MAX_PAIRS);
@@ -9660,7 +9709,7 @@ var RSSExpandedReader = function(_super) {
   RSSExpandedReader2.MAX_PAIRS = 11;
   return RSSExpandedReader2;
 }(AbstractRSSReader);
-var __extends$J = function() {
+var __extends$K = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
       d2.__proto__ = b2;
@@ -9680,7 +9729,7 @@ var __extends$J = function() {
   };
 }();
 var Pair = function(_super) {
-  __extends$J(Pair2, _super);
+  __extends$K(Pair2, _super);
   function Pair2(value, checksumPortion, finderPattern) {
     var _this = _super.call(this, value, checksumPortion) || this;
     _this.count = 0;
@@ -9698,7 +9747,7 @@ var Pair = function(_super) {
   };
   return Pair2;
 }(DataCharacter);
-var __extends$K = function() {
+var __extends$L = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
       d2.__proto__ = b2;
@@ -9732,7 +9781,7 @@ var __values$f = function(o) {
   throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
 };
 var RSS14Reader = function(_super) {
-  __extends$K(RSS14Reader2, _super);
+  __extends$L(RSS14Reader2, _super);
   function RSS14Reader2() {
     var _this = _super !== null && _super.apply(this, arguments) || this;
     _this.possibleLeftPairs = [];
@@ -10127,7 +10176,7 @@ var RSS14Reader = function(_super) {
   ];
   return RSS14Reader2;
 }(AbstractRSSReader);
-var __extends$L = function() {
+var __extends$M = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
       d2.__proto__ = b2;
@@ -10147,7 +10196,7 @@ var __extends$L = function() {
   };
 }();
 var MultiFormatOneDReader = function(_super) {
-  __extends$L(MultiFormatOneDReader2, _super);
+  __extends$M(MultiFormatOneDReader2, _super);
   function MultiFormatOneDReader2(hints) {
     var _this = _super.call(this) || this;
     _this.readers = [];
@@ -10200,7 +10249,7 @@ var MultiFormatOneDReader = function(_super) {
   };
   return MultiFormatOneDReader2;
 }(OneDReader);
-var __extends$M = function() {
+var __extends$N = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
       d2.__proto__ = b2;
@@ -10220,7 +10269,7 @@ var __extends$M = function() {
   };
 }();
 var BrowserBarcodeReader = function(_super) {
-  __extends$M(BrowserBarcodeReader2, _super);
+  __extends$N(BrowserBarcodeReader2, _super);
   function BrowserBarcodeReader2(timeBetweenScansMillis, hints) {
     if (timeBetweenScansMillis === void 0) {
       timeBetweenScansMillis = 500;
@@ -11728,7 +11777,7 @@ var DataMatrixReader = function() {
   DataMatrixReader2.NO_POINTS = [];
   return DataMatrixReader2;
 }();
-var __extends$N = function() {
+var __extends$O = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
       d2.__proto__ = b2;
@@ -11748,7 +11797,7 @@ var __extends$N = function() {
   };
 }();
 var BrowserDatamatrixCodeReader = function(_super) {
-  __extends$N(BrowserDatamatrixCodeReader2, _super);
+  __extends$O(BrowserDatamatrixCodeReader2, _super);
   function BrowserDatamatrixCodeReader2(timeBetweenScansMillis) {
     if (timeBetweenScansMillis === void 0) {
       timeBetweenScansMillis = 500;
@@ -12933,7 +12982,7 @@ var Decoder$2 = function() {
   };
   return Decoder2;
 }();
-var __extends$O = function() {
+var __extends$P = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
       d2.__proto__ = b2;
@@ -12953,7 +13002,7 @@ var __extends$O = function() {
   };
 }();
 var AlignmentPattern = function(_super) {
-  __extends$O(AlignmentPattern2, _super);
+  __extends$P(AlignmentPattern2, _super);
   function AlignmentPattern2(posX, posY, estimatedModuleSize) {
     var _this = _super.call(this, posX, posY) || this;
     _this.estimatedModuleSize = estimatedModuleSize;
@@ -13149,7 +13198,7 @@ var AlignmentPatternFinder = function() {
   };
   return AlignmentPatternFinder2;
 }();
-var __extends$P = function() {
+var __extends$Q = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
       d2.__proto__ = b2;
@@ -13169,7 +13218,7 @@ var __extends$P = function() {
   };
 }();
 var FinderPattern$1 = function(_super) {
-  __extends$P(FinderPattern2, _super);
+  __extends$Q(FinderPattern2, _super);
   function FinderPattern2(posX, posY, estimatedModuleSize, count) {
     var _this = _super.call(this, posX, posY) || this;
     _this.estimatedModuleSize = estimatedModuleSize;
@@ -20142,7 +20191,7 @@ var ModulusBase = function() {
   };
   return ModulusBase2;
 }();
-var __extends$Q = function() {
+var __extends$R = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
       d2.__proto__ = b2;
@@ -20162,7 +20211,7 @@ var __extends$Q = function() {
   };
 }();
 var ModulusGF = function(_super) {
-  __extends$Q(ModulusGF2, _super);
+  __extends$R(ModulusGF2, _super);
   function ModulusGF2(modulus, generator) {
     var _this = _super.call(this) || this;
     _this.modulus = modulus;
@@ -20714,7 +20763,7 @@ var BarcodeValue = function() {
   };
   return BarcodeValue2;
 }();
-var __extends$R = function() {
+var __extends$S = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
       d2.__proto__ = b2;
@@ -20748,7 +20797,7 @@ var __values$w = function(o) {
   throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
 };
 var DetectionResultRowIndicatorColumn = function(_super) {
-  __extends$R(DetectionResultRowIndicatorColumn2, _super);
+  __extends$S(DetectionResultRowIndicatorColumn2, _super);
   function DetectionResultRowIndicatorColumn2(boundingBox, isLeft) {
     var _this = _super.call(this, boundingBox) || this;
     _this._isLeft = isLeft;
@@ -21445,7 +21494,7 @@ var Long = function() {
   };
   return Long2;
 }();
-var __extends$S = function() {
+var __extends$T = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
       d2.__proto__ = b2;
@@ -21465,7 +21514,7 @@ var __extends$S = function() {
   };
 }();
 var NullPointerException = function(_super) {
-  __extends$S(NullPointerException2, _super);
+  __extends$T(NullPointerException2, _super);
   function NullPointerException2() {
     return _super !== null && _super.apply(this, arguments) || this;
   }
@@ -21496,32 +21545,6 @@ var OutputStream = function() {
   };
   return OutputStream2;
 }();
-var __extends$T = function() {
-  var extendStatics = function(d, b) {
-    extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
-      d2.__proto__ = b2;
-    } || function(d2, b2) {
-      for (var p in b2)
-        if (b2.hasOwnProperty(p))
-          d2[p] = b2[p];
-    };
-    return extendStatics(d, b);
-  };
-  return function(d, b) {
-    extendStatics(d, b);
-    function __() {
-      this.constructor = d;
-    }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-  };
-}();
-var OutOfMemoryError = function(_super) {
-  __extends$T(OutOfMemoryError2, _super);
-  function OutOfMemoryError2() {
-    return _super !== null && _super.apply(this, arguments) || this;
-  }
-  return OutOfMemoryError2;
-}(Exception);
 var __extends$U = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
@@ -21541,8 +21564,34 @@ var __extends$U = function() {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
   };
 }();
+var OutOfMemoryError = function(_super) {
+  __extends$U(OutOfMemoryError2, _super);
+  function OutOfMemoryError2() {
+    return _super !== null && _super.apply(this, arguments) || this;
+  }
+  return OutOfMemoryError2;
+}(Exception);
+var __extends$V = function() {
+  var extendStatics = function(d, b) {
+    extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
+      d2.__proto__ = b2;
+    } || function(d2, b2) {
+      for (var p in b2)
+        if (b2.hasOwnProperty(p))
+          d2[p] = b2[p];
+    };
+    return extendStatics(d, b);
+  };
+  return function(d, b) {
+    extendStatics(d, b);
+    function __() {
+      this.constructor = d;
+    }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+  };
+}();
 var ByteArrayOutputStream = function(_super) {
-  __extends$U(ByteArrayOutputStream2, _super);
+  __extends$V(ByteArrayOutputStream2, _super);
   function ByteArrayOutputStream2(size) {
     if (size === void 0) {
       size = 32;
@@ -22743,7 +22792,7 @@ var PDF417Reader = function() {
   };
   return PDF417Reader2;
 }();
-var __extends$V = function() {
+var __extends$W = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
       d2.__proto__ = b2;
@@ -22763,7 +22812,7 @@ var __extends$V = function() {
   };
 }();
 var ReaderException = function(_super) {
-  __extends$V(ReaderException2, _super);
+  __extends$W(ReaderException2, _super);
   function ReaderException2() {
     return _super !== null && _super.apply(this, arguments) || this;
   }
@@ -22891,45 +22940,6 @@ var MultiFormatReader = function() {
   };
   return MultiFormatReader2;
 }();
-var __extends$W = function() {
-  var extendStatics = function(d, b) {
-    extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
-      d2.__proto__ = b2;
-    } || function(d2, b2) {
-      for (var p in b2)
-        if (b2.hasOwnProperty(p))
-          d2[p] = b2[p];
-    };
-    return extendStatics(d, b);
-  };
-  return function(d, b) {
-    extendStatics(d, b);
-    function __() {
-      this.constructor = d;
-    }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-  };
-}();
-var BrowserMultiFormatReader = function(_super) {
-  __extends$W(BrowserMultiFormatReader2, _super);
-  function BrowserMultiFormatReader2(hints, timeBetweenScansMillis) {
-    if (hints === void 0) {
-      hints = null;
-    }
-    if (timeBetweenScansMillis === void 0) {
-      timeBetweenScansMillis = 500;
-    }
-    var _this = this;
-    var reader = new MultiFormatReader();
-    reader.setHints(hints);
-    _this = _super.call(this, reader, timeBetweenScansMillis) || this;
-    return _this;
-  }
-  BrowserMultiFormatReader2.prototype.decodeBitmap = function(binaryBitmap) {
-    return this.reader.decodeWithState(binaryBitmap);
-  };
-  return BrowserMultiFormatReader2;
-}(BrowserCodeReader);
 var __extends$X = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
@@ -22949,15 +22959,25 @@ var __extends$X = function() {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
   };
 }();
-var BrowserPDF417Reader = function(_super) {
-  __extends$X(BrowserPDF417Reader2, _super);
-  function BrowserPDF417Reader2(timeBetweenScansMillis) {
+var BrowserMultiFormatReader = function(_super) {
+  __extends$X(BrowserMultiFormatReader2, _super);
+  function BrowserMultiFormatReader2(hints, timeBetweenScansMillis) {
+    if (hints === void 0) {
+      hints = null;
+    }
     if (timeBetweenScansMillis === void 0) {
       timeBetweenScansMillis = 500;
     }
-    return _super.call(this, new PDF417Reader(), timeBetweenScansMillis) || this;
+    var _this = this;
+    var reader = new MultiFormatReader();
+    reader.setHints(hints);
+    _this = _super.call(this, reader, timeBetweenScansMillis) || this;
+    return _this;
   }
-  return BrowserPDF417Reader2;
+  BrowserMultiFormatReader2.prototype.decodeBitmap = function(binaryBitmap) {
+    return this.reader.decodeWithState(binaryBitmap);
+  };
+  return BrowserMultiFormatReader2;
 }(BrowserCodeReader);
 var __extends$Y = function() {
   var extendStatics = function(d, b) {
@@ -22978,8 +22998,37 @@ var __extends$Y = function() {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
   };
 }();
+var BrowserPDF417Reader = function(_super) {
+  __extends$Y(BrowserPDF417Reader2, _super);
+  function BrowserPDF417Reader2(timeBetweenScansMillis) {
+    if (timeBetweenScansMillis === void 0) {
+      timeBetweenScansMillis = 500;
+    }
+    return _super.call(this, new PDF417Reader(), timeBetweenScansMillis) || this;
+  }
+  return BrowserPDF417Reader2;
+}(BrowserCodeReader);
+var __extends$Z = function() {
+  var extendStatics = function(d, b) {
+    extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
+      d2.__proto__ = b2;
+    } || function(d2, b2) {
+      for (var p in b2)
+        if (b2.hasOwnProperty(p))
+          d2[p] = b2[p];
+    };
+    return extendStatics(d, b);
+  };
+  return function(d, b) {
+    extendStatics(d, b);
+    function __() {
+      this.constructor = d;
+    }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+  };
+}();
 var BrowserQRCodeReader = function(_super) {
-  __extends$Y(BrowserQRCodeReader2, _super);
+  __extends$Z(BrowserQRCodeReader2, _super);
   function BrowserQRCodeReader2(timeBetweenScansMillis) {
     if (timeBetweenScansMillis === void 0) {
       timeBetweenScansMillis = 500;
@@ -23356,7 +23405,7 @@ var QRCode = function() {
   QRCode2.NUM_MASK_PATTERNS = 8;
   return QRCode2;
 }();
-var __extends$Z = function() {
+var __extends$_ = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
       d2.__proto__ = b2;
@@ -23376,7 +23425,7 @@ var __extends$Z = function() {
   };
 }();
 var WriterException = function(_super) {
-  __extends$Z(WriterException2, _super);
+  __extends$_(WriterException2, _super);
   function WriterException2() {
     return _super !== null && _super.apply(this, arguments) || this;
   }
@@ -24357,7 +24406,7 @@ var MultiFormatWriter = function() {
   };
   return MultiFormatWriter2;
 }();
-var __extends$_ = function() {
+var __extends$$ = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
       d2.__proto__ = b2;
@@ -24377,7 +24426,7 @@ var __extends$_ = function() {
   };
 }();
 var PlanarYUVLuminanceSource = function(_super) {
-  __extends$_(PlanarYUVLuminanceSource2, _super);
+  __extends$$(PlanarYUVLuminanceSource2, _super);
   function PlanarYUVLuminanceSource2(yuvData, dataWidth, dataHeight, left, top, width, height, reverseHorizontal) {
     var _this = _super.call(this, width, height) || this;
     _this.yuvData = yuvData;
@@ -24470,7 +24519,7 @@ var PlanarYUVLuminanceSource = function(_super) {
   PlanarYUVLuminanceSource2.THUMBNAIL_SCALE_FACTOR = 2;
   return PlanarYUVLuminanceSource2;
 }(LuminanceSource);
-var __extends$$ = function() {
+var __extends$10 = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
       d2.__proto__ = b2;
@@ -24490,7 +24539,7 @@ var __extends$$ = function() {
   };
 }();
 var RGBLuminanceSource = function(_super) {
-  __extends$$(RGBLuminanceSource2, _super);
+  __extends$10(RGBLuminanceSource2, _super);
   function RGBLuminanceSource2(luminances, width, height, dataWidth, dataHeight, left, top) {
     var _this = _super.call(this, width, height) || this;
     _this.dataWidth = dataWidth;
@@ -24571,7 +24620,7 @@ var RGBLuminanceSource = function(_super) {
   };
   return RGBLuminanceSource2;
 }(LuminanceSource);
-var __extends$10 = function() {
+var __extends$11 = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
       d2.__proto__ = b2;
@@ -24591,7 +24640,7 @@ var __extends$10 = function() {
   };
 }();
 var Charset = function(_super) {
-  __extends$10(Charset2, _super);
+  __extends$11(Charset2, _super);
   function Charset2() {
     return _super !== null && _super.apply(this, arguments) || this;
   }
@@ -24661,7 +24710,7 @@ var Token = function() {
   };
   return Token2;
 }();
-var __extends$11 = function() {
+var __extends$12 = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
       d2.__proto__ = b2;
@@ -24681,7 +24730,7 @@ var __extends$11 = function() {
   };
 }();
 var SimpleToken = function(_super) {
-  __extends$11(SimpleToken2, _super);
+  __extends$12(SimpleToken2, _super);
   function SimpleToken2(previous, value, bitCount) {
     var _this = _super.call(this, previous) || this;
     _this.value = value;
@@ -24705,7 +24754,7 @@ var SimpleToken = function(_super) {
   };
   return SimpleToken2;
 }(Token);
-var __extends$12 = function() {
+var __extends$13 = function() {
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
       d2.__proto__ = b2;
@@ -24725,7 +24774,7 @@ var __extends$12 = function() {
   };
 }();
 var BinaryShiftToken = function(_super) {
-  __extends$12(BinaryShiftToken2, _super);
+  __extends$13(BinaryShiftToken2, _super);
   function BinaryShiftToken2(previous, binaryShiftStart, binaryShiftByteCount) {
     var _this = _super.call(this, previous, 0, 0) || this;
     _this.binaryShiftStart = binaryShiftStart;

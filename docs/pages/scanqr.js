@@ -1,7 +1,7 @@
 import {gotoPage} from "../router.js";
-import {html} from "../../_snowpack/pkg/lit-html.js";
+import {html} from "../_snowpack/pkg/lit-html.js";
 import {log} from "../log.js";
-import {BrowserMultiFormatReader, BarcodeFormat, NotFoundException} from "../../_snowpack/pkg/@zxing/library.js";
+import {BrowserMultiFormatReader, BarcodeFormat, NotFoundException} from "../_snowpack/pkg/@zxing/library.js";
 import {AbstractPage} from "./abstractpage.js";
 export class ScanQrPage extends AbstractPage {
   constructor(domElem) {

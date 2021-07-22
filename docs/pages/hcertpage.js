@@ -1,4 +1,4 @@
-import {html, render} from "../../_snowpack/pkg/lit-html.js";
+import {html, render} from "../_snowpack/pkg/lit-html.js";
 import {log} from "../log.js";
 import {CWT} from "../components/cwt.js";
 import {AbstractPage} from "./abstractpage.js";

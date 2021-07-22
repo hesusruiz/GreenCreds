@@ -1,5 +1,5 @@
 import {AbstractPage} from "./abstractpage.js";
-import {html} from "../../_snowpack/pkg/lit-html.js";
+import {html} from "../_snowpack/pkg/lit-html.js";
 export class Page404 extends AbstractPage {
   constructor(domElem) {
     console.log("PAGE404: inside constructor");

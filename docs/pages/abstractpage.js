@@ -1,4 +1,4 @@
-import {html, render} from "../../_snowpack/pkg/lit-html.js";
+import {html, render} from "../_snowpack/pkg/lit-html.js";
 import {HeaderBar} from "../components/header.js";
 export class AbstractPage {
   constructor(id) {

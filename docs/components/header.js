@@ -1,4 +1,4 @@
-import {html, render} from "../../_snowpack/pkg/lit-html.js";
+import {html, render} from "../_snowpack/pkg/lit-html.js";
 import {goHome as routerGoHome} from "../router.js";
 var domElem = void 0;
 var x = void 0;
