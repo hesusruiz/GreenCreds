@@ -81,7 +81,7 @@ export class ScanQrPage extends AbstractPage {
       if (result) {
         console.log("RESULT", result);
         this.codeReader.reset();
-        gotoPage("displayhcert", result.text);
+        processQRpiece(result);
       }
       if (err && !(err instanceof NotFoundException)) {
         console.error(err);
@@ -101,7 +101,7 @@ export class ScanQrPage extends AbstractPage {
       if (result) {
         console.log("RESULT", result);
         this.codeReader.reset();
-        gotoPage("displayhcert", result.text);
+        processQRpiece(result);
       }
       if (err && !(err instanceof NotFoundException)) {
         console.error(err);
@@ -114,5 +114,36 @@ export class ScanQrPage extends AbstractPage {
   }
   async exit() {
     this.codeReader.reset();
+  }
+}
+const QR_UNKNOWN = 0;
+const QR_URL = 1;
+const QR_MULTI = 2;
+const QR_HC1 = 3;
+async function processQRpiece(readerResult) {
+  let qrData = readerResult.text;
+  let qrType = detectQRtype(qrData);
+  if (qrType === QR_UNKNOWN || qrType === QR_URL) {
+    gotoPage("displayNormalQR", qrData);
+    return;
+  }
+  if (qrType === QR_HC1) {
+    gotoPage("displayhcert", qrData);
+    return;
+  }
+}
+function detectQRtype(qrData) {
+  console.log("detectQRtype:", qrData);
+  if (!qrData.startsWith) {
+    log.myerror("detectQRtype: data is not string");
+  }
+  if (qrData.startsWith("https")) {
+    return QR_URL;
+  } else if (qrData.startsWith("multi|w3cvc|")) {
+    return QR_MULTI;
+  } else if (qrData.startsWith("HC1:")) {
+    return QR_HC1;
+  } else {
+    return QR_UNKNOWN;
   }
 }

@@ -11,6 +11,7 @@ import {ScanQrPage} from './pages/scanqr'
 import { SWNotify } from "./pages/swnotify";
 import { Intro } from "./pages/intro";
 import { Spinner } from "./pages/spinner";
+import { displayNormalQR } from "./pages/displayNormalQR";
 
 // The home page to start and when refreshing
 var homePage = "intro"
@@ -43,6 +44,10 @@ var pageDefs = [
     {
         name: "page404",
         className: Page404
+    },
+    {
+        name: "displayNormalQR",
+        className: displayNormalQR
     },
 ]
 

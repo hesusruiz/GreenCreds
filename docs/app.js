@@ -9,6 +9,7 @@ import {ScanQrPage} from "./pages/scanqr.js";
 import {SWNotify} from "./pages/swnotify.js";
 import {Intro} from "./pages/intro.js";
 import {Spinner} from "./pages/spinner.js";
+import {displayNormalQR} from "./pages/displayNormalQR.js";
 var homePage = "intro";
 var pageDefs = [
   {
@@ -38,6 +39,10 @@ var pageDefs = [
   {
     name: "page404",
     className: Page404
+  },
+  {
+    name: "displayNormalQR",
+    className: displayNormalQR
   }
 ];
 document.body.innerHTML = "";
