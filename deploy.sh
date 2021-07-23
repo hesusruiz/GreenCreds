@@ -9,6 +9,8 @@ set -e
 git add .
 git commit -m 'deploy'
 
+echo Pushing to Github repository
 git push -u origin main
 
+echo Updating SafeIsland server
 ssh safeisland "cd GreenCreds; git pull"
