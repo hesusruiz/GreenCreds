@@ -13,7 +13,7 @@ export class displayNormalQR extends AbstractPage {
     let theHtml = html`
         <div class="container" style="margin-top:50px;">
             <h2 class="w3-margin-bottom w3-center">Received QR</h2>
-            <pre class="w3-large" style="word-break: break-all;">${qrData}</pre>
+            <p class="w3-large" style="word-break: break-all;">${qrData}</p>
         
             <div class="w3-bar w3-padding-16 w3-center" style="max-width:70%;margin:50px auto;">
 
