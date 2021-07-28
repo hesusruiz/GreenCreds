@@ -1173,11 +1173,6 @@ a {
   color: #fff !important;
   background-color: #3f51b5 !important;
 }
-.color-primary,
-.hover-color-primary:hover {
-  color: #fff !important;
-  background-color: #333 !important;
-}
 .w3-khaki,
 .w3-hover-khaki:hover {
   color: #000 !important;
@@ -1586,4 +1581,9 @@ section,
 }
 .valor {
   font-weight: 600;
+}
+.color-primary,
+.hover-color-primary:hover {
+  color: #fff !important;
+  background-color: #102a3a !important;
 }

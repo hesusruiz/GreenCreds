@@ -245,7 +245,6 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 .w3-green,.w3-hover-green:hover{color:#fff!important;background-color:#4CAF50!important}
 .w3-light-green,.w3-hover-light-green:hover{color:#000!important;background-color:#8bc34a!important}
 .w3-indigo,.w3-hover-indigo:hover{color:#fff!important;background-color:#3f51b5!important}
-.color-primary,.hover-color-primary:hover{color:#fff!important;background-color:#333!important}
 .w3-khaki,.w3-hover-khaki:hover{color:#000!important;background-color:#f0e68c!important}
 .w3-lime,.w3-hover-lime:hover{color:#000!important;background-color:#cddc39!important}
 .w3-orange,.w3-hover-orange:hover{color:#000!important;background-color:#ff9800!important}
@@ -352,4 +351,5 @@ body{max-width:980px}
 section,.section{padding:0.01em 10px;margin-top:0px;margin-bottom:10px;border:1px solid #ccc}
 .subsection{padding: 0rem;}
 .valor{font-weight:600}
+.color-primary,.hover-color-primary:hover{color:#fff!important;background-color:#102a3a!important}
 

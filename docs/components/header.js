@@ -23,7 +23,8 @@ export function HeaderBar() {
   }
   let theHtml = html`
     <div class="w3-bar w3-xlarge color-primary">
-        <div class="w3-bar-item" @click=${goHome}>EU COVID Credentials</div>
+        <img @click=${goHome} href="javascript:void(0)" src="img/evidenceLogo60.png" alt="">
+        <!-- <div class="w3-bar-item" @click=${goHome}>EU COVID Credentials</div> -->
         <a href="#" class="w3-bar-item w3-button w3-hide-small">Link 1</a>
         <a href="#" class="w3-bar-item w3-button  w3-hide-small">Link 2</a>
         <a href="#" class="w3-bar-item w3-button w3-hide-small">Link 3</a>
