@@ -7,6 +7,8 @@
     <script>
         var runmode = "production"
     </script>
+    <link rel="preload" href="css/w3full.css" as="style">
+    
     <link rel="manifest" href="./manifest.json">
     <link rel="stylesheet" href="css/w3full.css">
 
@@ -20,10 +22,24 @@
     <script type="module" src="./app.js"></script>
 </head>
 <body>
-    <div class="loaderpage">
+    <!-- <div class="loaderpage">
         <h2>Loading application</h2>
         <p>Please wait...</p>
         <div class="loader"></div>
+    </div> -->
+
+    <div class="container w3-center" style="margin-top:50px;">
+        <h2 class="w3-margin-bottom">EU Digital COVID Credential Verifier</h2>
+        <p>This application allows the verification of COVID certificates issued by EU Member States and also certificates
+            issued by the UK Government with the same format as the EU Digital COVID Certificate</p>
+    
+        <div class="w3-padding-16 w3-center">
+    
+            <button class="w3-button btn-color-primary btn-hover-color-primary
+                w3-xlarge w3-round-xlarge">Start verifying</button>
+    
+        </div>
     </div>
+
 
 </body></html>
