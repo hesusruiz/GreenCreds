@@ -10,7 +10,8 @@ git add .
 git commit -m 'deploy'
 
 echo Pushing to Github repository
-git push -u origin main
+# git push -u origin main
+git push git@github.com:hesusruiz/GreenCreds.git
 
 echo Updating SafeIsland server
 ssh safeisland "cd GreenCreds; git pull"
