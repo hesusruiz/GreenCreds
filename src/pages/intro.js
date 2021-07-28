@@ -13,7 +13,7 @@ export class Intro extends AbstractPage {
         console.log("INTRO: enter page")
 
         let theHtml = html`
-        <div class="container" style="margin-top:100px;">
+        <div class="container w3-center" style="margin-top:50px;">
             <h2 class="w3-margin-bottom">EU Digital COVID Credential Verifier</h2>
             <p>This application allows the verification of COVID certificates issued by EU Member States and also certificates
                 issued by the UK Government with the same format as the EU Digital COVID Certificate</p>
