@@ -1,6 +1,5 @@
 import {AbstractPage} from "./abstractpage.js";
 import {html} from "../_snowpack/pkg/lit-html.js";
-import {goHome, gotoPage} from "../router.js";
 export class displayNormalQR extends AbstractPage {
   constructor(domElem) {
     super(domElem);

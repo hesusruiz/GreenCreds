@@ -1,6 +1,5 @@
 import { AbstractPage } from './abstractpage'
 import { html } from 'lit-html';
-import { goHome, gotoPage } from "../router";
 
 export class displayNormalQR extends AbstractPage {
 
