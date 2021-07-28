@@ -23,7 +23,7 @@ export class SWNotify extends AbstractPage {
         
                 <div class="w3-padding-16">
         
-                    <button @click=${() => gotoPage("spinner")} class="w3-button color-primary hover-color-primary w3-xlarge">Accept</button>
+                    <button @click=${() => gotoPage("spinner")} class="w3-button color-primary hover-color-primary w3-xlarge w3-round-xlarge">Accept</button>
         
                 </div>
         

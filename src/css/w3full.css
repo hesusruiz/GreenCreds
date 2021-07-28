@@ -352,4 +352,5 @@ section,.section{padding:0.01em 10px;margin-top:0px;margin-bottom:10px;border:1p
 .subsection{padding: 0rem;}
 .valor{font-weight:600}
 .color-primary,.hover-color-primary:hover{color:#fff!important;background-color:#102a3a!important}
+.btn-color-primary,.btn-hover-color-primary:hover{color:#04FF00!important;background-color:#102a3a!important}
 

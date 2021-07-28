@@ -16,8 +16,8 @@ export class Intro extends AbstractPage {
         
             <div class="w3-padding-16 w3-center">
         
-                <button @click=${() => gotoPage("verifier")} class="w3-button color-primary hover-color-primary
-                    w3-xlarge">Start verifying</button>
+                <button @click=${() => gotoPage("verifier")} class="w3-button btn-color-primary btn-hover-color-primary
+                    w3-xlarge w3-round-xlarge">Start verifying</button>
         
             </div>
         </div>
