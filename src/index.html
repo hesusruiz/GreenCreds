@@ -6,11 +6,36 @@
     <meta name="description" content="Verifiable Credentials with Strong Privacy" />
     <title>Private Credentials</title>
 
-    <link rel="preload" href="css/w3full.css" as="style">
     <link rel="preload" href="img/evidenceLogo60.png" as="image">    
     
     <link rel="manifest" href="./manifest.json">
-    <link rel="stylesheet" href="css/w3full.css">
+
+    <style>
+        .w3-bar-block .w3-dropdown-hover,.w3-bar-block .w3-dropdown-click{width:100%}
+        .w3-bar-block .w3-dropdown-hover .w3-dropdown-content,.w3-bar-block .w3-dropdown-click .w3-dropdown-content{min-width:100%}
+        .w3-bar-block .w3-dropdown-hover .w3-button,.w3-bar-block .w3-dropdown-click .w3-button{width:100%;text-align:left;padding:8px 16px}
+        .w3-bar{width:100%;overflow:hidden}.w3-center .w3-bar{display:inline-block;width:auto}
+        .w3-bar .w3-bar-item{padding:8px 16px;float:left;width:auto;border:none;display:block;outline:0}
+        .w3-bar .w3-dropdown-hover,.w3-bar .w3-dropdown-click{position:static;float:left}
+        .w3-bar .w3-button{white-space:normal}
+        .w3-bar-block .w3-bar-item{width:100%;display:block;padding:8px 16px;text-align:left;border:none;white-space:normal;float:none;outline:0}
+        .w3-bar-block.w3-center .w3-bar-item{text-align:center}.w3-block{display:block;width:100%}
+        .w3-xlarge{font-size:24px!important}
+        .color-primary,.hover-color-primary:hover{color:#04FF00!important;background-color:#102a3a!important}
+        .btn-menu{border:none;display:inline-block;padding:16px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:inherit;text-align:center;cursor:pointer;white-space:nowrap}
+        .btn-menu{-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}   
+        .btn-menu{color:white!important;background-color:#102a3a!important}
+        .w3-hide-small{display:none!important}.w3-mobile{display:block;width:100%!important}
+        .w3-right{float:right!important}
+        .w3-hide-large{display:none!important}
+        @media (max-width:992px) and (min-width:601px){.w3-hide-medium{display:none!important}}
+        .container{padding:0.01em 10px}
+        .w3-center{text-align:center!important}
+        .w3-padding-top-32{padding-top:32px!important}
+
+    </style>
+
+    <link rel="stylesheet" href="css/w3full.css" media="print" onload="this.media='all'">
 
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <meta name="mobile-web-app-capable" content="yes" />
@@ -47,9 +72,9 @@
 
         <div class="w3-bar w3-xlarge color-primary">
             <img class="w3-bar-item" style="padding:0" href="javascript:void(0)" src="img/evidenceLogo60.png" width="120px" alt="">
-            <a href="#" class="w3-bar-item w3-button w3-hide-small">Privacy policy</a>
-            <a href="#" class="w3-bar-item w3-button  w3-hide-small">Terms & Conditions</a>
-            <a href="javascript:void(0)" class="w3-bar-item w3-button hover-color-primary w3-right w3-hide-large w3-hide-medium">&#9776;</a>
+            <a href="#" class="w3-bar-item btn-menu w3-hide-small">Privacy policy</a>
+            <a href="#" class="w3-bar-item btn-menu  w3-hide-small">Terms & Conditions</a>
+            <a href="javascript:void(0)" class="w3-bar-item btn-menu w3-right w3-hide-large w3-hide-medium">&#9776;</a>
         </div>
 
         <div class="container w3-center" style="margin-top:30px;">
