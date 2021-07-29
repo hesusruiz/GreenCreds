@@ -26,7 +26,7 @@ export function HeaderBar() {
     <div class="w3-bar w3-xlarge color-primary">
         <img class="w3-bar-item" style="padding:0" @click=${goHome} href="javascript:void(0)" src="img/evidenceLogo60.png" alt="">
         <a href="#" class="w3-bar-item w3-button w3-hide-small">${T("Privacy policy")}</a>
-        <a href="#" class="w3-bar-item w3-button  w3-hide-small">${T("Terms &amp; Conditions")}</a>
+        <a href="#" class="w3-bar-item w3-button  w3-hide-small">${T("Terms & Conditions")}</a>
         <a href="javascript:void(0)" class="w3-bar-item w3-button hover-color-primary w3-right w3-hide-large w3-hide-medium" @click=${toggleMenu}>&#9776;</a>
     </div>
     
