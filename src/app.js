@@ -1,4 +1,3 @@
-import { settingsPut, settingsGet } from "./db";
 import {log} from './log'
 
 import { setHomePage, goHome, route, gotoPage } from "./router";
@@ -240,7 +239,7 @@ async function performAppUpgrade() {
         // Get the new version of the application
         var newVersion = await $.get("/VERSION.txt");
         if (newVersion) {
-            await settingsPut("VERSION", newVersion);
+            window.localStorage.setItem("VERSION", newVersion)
         }
     } catch (error) {
         console.log("ERROR updating version", error)
@@ -257,24 +256,7 @@ async function performAppUpgrade() {
 // or when a factory reset is performed by the user
 // The function is safe to be called many times
 async function performOneTimeInitialization() {
-    console.log("Performing OneTime Initialization");
 
-    // Check if this is the first time that the user downloads the app
-    // There is a persistent flag in the local storage
-    var alreadyInitialized = await settingsGet("initialized");
-
-    if (alreadyInitialized != true) {
-        try {
-            // Save the host from where the app was loaded
-            await settingsPut("apiHost", MY_SERVER);
-        } catch (error) {
-            // Log the error
-            log.myerror("Onetime initialization error");
-        }
-
-        // Signal that we already performed initialization
-        await settingsPut("initialized", true);
-    }
 }
 
 

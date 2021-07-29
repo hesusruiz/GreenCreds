@@ -4,7 +4,6 @@ var __publicField = (obj, key, value) => {
   __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
   return value;
 };
-import {settingsGet, settingsPut} from "../db.js";
 import {inflate} from "../_snowpack/pkg/pako.js";
 import {log} from "../log.js";
 import trustedPublicKeys from "../json/all_jwk_keys.json.proxy.js";

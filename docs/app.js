@@ -1,4 +1,3 @@
-import {settingsPut, settingsGet} from "./db.js";
 import {log} from "./log.js";
 import {setHomePage, goHome, route, gotoPage} from "./router.js";
 import {HeaderBar} from "./components/header.js";
@@ -144,7 +143,7 @@ async function performAppUpgrade() {
   try {
     var newVersion = await $.get("/VERSION.txt");
     if (newVersion) {
-      await settingsPut("VERSION", newVersion);
+      window.localStorage.setItem("VERSION", newVersion);
     }
   } catch (error) {
     console.log("ERROR updating version", error);
@@ -152,14 +151,4 @@ async function performAppUpgrade() {
   gotoPage("swnotify");
 }
 async function performOneTimeInitialization() {
-  console.log("Performing OneTime Initialization");
-  var alreadyInitialized = await settingsGet("initialized");
-  if (alreadyInitialized != true) {
-    try {
-      await settingsPut("apiHost", MY_SERVER);
-    } catch (error) {
-      log.myerror("Onetime initialization error");
-    }
-    await settingsPut("initialized", true);
-  }
 }

@@ -1,4 +1,3 @@
-import {db} from "./db.js";
 const LOG_ALL = true;
 const MAX_LOG_ENTRIES = 1e3;
 class Warning extends Error {
@@ -11,29 +10,7 @@ class Warning extends Error {
   }
 }
 async function mylog_entry(_level, _desc, ...additional) {
-  var logItem = {
-    timestamp: Date.now(),
-    level: _level,
-    desc: _desc
-  };
-  if (additional.length > 0) {
-    logItem["more"] = additional;
-  }
-  try {
-    await db.logs.add(logItem);
-  } catch (error) {
-    console.error("Error in log add");
-  }
-  var numEntries = await db.logs.count();
-  if (numEntries <= MAX_LOG_ENTRIES) {
-    return;
-  }
-  var oldestEntry = await db.logs.orderBy("id").first();
-  try {
-    await db.logs.delete(oldestEntry.id);
-  } catch (error) {
-    console.error("Error in log prune");
-  }
+  return;
 }
 export async function mywarn(_desc, ...additional) {
   if (LOG_ALL) {
@@ -58,13 +35,10 @@ export async function myerror(_desc, ...additional) {
   mylog_entry("E", msg, ...additional);
 }
 export async function recentLogs() {
-  var rlogs = await db.logs.reverse().limit(200).toArray();
-  return rlogs;
+  return void 0;
 }
 export async function clearLogs() {
-  await db.logs.clear();
-  alert("Logs cleared");
-  location.reload();
+  return;
 }
 export var log = {
   mywarn,

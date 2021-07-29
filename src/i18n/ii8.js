@@ -2,7 +2,6 @@ import { AbstractPage } from '../pages/abstractpage'
 import { html } from 'lit-html';
 import { goHome, gotoPage } from "../router";
 import translations from "./translations.json"
-import { settingsPut, settingsGet } from '../db';
 
 
 export function T(key) {

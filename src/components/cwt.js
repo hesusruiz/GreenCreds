@@ -1,4 +1,3 @@
-import { settingsGet, settingsPut } from "../db";
 import { inflate } from "pako";
 import { log } from "../log";
 
