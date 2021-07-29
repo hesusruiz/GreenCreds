@@ -4,26 +4,13 @@ import { goHome, gotoPage } from "../router";
 import translations from "./translations.json"
 import { settingsPut, settingsGet } from '../db';
 
-export var lang = navigator.language.substring(0,2)
-
-export async function initLanguage() {
-    let l = await settingsGet("preferredLanguage")
-    if (l !== undefined) {
-        lang = l;
-    }
-}
-
-async function setLanguage(lan) {
-    lang = await settingsPut("preferredLanguage", lan)
-    return lan
-}
 
 export function T(key) {
-    if ((lang === "en") && (key.charAt(0) != "$")) { return key }
+    if ((window.preferredLanguage === "en") && (key.charAt(0) != "$")) { return key }
 
     let entry = translations[key]
     if (entry === undefined) { return key }
-    let translated = entry[lang]
+    let translated = entry[window.preferredLanguage]
     if (translated === undefined) { return key }
     return translated
 }
@@ -70,7 +57,8 @@ export class SelectLanguage extends AbstractPage {
 
     async selectLang(l) {
         console.log("Selecting language", l)
-        lang = await setLanguage(l)
+        window.preferredLanguage = l
+        localStorage.setItem("preferredLanguage", l)
         window.history.back()
     }
 }

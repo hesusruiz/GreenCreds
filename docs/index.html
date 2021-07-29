@@ -20,51 +20,55 @@
     <script type="module" src="./app.js"></script>
 </head>
 <body>
-    <!-- <div class="loaderpage">
-        <h2>Loading application</h2>
-        <p>Please wait...</p>
-        <div class="loader"></div>
-    </div> -->
 
 
 <script>
     var runmode = "production"
-    var l = navigator.language.substring(0,2)
-    if (l === "ca") {
-        introTitle = "Verificador de Credencials COVID";
-        introMsg = "Aquesta aplicació permet la verificació dels certificats COVID emesos pels Estats membres de la UE i també els certificats emesos pel Regne Unit en el mateix format que el Certificat COVID digital de la UE";
-    } else if (l === "es") {
-        introTitle = "Verificador de Credenciales COVID";
-        introMsg = "Esta aplicación permite la verificación de certificados COVID emitidos por los Estados Miembro de la UE y también los certificados emitidos por el Reino Unido con el mismo formato que el Certificado COVID Digital de la UE"
-    } else {
-        introTitle = "EU Digital COVID Credential Verifier";
-        introMsg = "This application allows the verification of COVID certificates issued by EU Member States and also certificates issued by the UK Government with the same format as the EU Digital COVID Certificate"
+    var preferredLanguage = navigator.language.substring(0,2)
+    let l = localStorage.getItem("preferredLanguage")
+    if (l) {preferredLanguage = l}
+
+    function initialScreen() {
+
+        if (preferredLanguage === "ca") {
+            introTitle = "Verificador de Credencials COVID";
+            introMsg = "Aquesta aplicació permet la verificació dels certificats COVID emesos pels Estats membres de la UE i també els certificats emesos pel Regne Unit en el mateix format que el Certificat COVID digital de la UE";
+        } else if (preferredLanguage === "es") {
+            introTitle = "Verificador de Credenciales COVID";
+            introMsg = "Esta aplicación permite la verificación de certificados COVID emitidos por los Estados Miembro de la UE y también los certificados emitidos por el Reino Unido con el mismo formato que el Certificado COVID Digital de la UE"
+        } else {
+            introTitle = "EU Digital COVID Credential Verifier";
+            introMsg = "This application allows the verification of COVID certificates issued by EU Member States and also certificates issued by the UK Government with the same format as the EU Digital COVID Certificate"
+        }
+
+        var initialScreen = `
+
+        <div class="w3-bar w3-xlarge color-primary">
+            <img class="w3-bar-item" style="padding:0" href="javascript:void(0)" src="img/evidenceLogo60.png" alt="">
+            <a href="#" class="w3-bar-item w3-button w3-hide-small">Privacy policy</a>
+            <a href="#" class="w3-bar-item w3-button  w3-hide-small">Terms & Conditions</a>
+            <a href="javascript:void(0)" class="w3-bar-item w3-button hover-color-primary w3-right w3-hide-large w3-hide-medium">&#9776;</a>
+        </div>
+
+        <div class="container w3-center" style="margin-top:30px;">
+            <h2 class="w3-margin-bottom">${introTitle}</h2>
+            <p>${introMsg}</p>
+
+            <div class="w3-padding-top-32 w3-center">
+
+                <h2>Loading public keys</h2>
+                <p>Please wait...</p>
+                <div class="loader"></div>
+
+            </div>
+        </div>
+    `
+
+        document.body.innerHTML = initialScreen
+
     }
 
-    var initialScreen = `
-
-    <div class="w3-bar w3-xlarge color-primary">
-        <img class="w3-bar-item" style="padding:0" href="javascript:void(0)" src="img/evidenceLogo60.png" alt="">
-        <a href="#" class="w3-bar-item w3-button w3-hide-small">Privacy policy</a>
-        <a href="#" class="w3-bar-item w3-button  w3-hide-small">Terms & Conditions</a>
-        <a href="javascript:void(0)" class="w3-bar-item w3-button hover-color-primary w3-right w3-hide-large w3-hide-medium">&#9776;</a>
-    </div>
-
-    <div class="container w3-center" style="margin-top:50px;">
-        <h2 class="w3-margin-bottom">${T("EU Digital COVID Credential Verifier")}</h2>
-        <p>${introMsg}</p>
-
-        <div class="w3-padding-16 w3-center">
-
-            <button class="w3-button btn-color-primary btn-hover-color-primary
-                w3-xlarge w3-round-xlarge">Start verifying</button>
-
-        </div>
-    </div>
-`
-
-    document.body.innerHTML = initialScreen
-
+    initialScreen()
 </script>
 
 </body></html>

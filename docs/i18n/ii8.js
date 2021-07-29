@@ -3,26 +3,15 @@ import {html} from "../_snowpack/pkg/lit-html.js";
 import {goHome, gotoPage} from "../router.js";
 import translations from "./translations.json.proxy.js";
 import {settingsPut, settingsGet} from "../db.js";
-export var lang = navigator.language.substring(0, 2);
-export async function initLanguage() {
-  let l = await settingsGet("preferredLanguage");
-  if (l !== void 0) {
-    lang = l;
-  }
-}
-async function setLanguage(lan) {
-  lang = await settingsPut("preferredLanguage", lan);
-  return lan;
-}
 export function T(key) {
-  if (lang === "en" && key.charAt(0) != "$") {
+  if (window.preferredLanguage === "en" && key.charAt(0) != "$") {
     return key;
   }
   let entry = translations[key];
   if (entry === void 0) {
     return key;
   }
-  let translated = entry[lang];
+  let translated = entry[window.preferredLanguage];
   if (translated === void 0) {
     return key;
   }
@@ -66,7 +55,8 @@ export class SelectLanguage extends AbstractPage {
   }
   async selectLang(l) {
     console.log("Selecting language", l);
-    lang = await setLanguage(l);
+    window.preferredLanguage = l;
+    localStorage.setItem("preferredLanguage", l);
     window.history.back();
   }
 }

@@ -1,6 +1,7 @@
 import { AbstractPage } from './abstractpage'
 import { html } from 'lit-html';
 import { goHome, gotoPage } from "../router";
+import { T } from '../i18n/ii8';
 
 export class Spinner extends AbstractPage {
 
@@ -10,17 +11,7 @@ export class Spinner extends AbstractPage {
     }
 
     enter(pageData) {
-        console.log("SPINNER: enter page")
-
-        let theHtml = html`
-        <div class="loaderpage">
-            <h2>Loading</h2>
-            <p>Please wait...</p>
-            <div class="loader"></div>
-        </div>        
-        `
-
-        this.render(theHtml)
+        window.initialScreen()
         window.location.reload()
     }
 }
