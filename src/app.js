@@ -12,6 +12,7 @@ import { SWNotify } from "./pages/swnotify";
 import { Intro } from "./pages/intro";
 import { Spinner } from "./pages/spinner";
 import { displayNormalQR } from "./pages/displayNormalQR";
+import { SelectLanguage } from "./i18n/ii8";
 
 // The home page to start and when refreshing
 var homePage = "intro"
@@ -48,6 +49,10 @@ var pageDefs = [
     {
         name: "displayNormalQR",
         className: displayNormalQR
+    },
+    {
+        name: "selectLanguage",
+        className: SelectLanguage
     },
 ]
 

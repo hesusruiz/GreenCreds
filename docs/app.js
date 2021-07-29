@@ -10,6 +10,7 @@ import {SWNotify} from "./pages/swnotify.js";
 import {Intro} from "./pages/intro.js";
 import {Spinner} from "./pages/spinner.js";
 import {displayNormalQR} from "./pages/displayNormalQR.js";
+import {SelectLanguage} from "./i18n/ii8.js";
 var homePage = "intro";
 var pageDefs = [
   {
@@ -43,6 +44,10 @@ var pageDefs = [
   {
     name: "displayNormalQR",
     className: displayNormalQR
+  },
+  {
+    name: "selectLanguage",
+    className: SelectLanguage
   }
 ];
 document.body.innerHTML = "";
