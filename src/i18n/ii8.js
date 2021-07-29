@@ -2,8 +2,21 @@ import { AbstractPage } from '../pages/abstractpage'
 import { html } from 'lit-html';
 import { goHome, gotoPage } from "../router";
 import translations from "./translations.json"
+import { settingsPut, settingsGet } from '../db';
 
 export var lang = navigator.language.substring(0,2)
+
+export async function initLanguage() {
+    let l = await settingsGet("preferredLanguage")
+    if (l !== undefined) {
+        lang = l;
+    }
+}
+
+async function setLanguage(lan) {
+    lang = await settingsPut("preferredLanguage", lan)
+    return lan
+}
 
 export function T(key) {
     if ((lang === "en") && (key.charAt(0) != "$")) { return key }
@@ -55,9 +68,9 @@ export class SelectLanguage extends AbstractPage {
         this.render(theHtml)
     }
 
-    selectLang(l) {
+    async selectLang(l) {
         console.log("Selecting language", l)
-        lang = l
+        lang = await setLanguage(l)
         window.history.back()
     }
 }

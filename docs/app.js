@@ -1,5 +1,6 @@
 import {settingsPut, settingsGet} from "./db.js";
 import {log} from "./log.js";
+import {initLanguage} from "./i18n/ii8.js";
 import {setHomePage, goHome, route, gotoPage} from "./router.js";
 import {HeaderBar} from "./components/header.js";
 import {DisplayHcert} from "./pages/hcertpage.js";
@@ -153,6 +154,7 @@ async function performAppUpgrade() {
 }
 async function performOneTimeInitialization() {
   console.log("Performing OneTime Initialization");
+  await initLanguage();
   var alreadyInitialized = await settingsGet("initialized");
   if (alreadyInitialized != true) {
     try {

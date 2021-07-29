@@ -26,7 +26,9 @@ async function settingsPut(key, value) {
     } catch (error) {
         console.error(error);
         alert("Error in put setting")
+        return undefined
     }
+    return value
 }
 
 async function settingsGet(key) {

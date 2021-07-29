@@ -2,7 +2,18 @@ import {AbstractPage} from "../pages/abstractpage.js";
 import {html} from "../_snowpack/pkg/lit-html.js";
 import {goHome, gotoPage} from "../router.js";
 import translations from "./translations.json.proxy.js";
+import {settingsPut, settingsGet} from "../db.js";
 export var lang = navigator.language.substring(0, 2);
+export async function initLanguage() {
+  let l = await settingsGet("preferredLanguage");
+  if (l !== void 0) {
+    lang = l;
+  }
+}
+async function setLanguage(lan) {
+  lang = await settingsPut("preferredLanguage", lan);
+  return lan;
+}
 export function T(key) {
   if (lang === "en" && key.charAt(0) != "$") {
     return key;
@@ -53,9 +64,9 @@ export class SelectLanguage extends AbstractPage {
 `;
     this.render(theHtml);
   }
-  selectLang(l) {
+  async selectLang(l) {
     console.log("Selecting language", l);
-    lang = l;
+    lang = await setLanguage(l);
     window.history.back();
   }
 }

@@ -1,5 +1,6 @@
 import { settingsPut, settingsGet } from "./db";
 import {log} from './log'
+import { initLanguage } from "./i18n/ii8";
 
 import { setHomePage, goHome, route, gotoPage } from "./router";
 import { HeaderBar } from './components/header'
@@ -258,6 +259,8 @@ async function performAppUpgrade() {
 // The function is safe to be called many times
 async function performOneTimeInitialization() {
     console.log("Performing OneTime Initialization");
+
+    await initLanguage()
 
     // Check if this is the first time that the user downloads the app
     // There is a persistent flag in the local storage
