@@ -2,7 +2,7 @@ import {AbstractPage} from "../pages/abstractpage.js";
 import {html} from "../_snowpack/pkg/lit-html.js";
 import {goHome, gotoPage} from "../router.js";
 import translations from "./translations.json.proxy.js";
-export var lang = "es";
+export var lang = "en";
 export function T(key) {
   if (lang === "en" && key.charAt(0) != "$") {
     return key;

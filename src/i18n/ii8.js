@@ -3,7 +3,7 @@ import { html } from 'lit-html';
 import { goHome, gotoPage } from "../router";
 import translations from "./translations.json"
 
-export var lang = "es"
+export var lang = "en"
 
 export function T(key) {
     if ((lang === "en") && (key.charAt(0) != "$")) { return key }
