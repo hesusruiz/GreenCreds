@@ -2,8 +2,8 @@ import { gotoPage } from "../router";
 import { html } from 'lit-html';
 import {log} from '../log'
 import { BrowserMultiFormatReader, BarcodeFormat, NotFoundException } from '@zxing/library';
-
 import { AbstractPage } from './abstractpage'
+import { T } from "../i18n/ii8";
 
 
 export class ScanQrPage extends AbstractPage {
