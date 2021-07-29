@@ -53,6 +53,11 @@
     "Start verifying": {
         "es": "Comenzar a verificar",
         "ca": "Comença a verificar"
+    },
+    "Select Camera": {
+        "es": "Seleccionar cámara",
+        "ca": "Selecciona càmera"
     }
+
 
 }
