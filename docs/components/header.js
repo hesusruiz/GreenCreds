@@ -25,13 +25,10 @@ export function HeaderBar() {
   let theHtml = html`
     <div class="w3-bar w3-xlarge color-primary">
         <img class="w3-bar-item" style="padding:0" @click=${goHome} href="javascript:void(0)" src="img/evidenceLogo60.png" alt="">
-        <a @click=${() => gotoPage("selectLanguage")} href="javascript:void(0)" class="w3-bar-item btn-menu w3-large w3-hide-small w3-hide-medium">${T("Language")}</a>
-        <a href="#" class="w3-bar-item btn-menu w3-large w3-hide-small w3-hide-medium">${T("Privacy policy")}</a>
-        <a href="#" class="w3-bar-item btn-menu w3-large w3-hide-small w3-hide-medium">${T("Terms & Conditions")}</a>
-        <a href="javascript:void(0)" class="w3-bar-item btn-menu w3-right w3-hide-large" @click=${toggleMenu}>&#9776;</a>
+        <a href="javascript:void(0)" class="w3-bar-item btn-menu w3-right" @click=${toggleMenu}>&#9776;</a>
     </div>
     
-    <div class="w3-bar-block color-white w3-hide w3-hide-large">
+    <div class="w3-bar-block color-white w3-hide">
         <a @click=${() => gotoPage("spinner")} href="javascript:void(0)" class="w3-bar-item btn-menu">${T("Update public keys")}</a>
         <a @click=${() => gotoPage("selectLanguage")} href="javascript:void(0)" class="w3-bar-item btn-menu">${T("Language")}</a>
         <a href="#" class="w3-bar-item btn-menu">${T("Privacy policy")}</a>
