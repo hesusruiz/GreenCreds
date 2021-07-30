@@ -24,27 +24,8 @@ export class ScanQrPage extends AbstractPage {
         <!-- =========================================== -->
                     
         <div id="videoPlaceholder">
-        </div>
-        
-        <div id="footer" class="w3-bar w3-xlarge w3-center" style="position: fixed;bottom: 20px">
-            ${this.videoInputDevices.length > 0 ? html`` : html``}
-        </div>
+        </div>        
         `;
-  }
-  toggleView(e) {
-    var x = document.querySelector("#selectList");
-    x.classList.toggle("w3-show");
-  }
-  getCamerasList() {
-    let theHtml = html``;
-    if (this.videoInputDevices.length > 0) {
-      theHtml = html`
-            <ul id="selectList" class="w3-ul w3-border w3-white w3-hide w3-large" >
-                ${this.videoInputDevices.map((dev) => html`<li class=${dev.deviceId === this.selectedDeviceId ? "w3-large w3-pale-blue" : "w3-large"} id="${dev.deviceId}" @click=${() => this.selected(dev.deviceId)}>${dev.deviceId === this.selectedDeviceId ? html`*` : html``} ${dev.label}</li>`)}
-            </ul>
-            `;
-    }
-    return theHtml;
   }
   async enter() {
     console.log("SCANQR Enter", this.clientWidth);
@@ -68,7 +49,6 @@ export class ScanQrPage extends AbstractPage {
       }
       let streamDeviceId = stream.getVideoTracks()[0].getSettings().deviceId;
       this.selectedDeviceId = streamDeviceId;
-      this.videoInputDevices = await this.codeReader.listVideoInputDevices();
       let placeHolder = document.querySelector("#videoPlaceholder");
       this.videoElem = document.createElement("video");
       this.videoElem.style.width = "100%";
