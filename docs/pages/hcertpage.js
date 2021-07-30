@@ -67,7 +67,6 @@ export class DisplayHcert extends AbstractPage {
 
             <section class="section">
                 <div class="subsection">
-                    <!-- <img width="60px" src=${eulogo} alt="EUlogo"> -->
                     <h3 class="w3-center">EU COVID CERTIFICATE</h3>
                 </div>
                 <div class="subsection">
@@ -149,7 +148,6 @@ export class DisplayHcert extends AbstractPage {
 
             <section class="section">
                 <div class="subsection">
-                    <!-- <img width="60px" src=${eulogo} alt="EUlogo"> -->
                     <h3 class="w3-center">EU COVID CERTIFICATE</h3>
                 </div>
                 <div class="subsection">
@@ -233,7 +231,6 @@ export class DisplayHcert extends AbstractPage {
 
             <section class="section">
                 <div class="subsection">
-                    <!-- <img width="60px" src=${eulogo} alt="EUlogo"> -->
                     <h3 class="w3-center">EU COVID CERTIFICATE</h3>
                 </div>
                 <div class="subsection">
