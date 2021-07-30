@@ -30,11 +30,11 @@ window.addEventListener("popstate", async function (event) {
     console.log("Popstate: ", pageName);
 
     // Process the page transition
-    await processPageEntered(pageName, pageData);
+    await processPageEntered(pageName, pageData, true);
 });
 
 // Handle page transition
-export async function processPageEntered(pageName, pageData) {
+export async function processPageEntered(pageName, pageData, historyData) {
     try {
         // Hide all pages of the application. Later we unhide the one we are entering
         // We also tell all other pages to exit, so they can perform any cleanup
@@ -64,7 +64,7 @@ export async function processPageEntered(pageName, pageData) {
         // Invoke the registered function when page has entered
         // This will allow the page to create dynamic content
         if (targetPage.enter) {
-            await targetPage.enter(pageData);
+            await targetPage.enter(pageData, historyData);
         } else {
             // Make sure the target page is visible even if no enter() defined
             targetPage.style.display = "block"

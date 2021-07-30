@@ -12,8 +12,9 @@ export class DisplayHcert extends AbstractPage {
         super(domElem)
     }
 
-    async enter(qrContent) {
+    async enter(qrContent, historyData) {
         console.log("PRESENT Enter", qrContent)
+        if (historyData) { gotoPage("verifier"); return;}
         // let qrContent = pageData.text
         let hcert = undefined
         let verified = false

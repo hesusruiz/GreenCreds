@@ -9,8 +9,12 @@ export class DisplayHcert extends AbstractPage {
     console.log("HCERT: Constructor");
     super(domElem);
   }
-  async enter(qrContent) {
+  async enter(qrContent, historyData) {
     console.log("PRESENT Enter", qrContent);
+    if (historyData) {
+      gotoPage("verifier");
+      return;
+    }
     let hcert = void 0;
     let verified = false;
     let thehtml = "";

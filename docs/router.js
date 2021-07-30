@@ -17,9 +17,9 @@ window.addEventListener("popstate", async function(event) {
     pageData = state.pageData;
   }
   console.log("Popstate: ", pageName);
-  await processPageEntered(pageName, pageData);
+  await processPageEntered(pageName, pageData, true);
 });
-export async function processPageEntered(pageName, pageData) {
+export async function processPageEntered(pageName, pageData, historyData) {
   try {
     for (let [name, classInstance] of pages) {
       classInstance.domElem.style.display = "none";
@@ -38,7 +38,7 @@ export async function processPageEntered(pageName, pageData) {
   window.scrollTo(0, 0);
   try {
     if (targetPage.enter) {
-      await targetPage.enter(pageData);
+      await targetPage.enter(pageData, historyData);
     } else {
       targetPage.style.display = "block";
     }
