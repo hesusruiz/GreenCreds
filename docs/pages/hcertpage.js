@@ -3,6 +3,7 @@ import {log} from "../log.js";
 import {CWT} from "../components/cwt.js";
 import {AbstractPage} from "./abstractpage.js";
 import {T} from "../i18n/ii8.js";
+import {gotoPage} from "../router.js";
 export class DisplayHcert extends AbstractPage {
   constructor(domElem) {
     console.log("HCERT: Constructor");
@@ -28,7 +29,15 @@ export class DisplayHcert extends AbstractPage {
       this.render(this.renderGeneralError(error));
       return;
     }
-    this.render(thehtml);
+    let fullPage = html`
+        ${thehtml}
+        <div class="sect-white">
+            <button @click=${() => gotoPage("verifier")} class="w3-button btn-color-primary btn-hover-color-primary
+            w3-xlarge w3-round-xlarge">
+            ${T("Verify another")}</button>
+        </div>
+        `;
+    this.render(fullPage);
   }
   renderGeneralError(error) {
     return html`

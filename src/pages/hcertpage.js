@@ -3,6 +3,7 @@ import { log } from '../log'
 import { CWT } from "../components/cwt"
 import { AbstractPage } from './abstractpage'
 import { T } from '../i18n/ii8';
+import { gotoPage } from '../router';
 
 export class DisplayHcert extends AbstractPage {
 
@@ -37,7 +38,15 @@ export class DisplayHcert extends AbstractPage {
             return;
         }
 
-        this.render(thehtml)
+        let fullPage = html`
+        ${thehtml}
+        <div class="sect-white">
+            <button @click=${()=> gotoPage("verifier")} class="w3-button btn-color-primary btn-hover-color-primary
+            w3-xlarge w3-round-xlarge">
+            ${T("Verify another")}</button>
+        </div>
+        `
+        this.render(fullPage)
 
     }
 
