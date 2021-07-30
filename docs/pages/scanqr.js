@@ -27,11 +27,7 @@ export class ScanQrPage extends AbstractPage {
         </div>
         
         <div id="footer" class="w3-bar w3-xlarge w3-center" style="position: fixed;bottom: 20px">
-            ${this.videoInputDevices.length > 0 ? html`
-                    ${this.getCamerasList()}
-                    <button class="w3-btn btn-color-primary w3-xlarge btn-hover-color-primary w3-round-xlarge" @click=${this.toggleView}>
-                        ${T("Select Camera")}
-                    </button>` : html``}
+            ${this.videoInputDevices.length > 0 ? html`` : html``}
         </div>
         `;
   }
