@@ -13,13 +13,13 @@ export class Intro extends AbstractPage {
     console.log("INTRO: enter page");
     let theHtml = html`
 
-<div class="sect-white">
+            <div class="sect-white">
                 <h2 class="w3-margin-bottom">${T("EU Digital COVID Credential Verifier")}</h2>
                 <p>${T("$intro01")}</p>
 
                 <div class="w3-padding-16 w3-center">
 
-                    <button class="w3-button btn-color-primary btn-hover-color-primary
+                    <button @click=${() => gotoPage("verifier")} class="w3-button btn-color-primary btn-hover-color-primary
                         w3-xlarge w3-round-xlarge">
                         ${T("Start verifying")}</button>
 
@@ -48,7 +48,7 @@ export class Intro extends AbstractPage {
                     <img src="./img/v_hand.png" style="height:70px" alt="" />
                 </div>
                 <div>
-                    <button class="w3-button btn-color-primary btn-hover-color-primary
+                    <button @click=${() => gotoPage("verifier")} class="w3-button btn-color-primary btn-hover-color-primary
                         w3-xlarge w3-round-xlarge">
                         ${T("Start verifying")}</button>
 
