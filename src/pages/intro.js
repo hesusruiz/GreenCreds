@@ -17,18 +17,74 @@ export class Intro extends AbstractPage {
         console.log("INTRO: enter page")
 
         let theHtml = html`
-        <div class="container w3-center" style="margin-top:30px;">
-            <h2 class="w3-margin-bottom">${T("EU Digital COVID Credential Verifier")}</h2>
-            <p>${T("$intro01")}</p>
-        
-            <div class="w3-padding-16 w3-center">
-        
-                <button @click=${() => gotoPage("verifier")} class="w3-button btn-color-primary btn-hover-color-primary
-                    w3-xlarge w3-round-xlarge">
-                    ${T("Start verifying")}</button>
-        
-            </div>
+<div class="sect-white">
+    <h2 class="w3-margin-bottom">${T("EU Digital COVID Credential Verifier")}</h2>
+    <p>${T("$intro01")}</p>
+
+    <div class="w3-padding-16 w3-center">
+
+        <button @click=${()=> gotoPage("verifier")} class="w3-button btn-color-primary btn-hover-color-primary
+            w3-xlarge w3-round-xlarge">
+            ${T("Start verifying")}</button>
+
+    </div>
+</div>
+
+<div class="sect-green">
+    <h2 class="fw-8 mb-32">Easy & Secure</h2>
+
+    <div class="w3-row mb-16">
+        <div class="w3-third mb-16">
+            <img src="./img/shield.png" style="height:70px" alt="">
+            <h2>We don't save data</h2>
         </div>
+        <div class="w3-third mb-16">
+            <img src="./img/cloud.png" style="height:70px" alt="">
+            <h2>No installs</h2>
+        </div>
+        <div class="w3-third">
+            <img src="./img/freeofcookie.png" style="height:70px" alt="">
+            <h2>Free of cookies</h2>
+        </div>
+    </div>
+
+    <div>
+        <img src="./img/v_hand.png" style="height:70px" alt="" />
+    </div>
+    <div>
+        <button @click=${()=> gotoPage("verifier")} class="w3-button btn-color-primary btn-hover-color-primary
+            w3-xlarge w3-round-xlarge">
+            ${T("Start verifying")}</button>
+
+    </div>
+
+</div>
+
+<div class="sect-dark">
+    <div class="margin-bottom">
+        If you are a public or private organization and want more information about this and similar solutions from
+        Evidence Ledger, you can contact us via email
+    </div>
+    <div>
+        <p>Send Email as Government</p>
+        <p>Send Email as Enterprise</p>
+    </div>
+
+
+    <div>
+        <img src="./img/fight_covid.png" style="height:70px" alt="" />
+    </div>
+    <div>
+        <p>Legal information</p>
+    </div>
+    <div>
+        <p class="fore-primary">Evidence Ledger 2021</p>
+    </div>
+
+</div>
+
+
+
         `
 
         this.render(theHtml)

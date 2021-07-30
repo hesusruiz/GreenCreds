@@ -2,13 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Verifiable Credentials with Strong Privacy" />
     <meta name="theme-color" content="#102a3a">
-    <title>Private Credentials</title>
-
+    <title>Verify Your Vaccination Certificate Online | Evidence Ledger</title>
+    <meta name="copyright" content="Evidence Ledger">
+    <meta name="description"
+        content="The free online tool for verifying your (or anyone else&#039;s) COVID vaccination certificate. Save time and get your pass in seconds."
+    >
+    <meta itemprop="name" content="Verify Your Vaccination Certificate Online | Evidence Ledger">
+    <meta itemprop="description"
+        content="The free online tool for verifying your (or anyone else&#039;s) COVID vaccination certificate. Save time and get your pass in seconds."
+    >
+    <!-- Facebook Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Verify Your Vaccination Certificate Online | Evidence Ledger">
+    <meta property="og:description"
+        content="The free online tool for verifying your (or anyone else&#039;s) COVID vaccination certificate. Save time and get your pass in seconds.">
     <link rel="preload" href="img/evidenceLogo60.png" as="image">    
-    
     <link rel="manifest" href="./manifest.json">
 
     <style>
@@ -252,17 +264,6 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 /* Additional styles */
 body{max-width:980px}
 
-.miniloader {
-    margin: auto;
-    z-index: 1;
-    width: 30px;
-    height: 30px;
-    border: 7px solid #04FF00;
-    border-radius: 50%;
-    border-top: 7px solid #102a3a;
-    -webkit-animation: spin 2s linear infinite;
-    animation: spin 2s linear infinite;
-}
 .loader {
     margin: auto;
     z-index: 1;
@@ -283,7 +284,13 @@ body{max-width:980px}
     100% {transform: rotate(360deg);}
 }
 
-.container{padding:0.01em 10px}
+/* Utilities classes */
+.margin-bottom{margin-bottom: 15px;}
+.fw-8{font-weight: 800;}
+.mb-16{margin-bottom: 16px;}
+.mb-32{margin-bottom: 32px;}
+
+.container{padding:0px 10px}
 .panel{padding: 10px; margin: 10px 0px; box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19)}
 section,.section{padding:0.01em 10px;margin-top:0px;margin-bottom:10px;border:1px solid #ccc}
 .subsection{padding: 0rem;}
@@ -300,18 +307,39 @@ section,.section{padding:0.01em 10px;margin-top:0px;margin-bottom:10px;border:1p
 .btn-menu{-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}   
 .btn-menu{color:white!important;background-color:#102a3a!important}
 
+.fore-primary{color:#04FF00!important}
+.bkg-primary{background-color:#102a3a!important}
+
+.sect-white {
+    padding: 25px 15px 50px 15px;
+    border: 1px solid #EBEBEB;
+    background-color: white;
+    text-align: center;
+}
+.sect-green {
+    padding: 25px 15px 50px 15px;
+    border: 1px solid #EBEBEB;
+    background-color: #04FF00;
+    text-align: center;
+}
+.sect-dark {
+    padding: 25px 15px 50px 15px;
+    border: 0 solid #EBEBEB;
+    color:white;
+    background-color: #102A3A;
+    text-align: center;
+}
 
     </style>
 
     <!-- <link rel="stylesheet" href="css/w3full.css" media="print" onload="this.media='all'"> -->
 
-    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="icon" type="image/png" href="./favicon.png" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-    <meta name="apple-mobile-web-app-title" content="SafeIsland" />
+    <meta name="apple-mobile-web-app-title" content="Verify Your Vaccination Certificate Online | Evidence Ledger"" />
     <link rel="apple-touch-icon" href="img/icon-152.png" />
-
 
     <script>
         var runmode = "%MODE%"
