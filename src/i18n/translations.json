@@ -13,6 +13,10 @@
         "es": "Comenzar a verificar",
         "ca": "Comença a verificar"
     },
+    "Verify another": {
+        "es": "Verificar otro",
+        "ca": "Verifica'ne un altre"
+    },
     "Privacy policy": {
         "es": "Política de privacidad",
         "ca": "Política de privacitat"
@@ -53,7 +57,7 @@
 
 
     "Failed!": {
-        "es": "Error!",
+        "es": "Error",
         "ca": "Failed!"
     },
     "Signature validation failed. The certificate is not valid.": {
@@ -61,26 +65,79 @@
         "ca": "Signature validation failed. The certificate is not valid."
     },
     "Warning!": {
-        "es": "Atención!"
+        "es": "Atención",
+        "ca": "Atenció"
     },
-    "The certificate is correctly signed with a PRE key so it is not valid for travel.": {
-        "es": "Certificado correctamente firmado con una llave de PRE, por lo que no es válido para viajar."
+    "$warningmsg": {
+        "en": "The certificate is not valid for travel, even if it is correctly signed with a PRE key.",
+        "es": "EL certificado no es válido para viajar, aunque está correctamente firmado con una llave de PRE.",
+        "ca": "El certificat no és vàlid per viatjar tot i que està correctament signat amb una clau de PRE."
     },
     "Validated!": {
-        "es": "Validado!"
+        "es": "Validado!",
+        "ca": "Validat"
     },
     "The certificate is valid.": {
-        "es": "El certificado es válido"
-    },
-    "Name": {
-        "es": "Nombre"
-    },
-    "Date of birth": {
-        "es": "Fecha de nacimiento"
+        "es": "El certificado es válido",
+        "ca": "El certificat és vàlid"
     },
     "Select Camera": {
         "es": "Seleccionar cámara",
         "ca": "Selecciona càmera"
+    },
+
+
+    "EU DIGITAL COVID CERTIFICATE": {
+        "es": "CERTIFICADO COVID DIGITAL DE LA EU",
+        "ca": "CERTIFICAT COVID DIGITAL DE LA EU"
+    },
+    "Vaccination": {
+        "es": "Vacunación",
+        "ca": "Vacunació"
+    },
+    "Surname and forename": {
+        "es": "Apellidos y Nombre",
+        "ca": "Cognoms i nom"
+    },
+    "Date of birth": {
+        "es": "Fecha de nacimiento",
+        "ca": "Data de naixement"
+    },
+    "Certificate identifier": {
+        "es": "Identificador del certificado",
+        "ca": "Identificador del certificat"
+    },
+    "Certificate issuer": {
+        "es": "Emisor del certificado",
+        "ca": "Emissor del certificat"
+    },
+    "Disease targeted": {
+        "es": "Enfermedad que se previene",
+        "ca": "Malaltia que prevé"
+    },
+    "Vaccine/prophylaxis": {
+        "es": "Tipo de vacuna",
+        "ca": "Tipus de vacuna"
+    },
+    "Vaccine medicinal product": {
+        "es": "Vacuna administrada",
+        "ca": "Vacuna administrada"
+    },
+    "Manufacturer": {
+        "es": "Fabricante",
+        "ca": "Fabricant"
+    },
+    "Dose number/Total doses": {
+        "es": "Número de dosis/Total",
+        "ca": "Número dosi/Total"
+    },
+    "Date of vaccination": {
+        "es": "Fecha de vacunación",
+        "ca": "Data de vacunació"
+    },
+    "Member State of vaccination": {
+        "es": "Estado miembro de la vacunación",
+        "ca": "Estat membre de la vacunació"
     }
 
 

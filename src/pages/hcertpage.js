@@ -14,7 +14,7 @@ export class DisplayHcert extends AbstractPage {
 
     async enter(qrContent, historyData) {
         console.log("PRESENT Enter", qrContent)
-        if (historyData) { gotoPage("verifier"); return;}
+//        if (historyData) { gotoPage("verifier"); return;}
         // let qrContent = pageData.text
         let hcert = undefined
         let verified = false
@@ -75,7 +75,7 @@ export class DisplayHcert extends AbstractPage {
             msg = html`
             <div id="hcertWarning" class="w3-panel bkg-warning">
                 <h3>${T("Warning!")}</h3>
-                <p>${T("The certificate is correctly signed with a PRE key so it is not valid for travel.")}</p>
+                <p>${T("$warningmsg")}</p>
             </div>
             `
         } else if (verified === true) {
@@ -92,10 +92,10 @@ export class DisplayHcert extends AbstractPage {
 
             <section class="section">
                 <div class="subsection">
-                    <h3 class="w3-center">EU COVID CERTIFICATE</h3>
+                    <h3 class="w3-center">${T("EU DIGITAL COVID CERTIFICATE")}</h3>
                 </div>
                 <div class="subsection">
-                    <h4 class="w3-center"><b>Vaccination</b></h4>
+                    <h4 class="w3-center"><b>${T("Vaccination")}</b></h4>
                 </div>
             </section>
 
@@ -104,7 +104,7 @@ export class DisplayHcert extends AbstractPage {
             <div class="container">
                 <section class="section">
                     <div class="subsection">
-                        <div class="etiqueta">${T("Name")}</div>
+                        <div class="etiqueta">${T("Surname and forename")}</div>
                         <div class="valor">${payload.fullName}</div>
                     </div>
                     <div class="subsection">
@@ -139,7 +139,7 @@ export class DisplayHcert extends AbstractPage {
                 <section class="section">
             
                     <div class="subsection">
-                        <div class="etiqueta mt-3">${T("Vaccine/profilaxis targeted")}</div>
+                        <div class="etiqueta mt-3">${T("Vaccine/prophylaxis")}</div>
                         <div class="valor mb-3">${payload.vaccineProphylaxis}</div>
                     </div>
             
