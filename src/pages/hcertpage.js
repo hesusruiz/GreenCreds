@@ -56,21 +56,21 @@ export class DisplayHcert extends AbstractPage {
         let thehtml = "Unrecognized";
 
         let msg = html`
-            <div id="hcertFailed" class="w3-panel w3-fail">
+            <div id="hcertFailed" class="w3-panel bkg-fail">
                 <h3>${T("Failed!")}</h3>
                 <p>${T("Signature validation failed. The certificate is not valid.")}</p>
             </div>
             `
         if (verified === "PRE") {
             msg = html`
-            <div id="hcertWarning" class="w3-panel w3-warning">
+            <div id="hcertWarning" class="w3-panel bkg-warning">
                 <h3>${T("Warning!")}</h3>
                 <p>${T("The certificate is correctly signed with a PRE key so it is not valid for travel.")}</p>
             </div>
             `
         } else if (verified === true) {
             msg = html`
-            <div id="hcertValidated" class="w3-panel w3-success w3-border">
+            <div id="hcertValidated" class="w3-panel bkg-success w3-border">
                 <h3>${T("Validated!")}</h3>
                 <p>${T("The certificate is valid.")}</p>
             </div>
