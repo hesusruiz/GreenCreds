@@ -28,7 +28,7 @@ export function HeaderBar() {
         <a href="javascript:void(0)" class="w3-bar-item btn-menu w3-right" @click=${toggleMenu}>&#9776;</a>
     </div>
     
-    <div class="w3-bar-block color-white w3-hide">
+    <div class="w3-bar-block w3-xlarge color-white w3-hide">
         <a @click=${() => gotoPage("spinner")} href="javascript:void(0)" class="w3-bar-item btn-menu">${T("Update public keys")}</a>
         <a @click=${() => gotoPage("selectLanguage")} href="javascript:void(0)" class="w3-bar-item btn-menu">${T("Language")}</a>
         <a href="#" class="w3-bar-item btn-menu">${T("Privacy policy")}</a>
