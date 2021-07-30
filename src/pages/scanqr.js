@@ -16,7 +16,6 @@ export class ScanQrPage extends AbstractPage {
         this.codeReader = new BrowserMultiFormatReader()
 
         // Initialise variables
-        this.videoInputDevices = []
         this.selectedDeviceId = undefined
         this.selectHtml = html``
         this.resultObj = undefined
@@ -73,9 +72,6 @@ export class ScanQrPage extends AbstractPage {
             // Get the deviceId associated to the "environment" video device
             let streamDeviceId = stream.getVideoTracks()[0].getSettings().deviceId
             this.selectedDeviceId = streamDeviceId
-
-            // Get the list of all video devices in the machine, to let the user select one later
-//            this.videoInputDevices = await this.codeReader.listVideoInputDevices()
 
             // Get the placeholder element where video element will be created
             let placeHolder = document.querySelector("#videoPlaceholder")

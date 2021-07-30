@@ -9,7 +9,6 @@ export class ScanQrPage extends AbstractPage {
     console.log("SCANQR: Inside constructor");
     super(domElem);
     this.codeReader = new BrowserMultiFormatReader();
-    this.videoInputDevices = [];
     this.selectedDeviceId = void 0;
     this.selectHtml = html``;
     this.resultObj = void 0;
