@@ -1,8 +1,0 @@
-{
-  "imports": {
-    "@zxing/library": "./@zxing/library.js",
-    "lit-html": "./lit-html.js",
-    "pako": "./pako.js",
-    "workbox-window": "./workbox-window.js"
-  }
-}

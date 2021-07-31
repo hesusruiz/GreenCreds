@@ -1,18 +1,9 @@
 import { AbstractPage } from '../pages/abstractpage'
 import { html } from 'lit-html';
-import { goHome, gotoPage } from "../router";
-import translations from "./translations.json"
 
-
-export function T(key) {
-    if ((window.preferredLanguage === "en") && (key.charAt(0) != "$")) { return key }
-
-    let entry = translations[key]
-    if (entry === undefined) { return key }
-    let translated = entry[window.preferredLanguage]
-    if (translated === undefined) { return key }
-    return translated
-}
+import ukflag from './flags/uk.png'
+import esflag from './flags/es.png'
+import caflag from './flags/ca.png'
 
 export class SelectLanguage extends AbstractPage {
 
@@ -29,21 +20,21 @@ export class SelectLanguage extends AbstractPage {
 
         <li class="w3-bar" @click=${()=>this.selectLang("en")}>
             <div class="w3-bar-item" style="padding:8px;">
-                <img src="./i18n/flags/uk.png" style="padding:8px;width:70px">
+                <img src=${ukflag} style="padding:8px;width:70px">
                 <span class="h3" style="vertical-align:middle;">English</span>
             </div>
         </li>
 
         <li class="w3-bar" @click=${()=>this.selectLang("ca")}>
             <div class="w3-bar-item" style="padding:8px;">
-                <img src="./i18n/flags/ca.png" style="padding:8px;width:70px">
+                <img src=${caflag} style="padding:8px;width:70px">
                 <span class="h3" style="vertical-align:middle;">Català</span>
             </div>
         </li>
 
         <li class="w3-bar" @click=${()=>this.selectLang("es")}>
             <div class="w3-bar-item" style="padding:8px;">
-                <img src="./i18n/flags/es.png" style="padding:8px;width:70px">
+                <img src=${esflag} style="padding:8px;width:70px">
                 <span class="h3" style="vertical-align:middle;">Español</span>
             </div>
         </li>

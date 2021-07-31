@@ -1,6 +1,7 @@
 import { html, render } from 'lit-html';
 import { goHome as routerGoHome, gotoPage } from "../router";
-import { T } from '../i18n/ii8';
+import { T } from '../i18n/translate';
+import evidenceLogo60 from '../img/evidenceLogo60.png'
 
 var domElem = undefined
 var x = undefined
@@ -28,7 +29,7 @@ export function HeaderBar() {
 
     let theHtml = html`
     <div class="w3-bar w3-xlarge color-primary">
-        <img class="w3-bar-item" style="padding:0" @click=${goHome} href="javascript:void(0)" src="img/evidenceLogo60.png" alt="">
+        <img class="w3-bar-item" style="padding:0" @click=${goHome} href="javascript:void(0)" src=${evidenceLogo60} alt="">
         <a href="javascript:void(0)" class="w3-bar-item btn-menu w3-right" @click=${toggleMenu}>&#9776;</a>
     </div>
     

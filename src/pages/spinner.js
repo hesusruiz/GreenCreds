@@ -1,7 +1,4 @@
 import { AbstractPage } from './abstractpage'
-import { html } from 'lit-html';
-import { goHome, gotoPage } from "../router";
-import { T } from '../i18n/ii8';
 
 export class Spinner extends AbstractPage {
 

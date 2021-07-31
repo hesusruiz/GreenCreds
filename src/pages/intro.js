@@ -1,7 +1,13 @@
 import { AbstractPage } from './abstractpage'
 import { html, svg } from 'lit-html';
 import { goHome, gotoPage } from "../router";
-import { T } from '../i18n/ii8';
+import { T } from '../i18n/translate';
+
+import shield from '../img/shield.png'
+import cloud from '../img/cloud.png'
+import freeofcookie from '../img/freeofcookie.png'
+import v_hand from '../img/v_hand.png'
+import fight_covid from '../img/fight_covid.png'
 
 var spinIcon = svg`
 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>`
@@ -36,21 +42,21 @@ export class Intro extends AbstractPage {
 
                 <div class="w3-row mb-16">
                     <div class="w3-third mb-16">
-                        <img src="./img/shield.png" style="height:70px" alt="">
+                        <img src=${shield} style="height:70px" alt="">
                         <h2>${T("We don't save data")}</h2>
                     </div>
                     <div class="w3-third mb-16">
-                        <img src="./img/cloud.png" style="height:70px" alt="">
+                        <img src=${cloud} style="height:70px" alt="">
                         <h2>${T("No installs")}</h2>
                     </div>
                     <div class="w3-third">
-                        <img src="./img/freeofcookie.png" style="height:70px" alt="">
+                        <img src=${freeofcookie} style="height:70px" alt="">
                         <h2>${T("Free of cookies")}</h2>
                     </div>
                 </div>
 
                 <div>
-                    <img src="./img/v_hand.png" style="height:70px" alt="" />
+                    <img src=${v_hand} style="height:70px" alt="" />
                 </div>
                 <div>
                     <button @click=${()=> gotoPage("verifier")} class="w3-button btn-color-primary btn-hover-color-primary
@@ -72,7 +78,7 @@ export class Intro extends AbstractPage {
 
 
                 <div>
-                    <img src="./img/fight_covid.png" style="height:70px" alt="" />
+                    <img src=${fight_covid} style="height:70px" alt="" />
                 </div>
                 <div>
                     <p>Legal information</p>

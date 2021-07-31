@@ -2,7 +2,7 @@ import { html, render } from 'lit-html';
 import { log } from '../log'
 import { CWT } from "../components/cwt"
 import { AbstractPage } from './abstractpage'
-import { T } from '../i18n/ii8';
+import { T } from '../i18n/translate';
 import { gotoPage } from '../router';
 
 export class DisplayHcert extends AbstractPage {
