@@ -35290,7 +35290,7 @@ The user will be the sole responsible of his/her use of the Website and its cont
 
 <h3>Disclaimer of liability:</h3>
 <p>
-Axonteam does not grant any sort of warranty, express or implied, with the Website or its contents. The software “Evidence Ledger” is provided AS IS and hereby disclaims all implied warranties, “Evidence Ledger” is under the Apache License, Version 2.0: “https://www.apache.org/licenses/LICENSE-2.0”.
+Axonteam does not grant any sort of warranty, express or implied, with the Website or its contents. The software “Evidence Ledger” is provided AS IS and hereby disclaims all implied warranties, “Evidence Ledger” is under the Apache License, Version 2.0: <span style="word-break:break-word">“https://www.apache.org/licenses/LICENSE-2.0”</span>.
 </p>
 
 <p>
