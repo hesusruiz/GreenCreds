@@ -35410,7 +35410,7 @@ If there were a breach of security in the activities related to the data process
 <p>
 If the user would like to obtain more information of the Website’s Privacy Policy, he/she must direct the query to the data protection delegate of Axonteam by writing an email to
 </p>
-<a href="mailto:dpo@accentjuridic.com" target="_blank">dpo@accentjuridic.com</a>
+<a href="mailto:dpo@accentjuridic.com">dpo@accentjuridic.com</a>
 
 </div>
 
