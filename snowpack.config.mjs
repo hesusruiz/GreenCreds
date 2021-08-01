@@ -3,18 +3,7 @@
 
 /** @type {import("snowpack").SnowpackUserConfig } */
 export default {
-    env: {
-        INSTALL_SW: true
-    },
-    mount: {
-        src: '/',
-        public: {
-            url: '/',
-            dot: true,
-            static: true,
-            resolve: false
-        }
-    },
+    root: "src",
     plugins: [
 
     ],
@@ -25,13 +14,9 @@ export default {
         /* ... */
     },
     optimize: {
-        minify: false,
-        bundle: false,
-        treeshake: false,
+        /* ... */
     },
     buildOptions: {
         /* ... */
-        out: "docs",
-        baseUrl: "/GreenCreds/"
     },
 };

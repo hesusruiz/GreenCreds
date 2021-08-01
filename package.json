@@ -5,17 +5,18 @@
         "dist"
     ],
     "scripts": {
-        "testbuild": "npx wds",
+        "clean": "rm docs/*.*",
         "dev": "snowpack dev",
-        "build": "node bump && snowpack build && ./cleanup.sh && npm run workbox",
-        "upload": "./deploy.sh",
+        "edev": "esbuild src/app.js src/welcome.js --loader:.png=dataurl --bundle --servedir=docs --outdir=docs",
+        "build:light": "./ebuild.sh",
         "workbox": "workbox generateSW workbox-config.js",
+        "build": "npm run build:light && npm run workbox",
+        "upload": "./upload.sh",
         "deploy": "npm run build && npm run upload",
-        "buildup": "rollup -c"
+        "build:preview": "npm run build:light && npx wds"
     },
     "dependencies": {
         "@zxing/library": "^0.18.6",
-        "jsqr": "^1.4.0",
         "lit-html": "^1.4.1",
         "pako": "^2.0.3",
         "workbox-window": "^6.1.5"
@@ -27,6 +28,7 @@
         "@snowpack/plugin-webpack": "^3.0.0",
         "@web/dev-server": "^0.1.18",
         "autoprefixer": "^10.3.1",
+        "esbuild": "^0.9.7",
         "postcss": "^8.3.5",
         "snowpack": "^3.8.2",
         "tailwindcss": "^2.2.4"

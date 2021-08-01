@@ -381,21 +381,6 @@ function uint(bytes) {
     return value;
 }
 
-function bigint(bytes) {
-    // Convert a byte array of 8 bytes to an BigInteger
-    // The byte array is in network byte order
-
-    var value = BigInt(bytes[0]);
-    var i = bytes.length;
-
-    for (let j = 1; j < i; j = j + 1) {
-        value = value * 256n;
-        value = value + BigInt(bytes[j]);
-    }
-
-    return value;
-}
-
 // The character codes for the ranges
 var aCode = "a".charCodeAt(0);
 var fCode = "f".charCodeAt(0);

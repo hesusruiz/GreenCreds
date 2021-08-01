@@ -47,7 +47,7 @@ var i8nTexts = {
     },
     "We don't save data": {
         "es": "No guardamos ningún dato",
-        "ca": "No emmagatzemem cap dadar"
+        "ca": "No emmagatzemem cap dada"
     },
     "No installs": {
         "es": "Sin instalación",
@@ -156,3 +156,6 @@ export function initialScreen() {
     document.body.innerHTML = initialScreenHTML
 
 }
+
+window.initialScreen = initialScreen
+initialScreen()

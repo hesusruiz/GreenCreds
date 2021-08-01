@@ -237,7 +237,9 @@ async function performAppUpgrade() {
 
     try {
         // Get the new version of the application
-        var newVersion = await $.get("/VERSION.txt");
+        let response = await fetch("/VERSION.txt");
+        let newVersion = await response.text()
+        console.log(`Upgrading application to version ${newVersion}`)
         if (newVersion) {
             window.localStorage.setItem("VERSION", newVersion)
         }
