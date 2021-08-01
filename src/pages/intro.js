@@ -72,8 +72,10 @@ export class Intro extends AbstractPage {
                     ${T("$callus")}
                 </div>
                 <div>
-                    <p>Send Email as Government</p>
-                    <p>Send Email as Enterprise</p>
+                    <a href="mailto:government@evidenceledger.eu">Send Email as Government</a>
+                </div>
+                <div>
+                    <a href="mailto:enterprise@evidenceledger.eu">Send Email as Enterprise</a>
                 </div>
 
 
@@ -81,7 +83,17 @@ export class Intro extends AbstractPage {
                     <img src=${fight_covid} style="height:70px" alt="" />
                 </div>
                 <div>
-                    <p>Legal information</p>
+                    <a @click=${()=>gotoPage("termsOfUse")} href="javascript:void(0)">
+                    ${T("Terms of use")}
+                    </a>
+                </div>
+                <div>
+                    <a @click=${()=>gotoPage("privacyPolicy")} href="javascript:void(0)">
+                    ${T("Privacy policy")}
+                    </a>
+                </div>
+                <div>
+                    <p style="font-weight:600">*This website does not use cookies</p>
                 </div>
                 <div>
                     <p class="fore-primary">Evidence Ledger 2021</p>

@@ -12,6 +12,8 @@ import { Intro } from "./pages/intro";
 import { Spinner } from "./pages/spinner";
 import { displayNormalQR } from "./pages/displayNormalQR";
 import { SelectLanguage } from "./i18n/ii8";
+import { TermsOfUse } from './pages/termsofuse';
+import { PrivacyPolicy } from './pages/privacypolicy';
 
 // The home page to start and when refreshing
 var homePage = "intro"
@@ -52,6 +54,14 @@ var pageDefs = [
     {
         name: "selectLanguage",
         className: SelectLanguage
+    },
+    {
+        name: "termsOfUse",
+        className: TermsOfUse
+    },
+    {
+        name: "privacyPolicy",
+        className: PrivacyPolicy
     },
 ]
 

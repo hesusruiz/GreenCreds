@@ -11,8 +11,10 @@
         "build:light": "./ebuild.sh",
         "workbox": "workbox generateSW workbox-config.js",
         "build": "npm run build:light && npm run workbox",
-        "upload": "./upload.sh",
-        "deploy": "npm run build && npm run upload",
+        "upload:production": "./uploadProduction.sh",
+        "upload:pre": "./uploadPre.sh",
+        "deploy:pre": "npm run build && npm run upload:pre",
+        "deploy:production": "npm run build && npm run upload:production",
         "build:preview": "npm run build:light && npx wds"
     },
     "dependencies": {
