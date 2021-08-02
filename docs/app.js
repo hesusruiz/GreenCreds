@@ -127,7 +127,7 @@ var require_workbox_window_prod_es5 = __commonJS((exports) => {
       }), e3.sn = n2, e3.nn = t2, navigator.serviceWorker.addEventListener("message", e3.gn), e3;
     }
     c2 = r2, (e2 = v2).prototype = Object.create(c2.prototype), e2.prototype.constructor = e2, e2.__proto__ = c2;
-    var h, l, m, w = v2.prototype;
+    var h, l2, m, w = v2.prototype;
     return w.register = function(n2) {
       var t2 = (n2 === void 0 ? {} : n2).immediate, r3 = t2 !== void 0 && t2;
       try {
@@ -198,11 +198,11 @@ var require_workbox_window_prod_es5 = __commonJS((exports) => {
       } catch (n3) {
         return Promise.reject(n3);
       }
-    }, h = v2, (l = [{key: "active", get: function() {
+    }, h = v2, (l2 = [{key: "active", get: function() {
       return this.en.promise;
     }}, {key: "controlling", get: function() {
       return this.on.promise;
-    }}]) && t(h.prototype, l), m && t(h, m), v2;
+    }}]) && t(h.prototype, l2), m && t(h, m), v2;
   }(function() {
     function n2() {
       this.Pn = new Map();
@@ -633,10 +633,10 @@ var TemplateResult = class {
     this.processor = processor;
   }
   getHTML() {
-    const l = this.strings.length - 1;
+    const l2 = this.strings.length - 1;
     let html2 = "";
     let isCommentBinding = false;
-    for (let i = 0; i < l; i++) {
+    for (let i = 0; i < l2; i++) {
       const s = this.strings[i];
       const commentOpen = s.lastIndexOf("<!--");
       isCommentBinding = (commentOpen > -1 || isCommentBinding) && s.indexOf("-->", commentOpen + 1) === -1;
@@ -647,7 +647,7 @@ var TemplateResult = class {
         html2 += s.substr(0, attributeMatch.index) + attributeMatch[1] + attributeMatch[2] + boundAttributeSuffix + attributeMatch[3] + marker;
       }
     }
-    html2 += this.strings[l];
+    html2 += this.strings[l2];
     return html2;
   }
   getTemplateElement() {
@@ -710,9 +710,9 @@ var AttributeCommitter = class {
   }
   _getValue() {
     const strings2 = this.strings;
-    const l = strings2.length - 1;
+    const l2 = strings2.length - 1;
     const parts2 = this.parts;
-    if (l === 1 && strings2[0] === "" && strings2[1] === "") {
+    if (l2 === 1 && strings2[0] === "" && strings2[1] === "") {
       const v = parts2[0].value;
       if (typeof v === "symbol") {
         return String(v);
@@ -722,7 +722,7 @@ var AttributeCommitter = class {
       }
     }
     let text = "";
-    for (let i = 0; i < l; i++) {
+    for (let i = 0; i < l2; i++) {
       text += strings2[i];
       const part = parts2[i];
       if (part !== void 0) {
@@ -736,7 +736,7 @@ var AttributeCommitter = class {
         }
       }
     }
-    text += strings2[l];
+    text += strings2[l2];
     return text;
   }
   commit() {
@@ -1185,6 +1185,22 @@ var $callus = {
   es: "Si usted es una entidad p\xFAblica o privada y desea m\xE1s informaci\xF3n sobre esta soluci\xF3n o similares de Evidence Ledger, puede contactarnos via email",
   ca: "Si ets una entitat p\xFAblica o privada i vols m\xE9s informaci\xF3 sobre aquesta soluci\xF3 o similars Evidence Ledger, pots contactar amb nosaltres per correu electr\xF2nic"
 };
+var Application_updated = {
+  es: "Aplicaci\xF3n actualizada",
+  ca: "Aplicaci\xF3 actualitzada"
+};
+var There_is_a_new_version_of_the_application_and_it_has_already_been_updated_ = {
+  es: "Se ha actualizado con una nueva versi\xF3n de la aplicaci\xF3n.",
+  ca: "Actualitzat amb una nova versi\xF3 de l'aplicaci\xF3."
+};
+var Please_click_Accept_to_refresh_the_page_ = {
+  es: "Por favor presione Aceptar para refrescar la p\xE1gina",
+  ca: "Premeu Acceptar per actualitzar la p\xE0gina"
+};
+var Accept = {
+  es: "Aceptar",
+  ca: "Acceptar"
+};
 var Failed_ = {
   es: "Error",
   ca: "Failed!"
@@ -1209,10 +1225,6 @@ var Validated_ = {
 var The_certificate_is_valid_ = {
   es: "El certificado es v\xE1lido",
   ca: "El certificat \xE9s v\xE0lid"
-};
-var Select_Camera = {
-  es: "Seleccionar c\xE1mara",
-  ca: "Selecciona c\xE0mera"
 };
 var EU_DIGITAL_COVID_CERTIFICATE = {
   es: "CERTIFICADO COVID DIGITAL DE LA EU",
@@ -1280,13 +1292,16 @@ var translations_default = {
   "No installs": No_installs,
   "Free of cookies": Free_of_cookies,
   $callus,
+  "Application updated": Application_updated,
+  "There is a new version of the application and it has already been updated.": There_is_a_new_version_of_the_application_and_it_has_already_been_updated_,
+  "Please click Accept to refresh the page.": Please_click_Accept_to_refresh_the_page_,
+  Accept,
   "Failed!": Failed_,
   "Signature validation failed. The certificate is not valid.": Signature_validation_failed__The_certificate_is_not_valid_,
   "Warning!": Warning_,
   $warningmsg,
   "Validated!": Validated_,
   "The certificate is valid.": The_certificate_is_valid_,
-  "Select Camera": Select_Camera,
   "EU DIGITAL COVID CERTIFICATE": EU_DIGITAL_COVID_CERTIFICATE,
   Vaccination,
   "Surname and forename": Surname_and_forename,
@@ -1303,6 +1318,12 @@ var translations_default = {
 };
 
 // src/i18n/translate.js
+var preferredLanguage = navigator.language.substring(0, 2);
+var l = localStorage.getItem("preferredLanguage");
+if (l) {
+  preferredLanguage = l;
+}
+window.preferredLanguage = preferredLanguage;
 function T(key) {
   if (window.preferredLanguage === "en" && key.charAt(0) != "$") {
     return key;
@@ -3092,11 +3113,11 @@ var assign = function(obj) {
 };
 var flattenChunks = (chunks) => {
   let len = 0;
-  for (let i = 0, l = chunks.length; i < l; i++) {
+  for (let i = 0, l2 = chunks.length; i < l2; i++) {
     len += chunks[i].length;
   }
   const result = new Uint8Array(len);
-  for (let i = 0, pos = 0, l = chunks.length; i < l; i++) {
+  for (let i = 0, pos = 0, l2 = chunks.length; i < l2; i++) {
     let chunk = chunks[i];
     result.set(chunk, pos);
     pos += chunk.length;
@@ -35024,17 +35045,17 @@ var SWNotify = class extends AbstractPage {
             <div class="w3-card-4 w3-center" style="margin-top:100px;">
         
                 <header class="w3-container color-primary" style="padding:10px">
-                    <h1>Application updated</h1>
+                    <h1>${T("Application updated")}</h1>
                 </header>
         
                 <div class="w3-container w3-padding-16">
-                    <p>There is a new version of the application and it has already been updated.</p>
-                    <p>Please click Accept to refresh the page.</p>
+                    <p>${T("There is a new version of the application and it has already been updated.")}</p>
+                    <p>${T("Please click Accept to refresh the page.")}</p>
                 </div>
         
                 <div class="w3-padding-16">
         
-                    <button @click=${() => gotoPage("spinner")} class="w3-button btn-color-primary btn-hover-color-primary w3-xlarge w3-round-xlarge">Accept</button>
+                    <button @click=${() => gotoPage("spinner")} class="w3-button btn-color-primary btn-hover-color-primary w3-xlarge w3-round-xlarge">${T("Accept")}</button>
         
                 </div>
         
@@ -35242,10 +35263,10 @@ var SelectLanguage = class extends AbstractPage {
 `;
     this.render(theHtml);
   }
-  async selectLang(l) {
-    console.log("Selecting language", l);
-    window.preferredLanguage = l;
-    localStorage.setItem("preferredLanguage", l);
+  async selectLang(l2) {
+    console.log("Selecting language", l2);
+    window.preferredLanguage = l2;
+    localStorage.setItem("preferredLanguage", l2);
     window.history.back();
   }
 };

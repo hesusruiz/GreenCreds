@@ -4,78 +4,7 @@ import cloud from './img/cloud.png'
 import freeofcookie from './img/freeofcookie.png'
 import v_hand from './img/v_hand.png'
 import fight_covid from './img/fight_covid.png'
-
-
-var preferredLanguage = navigator.language.substring(0,2)
-let l = localStorage.getItem("preferredLanguage")
-if (l) {preferredLanguage = l}
-window.preferredLanguage = preferredLanguage
-
-var i8nTexts = {
-    "$intro01": {
-        "en": "This application allows the verification of COVID certificates issued by EU Member States and also certificates issued by the UK Government with the same format as the EU Digital COVID Certificate",
-        "es": "Esta aplicación permite la verificación de certificados COVID emitidos por los Estados Miembro de la UE y también los certificados emitidos por el Reino Unido con el mismo formato que el Certificado COVID Digital de la UE",
-        "ca": "Aquesta aplicació permet la verificació dels certificats COVID emesos pels Estats membres de la UE i també els certificats emesos pel Regne Unit en el mateix format que el Certificat COVID digital de la UE"
-    },
-    "EU Digital COVID Credential Verifier": {
-        "es": "Verificador de Credenciales COVID",
-        "ca": "Verificador de Credencials COVID"
-    },
-    "Start verifying": {
-        "es": "Comenzar a verificar",
-        "ca": "Comença a verificar"
-    },
-    "Privacy policy": {
-        "es": "Política de privacidad",
-        "ca": "Política de privacitat"
-    },
-    "Terms & Conditions": {
-        "es": "Términos y condiciones",
-        "ca": "Termes d'ús"
-    },
-    "Language": {
-        "es": "Idioma",
-        "ca": "Llengua"
-    },
-    "Update public keys": {
-        "es": "Actualizar llaves públicas",
-        "ca": "Actualitza claus públiques"
-    },
-    "Easy & Secure": {
-        "es": "Fácil y Seguro",
-        "ca": "Fàcil i Segur"
-    },
-    "We don't save data": {
-        "es": "No guardamos ningún dato",
-        "ca": "No emmagatzemem cap dada"
-    },
-    "No installs": {
-        "es": "Sin instalación",
-        "ca": "Sense instal·lació"
-    },
-    "Free of cookies": {
-        "es": "Libre de cookies",
-        "ca": "Sense cookies"
-    },
-    "$callus": {
-        "en": "If you are a public or private organization and want more information about this and similar solutions from Evidence Ledger, you can contact us via email",
-        "es": "Si usted es una entidad pública o privada y desea más información sobre esta solución o similares de Evidence Ledger, puede contactarnos via email",
-        "ca": "Si ets una entitat pública o privada i vols més informació sobre aquesta solució o similars Evidence Ledger, pots contactar amb nosaltres per correu electrònic"
-    }
-
-}
-
-
-function T(key) {
-    console.log("Preferred language", preferredLanguage)
-    console.log(key)
-    if ((preferredLanguage === "en") && (key.charAt(0) != "$")) { return key }
-    let entry = i8nTexts[key]
-    if (entry === undefined) { return key }
-    let translated = entry[preferredLanguage]
-    if (translated === undefined) { return key }
-    return translated
-}
+import { T } from './i18n/translate'
 
 export function initialScreen() {
 

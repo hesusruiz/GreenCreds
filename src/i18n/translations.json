@@ -54,6 +54,22 @@
         "es": "Si usted es una entidad pública o privada y desea más información sobre esta solución o similares de Evidence Ledger, puede contactarnos via email",
         "ca": "Si ets una entitat pública o privada i vols més informació sobre aquesta solució o similars Evidence Ledger, pots contactar amb nosaltres per correu electrònic"
     },
+    "Application updated": {
+        "es": "Aplicación actualizada",
+        "ca": "Aplicació actualitzada"
+    },
+    "There is a new version of the application and it has already been updated.": {
+        "es": "Se ha actualizado con una nueva versión de la aplicación.",
+        "ca": "Actualitzat amb una nova versió de l'aplicació."
+    },
+    "Please click Accept to refresh the page.": {
+        "es": "Por favor presione Aceptar para refrescar la página",
+        "ca": "Premeu Acceptar per actualitzar la pàgina"
+    },
+    "Accept": {
+        "es": "Aceptar",
+        "ca": "Acceptar"
+    },
 
 
     "Failed!": {
@@ -80,10 +96,6 @@
     "The certificate is valid.": {
         "es": "El certificado es válido",
         "ca": "El certificat és vàlid"
-    },
-    "Select Camera": {
-        "es": "Seleccionar cámara",
-        "ca": "Selecciona càmera"
     },
 
 
