@@ -67,7 +67,7 @@ var Free_of_cookies = {
   ca: "Sense cookies"
 };
 var $callus = {
-  en: "If you are a public or private organization and want more information about this and similar solutions from Evidence Ledger, you can contact us via email",
+  en: "If you are a public or private organization and want more information about this or similar solutions from Evidence Ledger, you can contact us via email",
   es: "Si usted es una entidad p\xFAblica o privada y desea m\xE1s informaci\xF3n sobre esta soluci\xF3n o similares de Evidence Ledger, puede contactarnos via email",
   ca: "Si ets una entitat p\xFAblica o privada i vols m\xE9s informaci\xF3 sobre aquesta soluci\xF3 o similars Evidence Ledger, pots contactar amb nosaltres per correu electr\xF2nic"
 };
