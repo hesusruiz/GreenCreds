@@ -84,7 +84,7 @@ export class Intro extends AbstractPage {
                 </div>
                 <div>
                     <a @click=${()=>gotoPage("termsOfUse")} href="javascript:void(0)">
-                    ${T("Terms of use")}
+                    ${T("Terms & Conditions")}
                     </a>
                 </div>
                 <div>
