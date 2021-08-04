@@ -49,6 +49,20 @@ export class SelectLanguage extends AbstractPage {
             </div>
         </li>
 
+        <li class="w3-bar" @click=${()=>this.selectLang("de")}>
+            <div class="w3-bar-item" style="padding:8px;">
+                <img src=${deflag} style="padding:8px;width:70px">
+                <span class="h3" style="vertical-align:middle;">Deutsch</span>
+            </div>
+        </li>
+
+        <li class="w3-bar" @click=${()=>this.selectLang("it")}>
+            <div class="w3-bar-item" style="padding:8px;">
+                <img src=${itflag} style="padding:8px;width:70px">
+                <span class="h3" style="vertical-align:middle;">Italiano</span>
+            </div>
+        </li>
+
     </ul>
 </div>
 `
