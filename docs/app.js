@@ -8529,10 +8529,10 @@ var DisplayHcert = class extends AbstractPage {
 
             <section class="section">
                 <div class="subsection">
-                    <h3 class="w3-center">EU COVID CERTIFICATE</h3>
+                    <h3 class="w3-center">${T("EU DIGITAL COVID CERTIFICATE")}</h3>
                 </div>
                 <div class="subsection">
-                    <h4 class="w3-center"><b>Test</b></h4>
+                    <h4 class="w3-center"><b>${T("Test")}</b></h4>
                 </div>
             </section>
 
@@ -8541,7 +8541,7 @@ var DisplayHcert = class extends AbstractPage {
             <div class="container">
                 <div class="section">
                     <div class="subsection">
-                        <div class="etiqueta">${T("Name")}</div>
+                        <div class="etiqueta">${T("Surname and forename")}</div>
                         <div class="valor">${payload.fullName}</div>
                     </div>
                     <div class="subsection">
@@ -8612,10 +8612,10 @@ var DisplayHcert = class extends AbstractPage {
 
             <section class="section">
                 <div class="subsection">
-                    <h3 class="w3-center">EU COVID CERTIFICATE</h3>
+                    <h3 class="w3-center">${T("EU DIGITAL COVID CERTIFICATE")}</h3>
                 </div>
                 <div class="subsection">
-                    <h4 class="w3-center"><b>Recovery</b></h4>
+                    <h4 class="w3-center"><b>${T("Recovery")}</b></h4>
                 </div>
             </section>
 
@@ -8624,11 +8624,11 @@ var DisplayHcert = class extends AbstractPage {
             <div class="container">
                 <div class="section">
                     <div class="subsection">
-                        <div class="etiqueta">Name</div>
+                        <div class="etiqueta">${T("Surname and forename")}</div>
                         <div class="valor">${payload.fullName}</div>
                     </div>
                     <div class="subsection">
-                        <div class="etiqueta">Date of birth</div>
+                        <div class="etiqueta">${T("Date of birth")}</div>
                         <div class="valor">${payload.dateOfBirth}</div>
                     </div>
                 </div>
@@ -8636,17 +8636,17 @@ var DisplayHcert = class extends AbstractPage {
                 <div class="section">
             
                     <div class="subsection">
-                        <div class="etiqueta">Date of positive</div>
+                        <div class="etiqueta">${T("Date of positive")}</div>
                         <div class="valor">${payload.datePositive}</div>
                     </div>
             
                     <div class="subsection">
-                        <div class="etiqueta">Valid from</div>
+                        <div class="etiqueta">${T("Valid from")}</div>
                         <div class="valor">${payload.dateFrom}</div>
                     </div>
             
                     <div class="subsection">
-                        <div class="etiqueta mt-3">Valid to</div>
+                        <div class="etiqueta mt-3">${T("Valid to")}</div>
                         <div class="valor">${payload.dateUntil}</div>
                     </div>
             
@@ -8654,7 +8654,7 @@ var DisplayHcert = class extends AbstractPage {
             
                 <div class="section">
                     <div class="subsection">
-                        <div class="etiqueta mt-3">Disease targeted</div>
+                        <div class="etiqueta mt-3">${T("Disease targeted")}</div>
                         <div class="valor mt-3">${payload.diseaseTargeted}</div>
                         </div>
                     </div>
@@ -8662,13 +8662,13 @@ var DisplayHcert = class extends AbstractPage {
 
                 <div class="section">
                     <div class="subsection">
-                        <div class="etiqueta">Certificate identifier</div>
+                        <div class="etiqueta">${T("Certificate identifier")}</div>
                         <div class="valor" style="word-break: break-all;"><strong>${payload.uniqueIdentifier}</strong></div>
             
-                        <div class="etiqueta">Certificate issuer</div>
+                        <div class="etiqueta">${T("Certificate issuer")}</div>
                         <div class="valor">${payload.certificateIssuer}</div>
             
-                        <div class="etiqueta">Country of Test</div>
+                        <div class="etiqueta">${T("Country")}</div>
                         <div class="valor">${payload.country}</div>
             
                     </div>
