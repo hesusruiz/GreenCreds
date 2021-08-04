@@ -1,0 +1,81 @@
+"Introduction"
+    "fr": "Cette application permet de vérifier les certificats COVID émis par les États membres de l'UE, ainsi que les certificats émis par le gouvernement britannique sous le même format que le certificat COVID numérique de l'UE."
+
+"Outil de vérification numérique des justificatifs COVID de l'UE"
+
+"Commencer la vérification"
+
+"Effectuer une autre vérification"
+
+"Politique de confidentialité"
+
+"Conditions générales"
+
+"Langue"
+
+"Mise à jour des clés publiques"
+
+"Simple et sécurisé"
+
+"Nous ne conservons pas les données"
+
+"Pas d'installation nécessaire"
+
+"Sans cookie"
+
+"$callus"
+
+    "fr": "Si vous êtes une organisation publique ou une entreprise privée et que vous souhaitez en savoir plus sur cette solution ou d'autres solutions similaires d'Evidence Ledger, vous pouvez nous contacter par e-mail."
+    
+"Application mise à jour"
+
+"Il existe une nouvelle version de l'application et elle a déjà été mise à jour."
+
+"Veuillez cliquer sur Accepter pour rafraîchir la page."
+
+"Accepter"
+
+"Échec !"
+
+"La validation de la signature a échoué. Le certificat n'est pas valable."
+
+"Attention !"
+
+"$warningmsg"
+    "fr": "Le certificat n'est pas valable pour voyager, même s'il est signé en bonne et due forme avec une clé pré-partagée."
+
+"Validé !"
+
+
+"Le certificat est valable."
+
+
+"CERTIFICAT NUMÉRIQUE COVID DE L'UE"
+
+"Vaccination"
+
+"Nom et prénom"
+
+"Date de naissance"
+
+"Identifiant du certificat"
+
+"Émetteur du certificat"
+
+"Maladie ciblée"
+
+"Vaccin/prophylaxie"
+
+"Médicament vaccinal"
+
+"Fabricant"
+
+"Nombre de doses/Doses totales"
+
+"Date de la vaccination"
+
+"État membre où a été effectuée la vaccination"
+
+
+
+

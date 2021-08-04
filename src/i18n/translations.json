@@ -3,153 +3,189 @@
     "$intro01": {
         "en": "This application allows the verification of COVID certificates issued by EU Member States and also certificates issued by the UK Government with the same format as the EU Digital COVID Certificate",
         "es": "Esta aplicación permite la verificación de certificados COVID emitidos por los Estados Miembro de la UE y también los certificados emitidos por el Reino Unido con el mismo formato que el Certificado COVID Digital de la UE",
-        "ca": "Aquesta aplicació permet la verificació dels certificats COVID emesos pels Estats membres de la UE i també els certificats emesos pel Regne Unit en el mateix format que el Certificat COVID digital de la UE"
+        "ca": "Aquesta aplicació permet la verificació dels certificats COVID emesos pels Estats membres de la UE i també els certificats emesos pel Regne Unit en el mateix format que el Certificat COVID digital de la UE",
+        "fr": "Cette application permet de vérifier les certificats COVID émis par les États membres de l'UE, ainsi que les certificats émis par le gouvernement britannique sous le même format que le certificat COVID numérique de l'UE."
     },
     "EU Digital COVID Credential Verifier": {
         "es": "Verificador de Credenciales COVID",
-        "ca": "Verificador de Credencials COVID"
+        "ca": "Verificador de Credencials COVID",
+        "fr": "Outil de vérification numérique des justificatifs COVID de l'UE"
     },
     "Start verifying": {
         "es": "Comenzar a verificar",
-        "ca": "Comença a verificar"
+        "ca": "Comença a verificar",
+        "fr": "Commencer la vérification"
     },
     "Verify another": {
         "es": "Verificar otro",
-        "ca": "Verifica'ne un altre"
+        "ca": "Verifica'ne un altre",
+        "fr": "Effectuer une autre vérification"
     },
     "Privacy policy": {
         "es": "Política de privacidad",
-        "ca": "Política de privacitat"
+        "ca": "Política de privacitat",
+        "fr": "Politique de confidentialité"
     },
     "Terms & Conditions": {
         "es": "Términos y condiciones",
-        "ca": "Termes d'ús"
+        "ca": "Termes d'ús",
+        "fr": "Conditions générales"
     },
     "Language": {
         "es": "Idioma",
-        "ca": "Llengua"
+        "ca": "Llengua",
+        "fr": "Langue"
     },
     "Update public keys": {
         "es": "Actualizar llaves públicas",
-        "ca": "Actualitza claus públiques"
+        "ca": "Actualitza claus públiques",
+        "fr": "Mise à jour des clés publiques"
     },
     "Easy & Secure": {
         "es": "Fácil y Seguro",
-        "ca": "Fàcil i Segur"
+        "ca": "Fàcil i Segur",
+        "fr": "Simple et sécurisé"
     },
     "We don't save data": {
         "es": "No guardamos ningún dato",
-        "ca": "No emmagatzemem cap dada"
+        "ca": "No emmagatzemem cap dada",
+        "fr": "Nous ne conservons pas les données"
     },
     "No installs": {
         "es": "Sin instalación",
-        "ca": "Sense instal·lació"
+        "ca": "Sense instal·lació",
+        "fr": "Pas d'installation nécessaire"
     },
     "Free of cookies": {
         "es": "Libre de cookies",
-        "ca": "Sense cookies"
+        "ca": "Sense cookies",
+        "fr": "Sans cookie"
     },
     "$callus": {
         "en": "If you are a public or private organization and want more information about this or similar solutions from Evidence Ledger, you can contact us via email",
         "es": "Si usted es una entidad pública o privada y desea más información sobre esta solución o similares de Evidence Ledger, puede contactarnos via email",
-        "ca": "Si ets una entitat pública o privada i vols més informació sobre aquesta solució o similars Evidence Ledger, pots contactar amb nosaltres per correu electrònic"
+        "ca": "Si ets una entitat pública o privada i vols més informació sobre aquesta solució o similars Evidence Ledger, pots contactar amb nosaltres per correu electrònic",
+        "fr": "Si vous êtes une organisation publique ou une entreprise privée et que vous souhaitez en savoir plus sur cette solution ou d'autres solutions similaires d'Evidence Ledger, vous pouvez nous contacter par e-mail."
     },
     "Application updated": {
         "es": "Aplicación actualizada",
-        "ca": "Aplicació actualitzada"
+        "ca": "Aplicació actualitzada",
+        "fr": "Application mise à jour"
     },
     "There is a new version of the application and it has already been updated.": {
         "es": "Se ha actualizado con una nueva versión de la aplicación.",
-        "ca": "Actualitzat amb una nova versió de l'aplicació."
+        "ca": "Actualitzat amb una nova versió de l'aplicació.",
+        "fr": "Il existe une nouvelle version de l'application et elle a déjà été mise à jour."
     },
     "Please click Accept to refresh the page.": {
         "es": "Por favor presione Aceptar para refrescar la página",
-        "ca": "Premeu Acceptar per actualitzar la pàgina"
+        "ca": "Premeu Acceptar per actualitzar la pàgina",
+        "fr": "Veuillez cliquer sur Accepter pour rafraîchir la page."
     },
     "Accept": {
         "es": "Aceptar",
-        "ca": "Acceptar"
+        "ca": "Acceptar",
+        "fr": "Accepter"
     },
 
 
     "Failed!": {
         "es": "Error",
-        "ca": "Failed!"
+        "ca": "Failed!",
+        "fr": "Échec !"
     },
     "Signature validation failed. The certificate is not valid.": {
         "es": "Error en verificación de firma. Certificado inválido",
-        "ca": "Signature validation failed. The certificate is not valid."
+        "ca": "Signature validation failed. The certificate is not valid.",
+        "fr": "La validation de la signature a échoué. Le certificat n'est pas valable."
     },
     "Warning!": {
         "es": "Atención",
-        "ca": "Atenció"
+        "ca": "Atenció",
+        "fr": "Attention !"
     },
     "$warningmsg": {
         "en": "The certificate is not valid for travel, even if it is correctly signed with a PRE key.",
         "es": "EL certificado no es válido para viajar, aunque está correctamente firmado con una llave de PRE.",
-        "ca": "El certificat no és vàlid per viatjar tot i que està correctament signat amb una clau de PRE."
+        "ca": "El certificat no és vàlid per viatjar tot i que està correctament signat amb una clau de PRE.",
+        "fr": "Le certificat n'est pas valable pour voyager, même s'il est signé en bonne et due forme avec une clé pré-partagée."
     },
     "Validated!": {
         "es": "Validado!",
-        "ca": "Validat"
+        "ca": "Validat",
+        "fr": "Validé !"
     },
     "The certificate is valid.": {
         "es": "El certificado es válido",
-        "ca": "El certificat és vàlid"
+        "ca": "El certificat és vàlid",
+        "fr": "Le certificat est valable."
     },
 
 
     "EU DIGITAL COVID CERTIFICATE": {
         "es": "CERTIFICADO COVID DIGITAL DE LA EU",
-        "ca": "CERTIFICAT COVID DIGITAL DE LA EU"
+        "ca": "CERTIFICAT COVID DIGITAL DE LA EU",
+        "fr": "CERTIFICAT NUMÉRIQUE COVID DE L'UE"
     },
     "Vaccination": {
         "es": "Vacunación",
-        "ca": "Vacunació"
+        "ca": "Vacunació",
+        "fr": "Vaccination"
     },
     "Surname and forename": {
         "es": "Apellidos y Nombre",
-        "ca": "Cognoms i nom"
+        "ca": "Cognoms i nom",
+        "fr": "Nom et prénom"
     },
     "Date of birth": {
         "es": "Fecha de nacimiento",
-        "ca": "Data de naixement"
+        "ca": "Data de naixement",
+        "fr": "Date de naissance"
     },
     "Certificate identifier": {
         "es": "Identificador del certificado",
-        "ca": "Identificador del certificat"
+        "ca": "Identificador del certificat",
+        "fr": "Identifiant du certificat"
     },
     "Certificate issuer": {
         "es": "Emisor del certificado",
-        "ca": "Emissor del certificat"
+        "ca": "Emissor del certificat",
+        "fr": "Émetteur du certificat"
     },
     "Disease targeted": {
         "es": "Enfermedad que se previene",
-        "ca": "Malaltia que prevé"
+        "ca": "Malaltia que prevé",
+        "fr": "Maladie ciblée"
     },
     "Vaccine/prophylaxis": {
         "es": "Tipo de vacuna",
-        "ca": "Tipus de vacuna"
+        "ca": "Tipus de vacuna",
+        "fr": "Vaccin/prophylaxie"
     },
     "Vaccine medicinal product": {
         "es": "Vacuna administrada",
-        "ca": "Vacuna administrada"
+        "ca": "Vacuna administrada",
+        "fr": "Médicament vaccinal"
     },
     "Manufacturer": {
         "es": "Fabricante",
-        "ca": "Fabricant"
+        "ca": "Fabricant",
+        "fr": "Fabricant"
     },
     "Dose number/Total doses": {
         "es": "Número de dosis/Total",
-        "ca": "Número dosi/Total"
+        "ca": "Número dosi/Total",
+        "fr": "Nombre de doses/Doses totales"
     },
     "Date of vaccination": {
         "es": "Fecha de vacunación",
-        "ca": "Data de vacunació"
+        "ca": "Data de vacunació",
+        "fr": "Date de la vaccination"
     },
     "Member State of vaccination": {
         "es": "Estado miembro de la vacunación",
-        "ca": "Estat membre de la vacunació"
+        "ca": "Estat membre de la vacunació",
+        "fr": "État membre où a été effectuée la vaccination"
     }
 
 

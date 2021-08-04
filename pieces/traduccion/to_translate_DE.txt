@@ -1,0 +1,79 @@
+"Einleitung"
+   "de": "Diese Anwendung ermöglicht die Überprüfung von COVID-Zertifikaten, die von EU-Mitgliedstaaten ausgestellt wurden, sowie von Zertifikaten, die von der britischen Regierung ausgestellt wurden und dasselbe Format wie das digitale COVID-Zertifikat der EU haben."
+
+"EU Digital COVID Credential Verifier"
+
+"Überprüfung beginnen"
+
+"Ein weiteres überprüfen"
+
+"Datenschutzbestimmungen"
+
+"Allgemeine Geschäftsbedingungen"
+
+"Sprache"
+
+"Öffentliche Schlüssel aktualisieren"
+
+"Einfach und sicher"
+
+"Wir speichern keine Daten"
+
+"Keine Installationen"
+
+"Frei von Cookies"
+
+"$callus"
+    "de": "Wenn Sie eine öffentliche oder private Organisation sind und weitere Informationen über diese oder ähnliche Lösungen von Evidence Ledger wünschen, können Sie uns per E-Mail kontaktieren."
+    
+"Anwendung aktualisiert"
+
+"Es gibt eine neue Version der Anwendung und sie ist bereits aktualisiert worden."
+
+"Bitte klicken Sie auf Akzeptieren, um die Seite zu aktualisieren."
+
+"Akzeptieren"
+
+"Fehlgeschlagen!"
+
+"Signaturüberprüfung fehlgeschlagen. Das Zertifikat ist ungültig."
+
+"Warnung!"
+
+"$warningmsg"
+    "de": "Das Zertifikat ist für Reisen ungültig, auch wenn es korrekt mit einem PRE-Schlüssel signiert ist."
+
+"Validiert!"
+
+
+"Das Zertifikat ist gültig."
+
+
+"EU DIGITALES COVID ZERTIFIKAT"
+
+"Impfung"
+
+"Nachname und Vorname"
+
+"Geburtsdatum"
+
+"Kennung des Zertifikats"
+
+"Zertifikatsaussteller"
+
+"Zielgerichtete Krankheit"
+
+"Impfung/Prophylaxe"
+
+"Impfstoff-Medizinprodukt"
+
+"Hersteller"
+
+"Anzahl der Dosen/Gesamtdosen"
+
+"Datum der Impfung"
+
+"Mitgliedstaat der Impfung"
+
+
+

@@ -1134,149 +1134,185 @@ var svg = (strings2, ...values) => new SVGTemplateResult(strings2, values, "svg"
 var $intro01 = {
   en: "This application allows the verification of COVID certificates issued by EU Member States and also certificates issued by the UK Government with the same format as the EU Digital COVID Certificate",
   es: "Esta aplicaci\xF3n permite la verificaci\xF3n de certificados COVID emitidos por los Estados Miembro de la UE y tambi\xE9n los certificados emitidos por el Reino Unido con el mismo formato que el Certificado COVID Digital de la UE",
-  ca: "Aquesta aplicaci\xF3 permet la verificaci\xF3 dels certificats COVID emesos pels Estats membres de la UE i tamb\xE9 els certificats emesos pel Regne Unit en el mateix format que el Certificat COVID digital de la UE"
+  ca: "Aquesta aplicaci\xF3 permet la verificaci\xF3 dels certificats COVID emesos pels Estats membres de la UE i tamb\xE9 els certificats emesos pel Regne Unit en el mateix format que el Certificat COVID digital de la UE",
+  fr: "Cette application permet de v\xE9rifier les certificats COVID \xE9mis par les \xC9tats membres de l'UE, ainsi que les certificats \xE9mis par le gouvernement britannique sous le m\xEAme format que le certificat COVID num\xE9rique de l'UE."
 };
 var EU_Digital_COVID_Credential_Verifier = {
   es: "Verificador de Credenciales COVID",
-  ca: "Verificador de Credencials COVID"
+  ca: "Verificador de Credencials COVID",
+  fr: "Outil de v\xE9rification num\xE9rique des justificatifs COVID de l'UE"
 };
 var Start_verifying = {
   es: "Comenzar a verificar",
-  ca: "Comen\xE7a a verificar"
+  ca: "Comen\xE7a a verificar",
+  fr: "Commencer la v\xE9rification"
 };
 var Verify_another = {
   es: "Verificar otro",
-  ca: "Verifica'ne un altre"
+  ca: "Verifica'ne un altre",
+  fr: "Effectuer une autre v\xE9rification"
 };
 var Privacy_policy = {
   es: "Pol\xEDtica de privacidad",
-  ca: "Pol\xEDtica de privacitat"
+  ca: "Pol\xEDtica de privacitat",
+  fr: "Politique de confidentialit\xE9"
 };
 var Terms___Conditions = {
   es: "T\xE9rminos y condiciones",
-  ca: "Termes d'\xFAs"
+  ca: "Termes d'\xFAs",
+  fr: "Conditions g\xE9n\xE9rales"
 };
 var Language = {
   es: "Idioma",
-  ca: "Llengua"
+  ca: "Llengua",
+  fr: "Langue"
 };
 var Update_public_keys = {
   es: "Actualizar llaves p\xFAblicas",
-  ca: "Actualitza claus p\xFAbliques"
+  ca: "Actualitza claus p\xFAbliques",
+  fr: "Mise \xE0 jour des cl\xE9s publiques"
 };
 var Easy___Secure = {
   es: "F\xE1cil y Seguro",
-  ca: "F\xE0cil i Segur"
+  ca: "F\xE0cil i Segur",
+  fr: "Simple et s\xE9curis\xE9"
 };
 var We_don_t_save_data = {
   es: "No guardamos ning\xFAn dato",
-  ca: "No emmagatzemem cap dada"
+  ca: "No emmagatzemem cap dada",
+  fr: "Nous ne conservons pas les donn\xE9es"
 };
 var No_installs = {
   es: "Sin instalaci\xF3n",
-  ca: "Sense instal\xB7laci\xF3"
+  ca: "Sense instal\xB7laci\xF3",
+  fr: "Pas d'installation n\xE9cessaire"
 };
 var Free_of_cookies = {
   es: "Libre de cookies",
-  ca: "Sense cookies"
+  ca: "Sense cookies",
+  fr: "Sans cookie"
 };
 var $callus = {
   en: "If you are a public or private organization and want more information about this or similar solutions from Evidence Ledger, you can contact us via email",
   es: "Si usted es una entidad p\xFAblica o privada y desea m\xE1s informaci\xF3n sobre esta soluci\xF3n o similares de Evidence Ledger, puede contactarnos via email",
-  ca: "Si ets una entitat p\xFAblica o privada i vols m\xE9s informaci\xF3 sobre aquesta soluci\xF3 o similars Evidence Ledger, pots contactar amb nosaltres per correu electr\xF2nic"
+  ca: "Si ets una entitat p\xFAblica o privada i vols m\xE9s informaci\xF3 sobre aquesta soluci\xF3 o similars Evidence Ledger, pots contactar amb nosaltres per correu electr\xF2nic",
+  fr: "Si vous \xEAtes une organisation publique ou une entreprise priv\xE9e et que vous souhaitez en savoir plus sur cette solution ou d'autres solutions similaires d'Evidence Ledger, vous pouvez nous contacter par e-mail."
 };
 var Application_updated = {
   es: "Aplicaci\xF3n actualizada",
-  ca: "Aplicaci\xF3 actualitzada"
+  ca: "Aplicaci\xF3 actualitzada",
+  fr: "Application mise \xE0 jour"
 };
 var There_is_a_new_version_of_the_application_and_it_has_already_been_updated_ = {
   es: "Se ha actualizado con una nueva versi\xF3n de la aplicaci\xF3n.",
-  ca: "Actualitzat amb una nova versi\xF3 de l'aplicaci\xF3."
+  ca: "Actualitzat amb una nova versi\xF3 de l'aplicaci\xF3.",
+  fr: "Il existe une nouvelle version de l'application et elle a d\xE9j\xE0 \xE9t\xE9 mise \xE0 jour."
 };
 var Please_click_Accept_to_refresh_the_page_ = {
   es: "Por favor presione Aceptar para refrescar la p\xE1gina",
-  ca: "Premeu Acceptar per actualitzar la p\xE0gina"
+  ca: "Premeu Acceptar per actualitzar la p\xE0gina",
+  fr: "Veuillez cliquer sur Accepter pour rafra\xEEchir la page."
 };
 var Accept = {
   es: "Aceptar",
-  ca: "Acceptar"
+  ca: "Acceptar",
+  fr: "Accepter"
 };
 var Failed_ = {
   es: "Error",
-  ca: "Failed!"
+  ca: "Failed!",
+  fr: "\xC9chec !"
 };
 var Signature_validation_failed__The_certificate_is_not_valid_ = {
   es: "Error en verificaci\xF3n de firma. Certificado inv\xE1lido",
-  ca: "Signature validation failed. The certificate is not valid."
+  ca: "Signature validation failed. The certificate is not valid.",
+  fr: "La validation de la signature a \xE9chou\xE9. Le certificat n'est pas valable."
 };
 var Warning_ = {
   es: "Atenci\xF3n",
-  ca: "Atenci\xF3"
+  ca: "Atenci\xF3",
+  fr: "Attention !"
 };
 var $warningmsg = {
   en: "The certificate is not valid for travel, even if it is correctly signed with a PRE key.",
   es: "EL certificado no es v\xE1lido para viajar, aunque est\xE1 correctamente firmado con una llave de PRE.",
-  ca: "El certificat no \xE9s v\xE0lid per viatjar tot i que est\xE0 correctament signat amb una clau de PRE."
+  ca: "El certificat no \xE9s v\xE0lid per viatjar tot i que est\xE0 correctament signat amb una clau de PRE.",
+  fr: "Le certificat n'est pas valable pour voyager, m\xEAme s'il est sign\xE9 en bonne et due forme avec une cl\xE9 pr\xE9-partag\xE9e."
 };
 var Validated_ = {
   es: "Validado!",
-  ca: "Validat"
+  ca: "Validat",
+  fr: "Valid\xE9 !"
 };
 var The_certificate_is_valid_ = {
   es: "El certificado es v\xE1lido",
-  ca: "El certificat \xE9s v\xE0lid"
+  ca: "El certificat \xE9s v\xE0lid",
+  fr: "Le certificat est valable."
 };
 var EU_DIGITAL_COVID_CERTIFICATE = {
   es: "CERTIFICADO COVID DIGITAL DE LA EU",
-  ca: "CERTIFICAT COVID DIGITAL DE LA EU"
+  ca: "CERTIFICAT COVID DIGITAL DE LA EU",
+  fr: "CERTIFICAT NUM\xC9RIQUE COVID DE L'UE"
 };
 var Vaccination = {
   es: "Vacunaci\xF3n",
-  ca: "Vacunaci\xF3"
+  ca: "Vacunaci\xF3",
+  fr: "Vaccination"
 };
 var Surname_and_forename = {
   es: "Apellidos y Nombre",
-  ca: "Cognoms i nom"
+  ca: "Cognoms i nom",
+  fr: "Nom et pr\xE9nom"
 };
 var Date_of_birth = {
   es: "Fecha de nacimiento",
-  ca: "Data de naixement"
+  ca: "Data de naixement",
+  fr: "Date de naissance"
 };
 var Certificate_identifier = {
   es: "Identificador del certificado",
-  ca: "Identificador del certificat"
+  ca: "Identificador del certificat",
+  fr: "Identifiant du certificat"
 };
 var Certificate_issuer = {
   es: "Emisor del certificado",
-  ca: "Emissor del certificat"
+  ca: "Emissor del certificat",
+  fr: "\xC9metteur du certificat"
 };
 var Disease_targeted = {
   es: "Enfermedad que se previene",
-  ca: "Malaltia que prev\xE9"
+  ca: "Malaltia que prev\xE9",
+  fr: "Maladie cibl\xE9e"
 };
 var Vaccine_prophylaxis = {
   es: "Tipo de vacuna",
-  ca: "Tipus de vacuna"
+  ca: "Tipus de vacuna",
+  fr: "Vaccin/prophylaxie"
 };
 var Vaccine_medicinal_product = {
   es: "Vacuna administrada",
-  ca: "Vacuna administrada"
+  ca: "Vacuna administrada",
+  fr: "M\xE9dicament vaccinal"
 };
 var Manufacturer = {
   es: "Fabricante",
-  ca: "Fabricant"
+  ca: "Fabricant",
+  fr: "Fabricant"
 };
 var Dose_number_Total_doses = {
   es: "N\xFAmero de dosis/Total",
-  ca: "N\xFAmero dosi/Total"
+  ca: "N\xFAmero dosi/Total",
+  fr: "Nombre de doses/Doses totales"
 };
 var Date_of_vaccination = {
   es: "Fecha de vacunaci\xF3n",
-  ca: "Data de vacunaci\xF3"
+  ca: "Data de vacunaci\xF3",
+  fr: "Date de la vaccination"
 };
 var Member_State_of_vaccination = {
   es: "Estado miembro de la vacunaci\xF3n",
-  ca: "Estat membre de la vacunaci\xF3"
+  ca: "Estat membre de la vacunaci\xF3",
+  fr: "\xC9tat membre o\xF9 a \xE9t\xE9 effectu\xE9e la vaccination"
 };
 var translations_default = {
   $intro01,
@@ -35226,6 +35262,9 @@ var es_default = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAhCAIAAAAU
 // src/i18n/flags/ca.png
 var ca_default = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAhCAYAAACbffiEAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAAWJLR0QGYWa4fQAAAAd0SU1FB+EICBI4LjDjx4MAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTctMDgtMDhUMTg6NTY6NDYrMDA6MDA5zTabAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE3LTA4LTA4VDE4OjU2OjQ2KzAwOjAwSJCOJwAAAH5JREFUWEft2DEKgDAQBMCsnZWgqXyYf/Nrp5Y+wP5ACfiIzbIDIfWR7OUI8hrfImD49+7JFIJnnySuFmJenREmzggbvyNskIfGiSAWlfbbyhBYOhm5t9pq6p7bLxtnhI3HeDaIqnEiyFNk1vI7Qsa/KGw8orDxLwobZ4RLKR9rcF87LWU8VAAAAABJRU5ErkJggg==";
 
+// src/i18n/flags/fr.png
+var fr_default = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAhCAYAAACbffiEAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAAWJLR0QCZgt8ZAAAAAd0SU1FB+EICgkYJhHG7wkAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTctMDgtMTBUMDk6MjQ6MzgrMDA6MDD61e2eAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE3LTA4LTEwVDA5OjI0OjM4KzAwOjAwi4hVIgAAAGhJREFUWEftzzENgEAUBNEPVk4MQQBC6HFBMIEDGlRRXQPNV3A0A5nXbLacLsp2xwvTWGJfh3xtrnmJepz52vS5n2cIjSE0htAYQmMIjSE0htAYQmMIjSE0htAYQmMIjSE0htD8JCTiAb1HCJD9/v0sAAAAAElFTkSuQmCC";
+
 // src/i18n/ii8.js
 var SelectLanguage = class extends AbstractPage {
   constructor(domElem2) {
@@ -35255,6 +35294,13 @@ var SelectLanguage = class extends AbstractPage {
             <div class="w3-bar-item" style="padding:8px;">
                 <img src=${es_default} style="padding:8px;width:70px">
                 <span class="h3" style="vertical-align:middle;">Español</span>
+            </div>
+        </li>
+
+        <li class="w3-bar" @click=${() => this.selectLang("fr")}>
+            <div class="w3-bar-item" style="padding:8px;">
+                <img src=${fr_default} style="padding:8px;width:70px">
+                <span class="h3" style="vertical-align:middle;">Français</span>
             </div>
         </li>
 

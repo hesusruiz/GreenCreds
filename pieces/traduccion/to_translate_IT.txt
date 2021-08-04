@@ -1,0 +1,78 @@
+"Introduzione"
+    "ita": "Questa applicazione consente di verificare i certificati COVID rilasciati dagli stati membri dell'UE nonché i certificati rilasciati dal governo del Regno Unito con lo stesso formato del certificato digitale COVID UE"
+
+"Strumento di verifica del certificato digitale COVID UE"
+
+"Avvia la verifica"
+
+"Verifica un altro documento"
+
+"Informativa sulla privacy"
+
+"Condizioni d'uso"
+
+"Lingua"
+
+"Aggiorna chiavi pubbliche"
+
+"Facile e sicuro"
+
+"I dati non vengono memorizzati"
+
+"No installazioni"
+
+"Senza cookie"
+
+"$callus" 
+    "ita": "Che rappresentiate organizzazioni pubbliche o private, non esitate a contattarci per maggiori informazioni su questa o altre soluzioni fornite da Evidence Ledger."
+    
+"L'applicazione è stata aggiornata"
+
+"Una nuova versione dell'applicazione è disponibile ed è già stata aggiornata."
+
+"Fare click su Accetta per aggiornare la pagina."
+
+"Accetta"
+
+"Oh no!"
+
+"La verifica della firma non è andata a buon fine. Il certificato non risulta valido."
+
+"Attenzione!"
+
+"$warningmsg" 
+    "ita": "Il certificato non risulta valido per viaggiare, sebbene sia stato firmato correttamente con la chiave PRE."
+
+"Verificato con successo!"
+
+
+"Il certificato è valido."
+
+
+"CERTIFICATO DIGITALE COVID UE"
+
+"Vaccino"
+
+"Cognome e nome"
+
+"Data di nascita"
+
+"Numero di identificazione del certificato"
+
+"Ente che ha rilasciato il certificato"
+
+"Patologia"
+
+"Vaccino/profilassi"
+
+"Prodotto medico per la vaccinazione"
+
+"Produttore"
+
+"Numero di dosi/Dosi totali"
+
+"Data della vaccinazione"
+
+"Paese membro in cui è stata effettuata la vaccinazione"
+
+
