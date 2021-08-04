@@ -1136,219 +1136,255 @@ var $intro01 = {
   es: "Esta aplicaci\xF3n permite la verificaci\xF3n de certificados COVID emitidos por los Estados Miembro de la UE y tambi\xE9n los certificados emitidos por el Reino Unido con el mismo formato que el Certificado COVID Digital de la UE",
   ca: "Aquesta aplicaci\xF3 permet la verificaci\xF3 dels certificats COVID emesos pels Estats membres de la UE i tamb\xE9 els certificats emesos pel Regne Unit en el mateix format que el Certificat COVID digital de la UE",
   fr: "Cette application permet de v\xE9rifier les certificats COVID \xE9mis par les \xC9tats membres de l'UE, ainsi que les certificats \xE9mis par le gouvernement britannique sous le m\xEAme format que le certificat COVID num\xE9rique de l'UE.",
-  de: "Diese Anwendung erm\xF6glicht die \xDCberpr\xFCfung von COVID-Zertifikaten, die von EU-Mitgliedstaaten ausgestellt wurden, sowie von Zertifikaten, die von der britischen Regierung ausgestellt wurden und dasselbe Format wie das digitale COVID-Zertifikat der EU haben."
+  de: "Diese Anwendung erm\xF6glicht die \xDCberpr\xFCfung von COVID-Zertifikaten, die von EU-Mitgliedstaaten ausgestellt wurden, sowie von Zertifikaten, die von der britischen Regierung ausgestellt wurden und dasselbe Format wie das digitale COVID-Zertifikat der EU haben.",
+  it: "Questa applicazione consente di verificare i certificati COVID rilasciati dagli stati membri dell'UE nonch\xE9 i certificati rilasciati dal governo del Regno Unito con lo stesso formato del certificato digitale COVID UE"
 };
 var EU_Digital_COVID_Credential_Verifier = {
   es: "Verificador de Credenciales COVID",
   ca: "Verificador de Credencials COVID",
   fr: "Outil de v\xE9rification num\xE9rique des justificatifs COVID de l'UE",
-  de: "EU Digital COVID Credential Verifier"
+  de: "EU Digital COVID Credential Verifier",
+  it: "Strumento di verifica del certificato digitale COVID UE"
 };
 var Start_verifying = {
   es: "Comenzar a verificar",
   ca: "Comen\xE7a a verificar",
   fr: "Commencer la v\xE9rification",
-  de: "\xDCberpr\xFCfung beginnen"
+  de: "\xDCberpr\xFCfung beginnen",
+  it: "Avvia la verifica"
 };
 var Verify_another = {
   es: "Verificar otro",
   ca: "Verifica'ne un altre",
   fr: "Effectuer une autre v\xE9rification",
-  de: "Ein weiteres \xFCberpr\xFCfen"
+  de: "Ein weiteres \xFCberpr\xFCfen",
+  it: "Verifica un altro documento"
 };
 var Privacy_policy = {
   es: "Pol\xEDtica de privacidad",
   ca: "Pol\xEDtica de privacitat",
   fr: "Politique de confidentialit\xE9",
-  de: "Datenschutzbestimmungen"
+  de: "Datenschutzbestimmungen",
+  it: "Informativa sulla privacy"
 };
 var Terms___Conditions = {
   es: "T\xE9rminos y condiciones",
   ca: "Termes d'\xFAs",
   fr: "Conditions g\xE9n\xE9rales",
-  de: "Allgemeine Gesch\xE4ftsbedingungen"
+  de: "Allgemeine Gesch\xE4ftsbedingungen",
+  it: "Condizioni d'uso"
 };
 var Language = {
   es: "Idioma",
   ca: "Llengua",
   fr: "Langue",
-  de: "Sprache"
+  de: "Sprache",
+  it: "Lingua"
 };
 var Update_public_keys = {
   es: "Actualizar llaves p\xFAblicas",
   ca: "Actualitza claus p\xFAbliques",
   fr: "Mise \xE0 jour des cl\xE9s publiques",
-  de: "\xD6ffentliche Schl\xFCssel aktualisieren"
+  de: "\xD6ffentliche Schl\xFCssel aktualisieren",
+  it: "Aggiorna chiavi pubbliche"
 };
 var Easy___Secure = {
   es: "F\xE1cil y Seguro",
   ca: "F\xE0cil i Segur",
   fr: "Simple et s\xE9curis\xE9",
-  de: "Einfach und sicher"
+  de: "Einfach und sicher",
+  it: "Facile e sicuro"
 };
 var We_don_t_save_data = {
   es: "No guardamos ning\xFAn dato",
   ca: "No emmagatzemem cap dada",
   fr: "Nous ne conservons pas les donn\xE9es",
-  de: "Wir speichern keine Daten"
+  de: "Wir speichern keine Daten",
+  it: "I dati non vengono memorizzati"
 };
 var No_installs = {
   es: "Sin instalaci\xF3n",
   ca: "Sense instal\xB7laci\xF3",
   fr: "Pas d'installation n\xE9cessaire",
-  de: "Keine Installationen"
+  de: "Keine Installationen",
+  it: "No installazioni"
 };
 var Free_of_cookies = {
   es: "Libre de cookies",
   ca: "Sense cookies",
   fr: "Sans cookie",
-  de: "Frei von Cookies"
+  de: "Frei von Cookies",
+  it: "Senza cookie"
 };
 var $callus = {
   en: "If you are a public or private organization and want more information about this or similar solutions from Evidence Ledger, you can contact us via email",
   es: "Si usted es una entidad p\xFAblica o privada y desea m\xE1s informaci\xF3n sobre esta soluci\xF3n o similares de Evidence Ledger, puede contactarnos via email",
   ca: "Si ets una entitat p\xFAblica o privada i vols m\xE9s informaci\xF3 sobre aquesta soluci\xF3 o similars Evidence Ledger, pots contactar amb nosaltres per correu electr\xF2nic",
   fr: "Si vous \xEAtes une organisation publique ou une entreprise priv\xE9e et que vous souhaitez en savoir plus sur cette solution ou d'autres solutions similaires d'Evidence Ledger, vous pouvez nous contacter par e-mail.",
-  de: "Wenn Sie eine \xF6ffentliche oder private Organisation sind und weitere Informationen \xFCber diese oder \xE4hnliche L\xF6sungen von Evidence Ledger w\xFCnschen, k\xF6nnen Sie uns per E-Mail kontaktieren."
+  de: "Wenn Sie eine \xF6ffentliche oder private Organisation sind und weitere Informationen \xFCber diese oder \xE4hnliche L\xF6sungen von Evidence Ledger w\xFCnschen, k\xF6nnen Sie uns per E-Mail kontaktieren.",
+  it: "Che rappresentiate organizzazioni pubbliche o private, non esitate a contattarci per maggiori informazioni su questa o altre soluzioni fornite da Evidence Ledger."
 };
 var Application_updated = {
   es: "Aplicaci\xF3n actualizada",
   ca: "Aplicaci\xF3 actualitzada",
   fr: "Application mise \xE0 jour",
-  de: "Anwendung aktualisiert"
+  de: "Anwendung aktualisiert",
+  it: "L'applicazione \xE8 stata aggiornata"
 };
 var There_is_a_new_version_of_the_application_and_it_has_already_been_updated_ = {
   es: "Se ha actualizado con una nueva versi\xF3n de la aplicaci\xF3n.",
   ca: "Actualitzat amb una nova versi\xF3 de l'aplicaci\xF3.",
   fr: "Il existe une nouvelle version de l'application et elle a d\xE9j\xE0 \xE9t\xE9 mise \xE0 jour.",
-  de: "Es gibt eine neue Version der Anwendung und sie ist bereits aktualisiert worden."
+  de: "Es gibt eine neue Version der Anwendung und sie ist bereits aktualisiert worden.",
+  it: "Una nuova versione dell'applicazione \xE8 disponibile ed \xE8 gi\xE0 stata aggiornata."
 };
 var Please_click_Accept_to_refresh_the_page_ = {
   es: "Por favor presione Aceptar para refrescar la p\xE1gina",
   ca: "Premeu Acceptar per actualitzar la p\xE0gina",
   fr: "Veuillez cliquer sur Accepter pour rafra\xEEchir la page.",
-  de: "Bitte klicken Sie auf Akzeptieren, um die Seite zu aktualisieren."
+  de: "Bitte klicken Sie auf Akzeptieren, um die Seite zu aktualisieren.",
+  it: "Fare click su Accetta per aggiornare la pagina."
 };
 var Accept = {
   es: "Aceptar",
   ca: "Acceptar",
   fr: "Accepter",
-  de: "Akzeptieren"
+  de: "Akzeptieren",
+  it: "Accetta"
 };
 var Failed_ = {
   es: "Error",
   ca: "Failed!",
   fr: "\xC9chec !",
-  de: "Fehlgeschlagen!"
+  de: "Fehlgeschlagen!",
+  it: "Errore"
 };
 var Signature_validation_failed__The_certificate_is_not_valid_ = {
   es: "Error en verificaci\xF3n de firma. Certificado inv\xE1lido",
   ca: "Signature validation failed. The certificate is not valid.",
   fr: "La validation de la signature a \xE9chou\xE9. Le certificat n'est pas valable.",
-  de: "Signatur\xFCberpr\xFCfung fehlgeschlagen. Das Zertifikat ist ung\xFCltig."
+  de: "Signatur\xFCberpr\xFCfung fehlgeschlagen. Das Zertifikat ist ung\xFCltig.",
+  it: "La verifica della firma non \xE8 andata a buon fine. Il certificato non risulta valido."
 };
 var Warning_ = {
   es: "Atenci\xF3n",
   ca: "Atenci\xF3",
   fr: "Attention !",
-  de: "Warnung!"
+  de: "Warnung!",
+  it: "Attenzione!"
 };
 var $warningmsg = {
   en: "The certificate is not valid for travel, even if it is correctly signed with a PRE key.",
   es: "EL certificado no es v\xE1lido para viajar, aunque est\xE1 correctamente firmado con una llave de PRE.",
   ca: "El certificat no \xE9s v\xE0lid per viatjar tot i que est\xE0 correctament signat amb una clau de PRE.",
   fr: "Le certificat n'est pas valable pour voyager, m\xEAme s'il est sign\xE9 en bonne et due forme avec une cl\xE9 pr\xE9-partag\xE9e.",
-  de: "Das Zertifikat ist f\xFCr Reisen ung\xFCltig, auch wenn es korrekt mit einem PRE-Schl\xFCssel signiert ist."
+  de: "Das Zertifikat ist f\xFCr Reisen ung\xFCltig, auch wenn es korrekt mit einem PRE-Schl\xFCssel signiert ist.",
+  it: "Il certificato non risulta valido per viaggiare, sebbene sia stato firmato correttamente con la chiave PRE."
 };
 var Validated_ = {
   es: "Validado!",
   ca: "Validat",
   fr: "Valid\xE9 !",
-  de: "Validiert!"
+  de: "Validiert!",
+  it: "Verificato con successo!"
 };
 var The_certificate_is_valid_ = {
   es: "El certificado es v\xE1lido",
   ca: "El certificat \xE9s v\xE0lid",
   fr: "Le certificat est valable.",
-  de: "Das Zertifikat ist g\xFCltig."
+  de: "Das Zertifikat ist g\xFCltig.",
+  it: "Il certificato \xE8 valido."
 };
 var EU_DIGITAL_COVID_CERTIFICATE = {
   es: "CERTIFICADO COVID DIGITAL DE LA EU",
   ca: "CERTIFICAT COVID DIGITAL DE LA EU",
   fr: "CERTIFICAT NUM\xC9RIQUE COVID DE L'UE",
-  de: "EU DIGITALES COVID ZERTIFIKAT"
+  de: "EU DIGITALES COVID ZERTIFIKAT",
+  it: "CERTIFICATO DIGITALE COVID UE"
 };
 var Vaccination = {
   es: "Vacunaci\xF3n",
   ca: "Vacunaci\xF3",
   fr: "Vaccination",
-  de: "Impfung"
+  de: "Impfung",
+  it: "Vaccino"
 };
 var Surname_and_forename = {
   es: "Apellidos y Nombre",
   ca: "Cognoms i nom",
   fr: "Nom et pr\xE9nom",
-  de: "Nachname und Vorname"
+  de: "Nachname und Vorname",
+  it: "Cognome e nome"
 };
 var Date_of_birth = {
   es: "Fecha de nacimiento",
   ca: "Data de naixement",
   fr: "Date de naissance",
-  de: "Geburtsdatum"
+  de: "Geburtsdatum",
+  it: "Data di nascita"
 };
 var Certificate_identifier = {
   es: "Identificador del certificado",
   ca: "Identificador del certificat",
   fr: "Identifiant du certificat",
-  de: "Kennung des Zertifikats"
+  de: "Kennung des Zertifikats",
+  it: "Numero di identificazione del certificato"
 };
 var Certificate_issuer = {
   es: "Emisor del certificado",
   ca: "Emissor del certificat",
   fr: "\xC9metteur du certificat",
-  de: "Zertifikatsaussteller"
+  de: "Zertifikatsaussteller",
+  it: "Ente che ha rilasciato il certificato"
 };
 var Disease_targeted = {
   es: "Enfermedad que se previene",
   ca: "Malaltia que prev\xE9",
   fr: "Maladie cibl\xE9e",
-  de: "Zielgerichtete Krankheit"
+  de: "Zielgerichtete Krankheit",
+  it: "Patologia"
 };
 var Vaccine_prophylaxis = {
   es: "Tipo de vacuna",
   ca: "Tipus de vacuna",
   fr: "Vaccin/prophylaxie",
-  de: "Impfung/Prophylaxe"
+  de: "Impfung/Prophylaxe",
+  it: "Vaccino/profilassi"
 };
 var Vaccine_medicinal_product = {
   es: "Vacuna administrada",
   ca: "Vacuna administrada",
   fr: "M\xE9dicament vaccinal",
-  de: "Impfstoff-Medizinprodukt"
+  de: "Impfstoff-Medizinprodukt",
+  it: "Prodotto medico per la vaccinazione"
 };
 var Manufacturer = {
   es: "Fabricante",
   ca: "Fabricant",
   fr: "Fabricant",
-  de: "Hersteller"
+  de: "Hersteller",
+  it: "Produttore"
 };
 var Dose_number_Total_doses = {
   es: "N\xFAmero de dosis/Total",
   ca: "N\xFAmero dosi/Total",
   fr: "Nombre de doses/Doses totales",
-  de: "Anzahl der Dosen/Gesamtdosen"
+  de: "Anzahl der Dosen/Gesamtdosen",
+  it: "Numero di dosi/Dosi totali"
 };
 var Date_of_vaccination = {
   es: "Fecha de vacunaci\xF3n",
   ca: "Data de vacunaci\xF3",
   fr: "Date de la vaccination",
-  de: "Datum der Impfung"
+  de: "Datum der Impfung",
+  it: "Data della vaccinazione"
 };
 var Member_State_of_vaccination = {
   es: "Estado miembro de la vacunaci\xF3n",
   ca: "Estat membre de la vacunaci\xF3",
   fr: "\xC9tat membre o\xF9 a \xE9t\xE9 effectu\xE9e la vaccination",
-  de: "Mitgliedstaat der Impfung"
+  de: "Mitgliedstaat der Impfung",
+  it: "Paese membro in cui \xE8 stata effettuata la vaccinazione"
 };
 var translations_default = {
   $intro01,
